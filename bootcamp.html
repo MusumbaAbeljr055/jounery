@@ -623,6 +623,7 @@
             list-style: disc;
             padding-left: 20px;
             margin: 0.3rem 0;
+            line-height: 1.6;
         }
 
         .note-content li {
@@ -645,7 +646,6 @@
             transition: max-height 0.5s ease;
             padding: 0 10px;
         }
-
 
         .note-content.active {
             max-height: 200px;
@@ -809,6 +809,50 @@
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        /* Code examples styling */
+        .code-example {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-keyword {
+            color: #c586c0;
+        }
+
+        .code-function {
+            color: #dcdcaa;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-number {
+            color: #b5cea8;
+        }
+
+        .info-box {
+            background: #e8f4fc;
+            border-left: 4px solid var(--color-primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        [data-theme="dark"] .info-box {
+            background: #1a2a3a;
         }
 
         @media (max-width: 480px) {
@@ -1075,10 +1119,22 @@
                 <div id="fundamentals-module" class="lesson-grid"></div>
 
                 <div class="module-header">
+                    <h3>Control Statements</h3>
+                    <button class="module-toggle" data-module="control">Hide</button>
+                </div>
+                <div id="control-module" class="lesson-grid"></div>
+
+                <div class="module-header">
                     <h3>Python Collections</h3>
                     <button class="module-toggle" data-module="collections">Hide</button>
                 </div>
                 <div id="collections-module" class="lesson-grid"></div>
+
+                <div class="module-header">
+                    <h3>Functions in Python</h3>
+                    <button class="module-toggle" data-module="functions">Hide</button>
+                </div>
+                <div id="functions-module" class="lesson-grid"></div>
 
                 <div class="module-header">
                     <h3>Object-Oriented Programming in Python</h3>
@@ -1317,10 +1373,126 @@ print(f"Is student: {is_student}")`,
             }
         ];
 
+        const controlLessons = [
+            {
+                id: "3-control-statements",
+                title: "Lesson 3: Control Statements",
+                description: "Learn how to control the flow of your programs with conditionals and loops.",
+                estimatedTime: "60 mins",
+                challenges: 4,
+                image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                content: `
+                    <h3>What are Control Statements?</h3>
+                    <p>Control statements allow you to control the flow of your program's execution based on certain conditions or by repeating certain blocks of code.</p>
+                    
+                    <h3>Conditional Statements</h3>
+                    <p>Conditional statements allow you to execute different blocks of code based on different conditions:</p>
+                    <ul>
+                        <li><strong>if</strong> - executes a block of code if a condition is true</li>
+                        <li><strong>elif</strong> - checks another condition if previous conditions were false</li>
+                        <li><strong>else</strong> - executes a block if all previous conditions are false</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <p><strong>Note:</strong> Python uses indentation (whitespace at the beginning of a line) to define scope in code. Other programming languages often use curly-brackets for this purpose.</p>
+                    </div>
+                    
+                    <h3>Loop Statements</h3>
+                    <p>Loops allow you to execute a block of code multiple times:</p>
+                    <ul>
+                        <li><strong>for</strong> - iterates over a sequence (list, tuple, dictionary, set, or string)</li>
+                        <li><strong>while</strong> - executes as long as a condition is true</li>
+                    </ul>
+                    
+                    <h3>Control Statements in Action</h3>
+                    <p>Here are some examples of control statements:</p>
+                `,
+                defaultCode: `# Conditional statements example
+age = 18
+
+if age >= 18:
+    print("You are an adult")
+elif age >= 13:
+    print("You are a teenager")
+else:
+    print("You are a child")
+
+# For loop example
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(f"I like {fruit}")
+
+# While loop example
+count = 5
+while count > 0:
+    print(count)
+    count -= 1
+print("Blastoff!")`,
+                challenge: "Write a program that prints numbers 1 to 10, but for multiples of 3 print 'Fizz' instead of the number, and for multiples of 5 print 'Buzz'",
+                module: "control"
+            },
+            {
+                id: "4-advanced-control",
+                title: "Lesson 4: Advanced Control Flow",
+                description: "Learn about break, continue, and pass statements for more control over your loops.",
+                estimatedTime: "45 mins",
+                challenges: 3,
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                content: `
+                    <h3>Advanced Loop Control</h3>
+                    <p>Python provides additional statements to give you more control over your loops:</p>
+                    
+                    <h4>Break Statement</h4>
+                    <p>The <code>break</code> statement stops the loop immediately, even if the loop condition is still true.</p>
+                    
+                    <h4>Continue Statement</h4>
+                    <p>The <code>continue</code> statement skips the rest of the current iteration and moves to the next iteration of the loop.</p>
+                    
+                    <h4>Pass Statement</h4>
+                    <p>The <code>pass</code> statement is a null operation - nothing happens when it executes. It's useful as a placeholder when a statement is required syntactically but you don't want any code to execute.</p>
+                    
+                    <h3>Loop Control in Action</h3>
+                    <p>Here are examples of these control statements:</p>
+                `,
+                defaultCode: `# Break statement example
+print("Break example:")
+for number in range(1, 10):
+    if number == 5:
+        break  # Exit the loop when number is 5
+    print(number)
+
+# Continue statement example
+print("\\nContinue example:")
+for number in range(1, 10):
+    if number % 2 == 0:
+        continue  # Skip even numbers
+    print(number)
+
+# Pass statement example
+print("\\nPass example:")
+for number in range(1, 5):
+    if number == 3:
+        pass  # Do nothing, just a placeholder
+    else:
+        print(number)
+
+# Nested loops with control statements
+print("\\nNested loops example:")
+for i in range(1, 4):
+    for j in range(1, 4):
+        if i == j:
+            print(f"i and j are both {i}")
+            break  # Break only affects the inner loop
+        print(f"i: {i}, j: {j}")`,
+                challenge: "Write a program that finds all prime numbers between 1 and 50 using nested loops and control statements",
+                module: "control"
+            }
+        ];
+
         const collectionsLessons = [
             {
-                id: "3-lists",
-                title: "Lesson 3: Working with Lists",
+                id: "5-lists",
+                title: "Lesson 5: Working with Lists",
                 description: "Learn to store and manipulate collections of data using Python lists.",
                 estimatedTime: "45 mins",
                 challenges: 3,
@@ -1350,8 +1522,8 @@ print(f"After append: {fruits}")`,
                 module: "collections"
             },
             {
-                id: "4-tuples-dictionaries",
-                title: "Lesson 4: Tuples & Dictionaries",
+                id: "6-tuples-dictionaries",
+                title: "Lesson 6: Tuples & Dictionaries",
                 description: "Explore immutable tuples and key-value pairs with dictionaries.",
                 estimatedTime: "50 mins",
                 challenges: 4,
@@ -1386,10 +1558,163 @@ print(f"Updated person: {person}")`,
             }
         ];
 
+        const functionsLessons = [
+            {
+                id: "7-functions",
+                title: "Lesson 7: Functions in Python",
+                description: "Learn how to create reusable blocks of code with functions.",
+                estimatedTime: "55 mins",
+                challenges: 4,
+                image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                content: `
+                    <h3>What are Functions?</h3>
+                    <p>A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result.</p>
+                    
+                    <h3>Why Use Functions?</h3>
+                    <ul>
+                        <li><strong>Code Reusability:</strong> Write once, use multiple times</li>
+                        <li><strong>Organization:</strong> Break down complex problems into smaller pieces</li>
+                        <li><strong>Readability:</strong> Make your code easier to understand</li>
+                        <li><strong>Debugging:</strong> Easier to find and fix errors</li>
+                    </ul>
+                    
+                    <h3>Defining and Calling Functions</h3>
+                    <p>In Python, a function is defined using the <code>def</code> keyword:</p>
+                    
+                    <div class="info-box">
+                        <p><strong>Note:</strong> Function names should be descriptive and follow snake_case convention (all lowercase with underscores between words).</p>
+                    </div>
+                    
+                    <h3>Function Parameters and Return Values</h3>
+                    <p>Functions can accept parameters and return values using the <code>return</code> statement:</p>
+                `,
+                defaultCode: `# Basic function without parameters
+def greet():
+    print("Hello, welcome to Python functions!")
+    
+# Call the function
+greet()
+
+# Function with parameters
+def greet_person(name):
+    print(f"Hello, {name}! Welcome to Python functions!")
+    
+greet_person("Alice")
+greet_person("Bob")
+
+# Function with return value
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, 3)
+print(f"5 + 3 = {result}")
+
+# Function with default parameter
+def greet_with_time(name, time_of_day="day"):
+    print(f"Good {time_of_day}, {name}!")
+
+greet_with_time("John")  # Uses default value
+greet_with_time("Sarah", "evening")  # Overrides default value
+
+# Function that returns multiple values
+def calculate_rectangle_properties(length, width):
+    area = length * width
+    perimeter = 2 * (length + width)
+    return area, perimeter
+
+area, perimeter = calculate_rectangle_properties(5, 3)
+print(f"Area: {area}, Perimeter: {perimeter}")`,
+                challenge: "Create a function called is_even that takes a number as parameter and returns True if the number is even, False otherwise",
+                module: "functions"
+            },
+            {
+                id: "8-advanced-functions",
+                title: "Lesson 8: Advanced Function Concepts",
+                description: "Explore advanced function concepts like variable scope, lambda functions, and recursion.",
+                estimatedTime: "60 mins",
+                challenges: 4,
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                content: `
+                    <h3>Variable Scope in Functions</h3>
+                    <p>Variables in Python have different scopes depending on where they are declared:</p>
+                    <ul>
+                        <li><strong>Local scope:</strong> Variables declared inside a function</li>
+                        <li><strong>Global scope:</strong> Variables declared outside any function</li>
+                    </ul>
+                    
+                    <h3>Lambda Functions</h3>
+                    <p>A lambda function is a small anonymous function. It can take any number of arguments, but can only have one expression.</p>
+                    
+                    <h3>Recursion</h3>
+                    <p>Recursion is when a function calls itself. This is a powerful technique for solving problems that can be broken down into smaller, similar subproblems.</p>
+                    
+                    <div class="info-box">
+                        <p><strong>Note:</strong> When using recursion, always ensure you have a base case to prevent infinite recursion, which would cause a stack overflow.</p>
+                    </div>
+                    
+                    <h3>Advanced Function Concepts in Action</h3>
+                    <p>Here are examples of these advanced concepts:</p>
+                `,
+                defaultCode: `# Variable scope example
+global_var = "I'm global"
+
+def scope_demo():
+    local_var = "I'm local"
+    print(global_var)  # Can access global variables
+    print(local_var)   # Can access local variables
+    
+scope_demo()
+print(global_var)      # Can access global variables
+# print(local_var)     # This would cause an error - local_var is not accessible here
+
+# Using the global keyword
+counter = 0
+
+def increment_counter():
+    global counter  # Declare we want to use the global variable
+    counter += 1
+    
+increment_counter()
+increment_counter()
+print(f"Counter: {counter}")
+
+# Lambda function example
+multiply = lambda x, y: x * y
+print(f"5 * 3 = {multiply(5, 3)}")
+
+# Using lambda with built-in functions
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x**2, numbers))
+print(f"Squared numbers: {squared}")
+
+# Recursion example - factorial function
+def factorial(n):
+    if n == 1:  # Base case
+        return 1
+    else:       # Recursive case
+        return n * factorial(n-1)
+
+print(f"Factorial of 5: {factorial(5)}")
+
+# Recursion example - Fibonacci sequence
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print("Fibonacci sequence:")
+for i in range(10):
+    print(fibonacci(i), end=" ")`,
+                challenge: "Create a recursive function to calculate the sum of all numbers from 1 to n",
+                module: "functions"
+            }
+        ];
+
         const oopLessons = [
             {
-                id: "5-classes-objects",
-                title: "Lesson 5: Classes & Objects",
+                id: "9-classes-objects",
+                title: "Lesson 9: Classes & Objects",
                 description: "Introduction to Object-Oriented Programming with classes and objects in Python.",
                 estimatedTime: "60 mins",
                 challenges: 4,
@@ -1422,8 +1747,8 @@ person2.introduce()`,
                 module: "oop"
             },
             {
-                id: "6-inheritance",
-                title: "Lesson 6: Inheritance",
+                id: "10-inheritance",
+                title: "Lesson 10: Inheritance",
                 description: "Learn how classes can inherit attributes and methods from other classes.",
                 estimatedTime: "55 mins",
                 challenges: 3,
@@ -1469,9 +1794,8 @@ print(cat.name + " says: " + cat.speak())`,
             }
         ];
 
-        const allLessons = [...fundamentalsLessons, ...collectionsLessons, ...oopLessons];
-
-        let deferredPrompt;
+        const allLessons = [...fundamentalsLessons, ...controlLessons, ...collectionsLessons, ...functionsLessons, ...oopLessons];
+  let deferredPrompt;
         const installButton = document.getElementById('butInstall');
         const toastInstall = document.getElementById('toastInstall');
         const toastDismiss = document.getElementById('toastDismiss');
@@ -1516,16 +1840,19 @@ print(cat.name + " says: " + cat.speak())`,
             });
             return pyodide;
         }
-
-        pyodideReadyPromise = loadPyodideAndPackages();
-
+ pyodideReadyPromise = loadPyodideAndPackages();
+        // ... (rest of the JavaScript code remains the same) ...
+        
+        // Update the renderLessonCards function calls to include the new modules
         document.addEventListener('DOMContentLoaded', function () {
             renderLessonCards(fundamentalsLessons, 'fundamentals-module');
+            renderLessonCards(controlLessons, 'control-module');
             renderLessonCards(collectionsLessons, 'collections-module');
+            renderLessonCards(functionsLessons, 'functions-module');
             renderLessonCards(oopLessons, 'oop-module');
             updateOverallProgress(allLessons);
 
-            const themeToggle = document.getElementById('themeToggle');
+        const themeToggle = document.getElementById('themeToggle');
             themeToggle.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
