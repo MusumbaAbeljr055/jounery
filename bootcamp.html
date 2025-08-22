@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musumba Space - Python Bootcamp</title>
+    <title>Python Bootcamp</title>
+    <link rel="icon" type="image/png" href="opp3.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
     <style>
         :root {
             --color-primary: #2d89ef;
@@ -40,20 +43,20 @@
             color: var(--color-dark);
             background-color: var(--color-light);
             transition: var(--transition);
+            font-size: 16px;
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
         }
 
-        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
             color: white;
-            padding: 1rem 0;
+            padding: 0.75rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -64,40 +67,43 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .logo-img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid white;
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: clamp(1.4rem, 4vw, 1.6rem);
         }
 
         .header-controls {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
         button {
             background-color: var(--color-secondary);
             color: white;
             border: none;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: var(--border-radius);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             cursor: pointer;
             transition: var(--transition);
+            min-height: 44px;
         }
 
         button:hover {
@@ -111,42 +117,43 @@
             transform: none;
         }
 
-        /* Hero Section */
         #hero {
             text-align: center;
-            padding: 3rem 1rem;
+            padding: clamp(2rem, 5vw, 3rem) 1rem;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
             color: white;
             border-radius: 0 0 var(--border-radius) var(--border-radius);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         #hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            margin-bottom: 0.8rem;
         }
 
         #hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            max-width: 90%;
+            margin: 0 auto 1.5rem;
         }
 
         .hero-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .button {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: var(--border-radius);
             text-decoration: none;
             font-weight: bold;
             transition: var(--transition);
+            min-height: 44px;
+            line-height: 1.4;
         }
 
         .primary {
@@ -174,10 +181,10 @@
         .progress-bar {
             width: 100%;
             max-width: 600px;
-            height: 20px;
+            height: 18px;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            margin: 1rem auto;
+            margin: 0.8rem auto;
             overflow: hidden;
         }
 
@@ -188,46 +195,46 @@
             transition: width 0.5s ease;
         }
 
-        /* Curriculum Section */
         .curriculum-section {
-            padding: 2rem 0;
+            padding: 1.5rem 0;
         }
 
         .curriculum-section h2 {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--color-primary);
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 5vw, 2rem);
         }
 
         .module-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 3rem 0 1.5rem 0;
-            padding-bottom: 0.5rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.4rem;
             border-bottom: 2px solid var(--color-primary);
         }
 
         .module-header h3 {
             color: var(--color-primary);
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 4vw, 1.7rem);
         }
 
         .module-toggle {
             background: var(--color-primary);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: var(--border-radius);
             cursor: pointer;
+            min-height: 44px;
         }
 
         .lesson-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
         .lesson-card {
@@ -249,7 +256,7 @@
         }
 
         .lesson-image {
-            height: 160px;
+            height: 140px;
             overflow: hidden;
             background-color: #f0f0f0;
             display: flex;
@@ -265,65 +272,67 @@
         }
 
         .lesson-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .lesson-status {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
             color: var(--color-secondary);
         }
 
         .lesson-card h3 {
             color: var(--color-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.3rem);
         }
 
         .lesson-card p {
             color: #666;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             flex-grow: 1;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .lesson-meta {
             display: flex;
             justify-content: space-between;
             list-style: none;
-            padding-top: 1rem;
+            padding-top: 0.8rem;
             border-top: 1px solid #eee;
             color: #777;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
         .completed {
             border-left: 5px solid var(--color-secondary);
         }
 
-        /* Features Section */
         #features {
             background-color: #f8f9fa;
-            padding: 3rem 0;
+            padding: 2rem 0;
             text-align: center;
             border-radius: var(--border-radius);
         }
 
         #features h2 {
             color: var(--color-primary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.8rem, 5vw, 2rem);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
 
         .feature {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -334,31 +343,31 @@
         }
 
         .feature i {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--color-primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
-        /* Testimonials */
         #testimonials {
-            padding: 3rem 0;
+            padding: 2rem 0;
         }
 
         #testimonials h2 {
             text-align: center;
             color: var(--color-primary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.8rem, 5vw, 2rem);
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .testimonial {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             position: relative;
@@ -366,28 +375,29 @@
 
         .testimonial:before {
             content: "\"";
-            font-size: 5rem;
+            font-size: 4rem;
             color: var(--color-secondary);
             opacity: 0.2;
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 8px;
+            left: 8px;
             line-height: 1;
         }
 
         .testimonial-content {
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .testimonial-avatar {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
@@ -398,30 +408,32 @@
             font-weight: bold;
         }
 
-        /* Lesson View Styles */
         #lesson-view {
             display: none;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
         }
 
         .lesson-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .lesson-nav {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .lesson-content {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .code-editor {
@@ -429,50 +441,58 @@
             color: #f8f8f2;
             border-radius: var(--border-radius);
             overflow: hidden;
-            margin: 1.5rem 0;
+            margin: 1.2rem 0;
         }
 
         .editor-header {
             background: #1e1e1e;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .editor-actions button {
             background: #0078d4;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.9rem;
+            padding: 0.3rem 0.6rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            min-height: 36px;
         }
 
         .code-area {
             width: 100%;
-            min-height: 200px;
+            min-height: 150px;
+            max-height: 50vh;
             background: #1e1e1e;
             color: #f8f8f2;
             border: none;
-            padding: 1rem;
+            padding: 0.8rem;
             font-family: 'Courier New', monospace;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             resize: vertical;
+            box-sizing: border-box;
         }
 
         .output-area {
             background: #1e1e1e;
-            padding: 1rem;
+            padding: 0.8rem;
             border-top: 1px solid #444;
-            min-height: 100px;
+            min-height: 80px;
+            max-height: 30vh;
             font-family: 'Courier New', monospace;
             white-space: pre-wrap;
             color: #f8f8f2;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            overflow-y: auto;
         }
 
         .challenge {
             background: #f0f8ff;
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: var(--border-radius);
-            margin: 1.5rem 0;
+            margin: 1.2rem 0;
             border-left: 4px solid var(--color-primary);
         }
 
@@ -484,23 +504,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--color-border);
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        /* Install Toast */
         #installToast {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 15px;
+            right: 15px;
             background: white;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             display: none;
             z-index: 1000;
-            max-width: 350px;
+            max-width: 90%;
+            width: 300px;
             color: var(--color-dark);
         }
 
@@ -512,8 +534,8 @@
         .toast-content {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 8px;
+            margin-bottom: 8px;
             color: var(--color-dark);
         }
 
@@ -524,10 +546,113 @@
         .toast-actions {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
+            gap: 8px;
         }
 
-        /* Download Modal */
+        #pythonNote {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #fff;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            max-width: 90%;
+            width: 320px;
+            z-index: 1000;
+            font-family: "Segoe UI", Roboto, sans-serif;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #pythonNote:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+
+        .note-header h3 {
+            font-size: 1.1rem;
+            color: var(--color-primary, #0077cc);
+            margin: 0;
+        }
+
+        .note-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--color-dark, #222);
+            transition: transform 0.2s ease;
+        }
+
+        .note-toggle:hover {
+            transform: scale(1.2);
+            color: var(--color-secondary, #cc5500);
+        }
+
+        /* Slide toggle effect */
+        .note-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+            font-size: 0.95rem;
+            color: var(--color-dark, #333);
+        }
+
+        .note-content.active {
+            max-height: 500px;
+            /* enough to show content */
+            opacity: 1;
+        }
+
+        .note-content h4 {
+            margin-top: 0.8rem;
+            margin-bottom: 0.4rem;
+            color: var(--color-primary, #0077cc);
+            font-size: 1rem;
+        }
+
+        .note-content ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0.3rem 0;
+        }
+
+        .note-content li {
+            margin-bottom: 0.4rem;
+        }
+
+        .note-content a {
+            color: var(--color-secondary, #cc5500);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .note-content a:hover {
+            text-decoration: underline;
+        }
+
+        .note-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 10px;
+        }
+
+
+        .note-content.active {
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
         #downloadModal {
             display: none;
             position: fixed;
@@ -539,14 +664,16 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            overflow-y: auto;
+            padding: 1rem;
         }
 
         .modal-content {
             background-color: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: var(--border-radius);
-            max-width: 500px;
-            width: 90%;
+            max-width: 90%;
+            width: 500px;
             box-shadow: var(--shadow);
         }
 
@@ -559,13 +686,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .close-modal {
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
             color: var(--color-dark);
         }
@@ -577,11 +704,11 @@
         .download-options {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .download-option {
-            padding: 1rem;
+            padding: 0.8rem;
             border: 1px solid var(--color-border);
             border-radius: var(--border-radius);
             cursor: pointer;
@@ -598,16 +725,16 @@
 
         .download-option h3 {
             color: var(--color-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: clamp(1.1rem, 3vw, 1.2rem);
         }
 
-        /* Progress bar for download */
         .download-progress {
             width: 100%;
-            height: 10px;
+            height: 8px;
             background-color: #f0f0f0;
             border-radius: 5px;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             overflow: hidden;
             display: none;
         }
@@ -619,61 +746,60 @@
             transition: width 0.3s ease;
         }
 
-        /* About Me Section */
         #about {
-            padding: 3rem 0;
+            padding: 2rem 0;
             background-color: #f8f9fa;
             border-radius: var(--border-radius);
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         #about h2 {
             text-align: center;
             color: var(--color-primary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.8rem, 5vw, 2rem);
         }
 
         .about-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
-            max-width: 800px;
+            gap: 1rem;
+            max-width: 90%;
             margin: 0 auto;
             text-align: center;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--color-primary);
+            border: 3px solid var(--color-primary);
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin-top: 1rem;
+            gap: 8px;
+            margin-top: 0.8rem;
         }
 
         .skill {
             background-color: var(--color-primary);
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
-        /* Footer */
         footer {
             background-color: var(--color-dark);
             color: white;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         footer a {
@@ -685,26 +811,182 @@
             text-decoration: underline;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+
             .header-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
             }
-            
+
+            .logo-img {
+                width: 32px;
+                height: 32px;
+            }
+
             h1 {
+                font-size: 1.2rem;
+            }
+
+            button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            #hero {
+                padding: 1.5rem 0.5rem;
+            }
+
+            #hero h2 {
                 font-size: 1.5rem;
             }
-            
-            #hero h2 {
-                font-size: 2rem;
+
+            #hero p {
+                font-size: 0.9rem;
             }
-            
+
             .hero-actions {
                 flex-direction: column;
-                align-items: center;
+                gap: 8px;
             }
-            
+
+            .button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .lesson-grid,
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .lesson-card {
+                min-width: 0;
+            }
+
+            .lesson-image {
+                height: 120px;
+            }
+
+            .code-editor {
+                margin: 0.8rem 0;
+            }
+
+            .code-area {
+                min-height: 120px;
+                font-size: 0.8rem;
+            }
+
+            .output-area {
+                min-height: 60px;
+                font-size: 0.8rem;
+            }
+
+            .lesson-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .lesson-nav {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .lesson-nav button {
+                width: 100%;
+                text-align: center;
+            }
+
+            #pythonNote,
+            #installToast {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                width: auto;
+                max-width: 100%;
+                font-size: 0.85rem;
+            }
+
+            .modal-content {
+                padding: 1rem;
+                width: 95%;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .header-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            #hero h2 {
+                font-size: 1.8rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            .hero-actions {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .lesson-grid,
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 1rem;
+            }
+
+            .lesson-image {
+                height: 130px;
+            }
+
+            .code-area {
+                min-height: 140px;
+                font-size: 0.9rem;
+            }
+
+            .output-area {
+                min-height: 70px;
+                font-size: 0.9rem;
+            }
+
+            .lesson-header {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            #pythonNote,
+            #installToast {
+                max-width: 320px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+
             .lesson-grid,
             .features-grid,
             .testimonials-grid {
@@ -714,11 +996,17 @@
             .lesson-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 15px;
+                gap: 12px;
+            }
+
+            #pythonNote {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                max-width: 95%;
             }
         }
 
-        /* Dark mode styles */
         [data-theme="dark"] .lesson-card,
         [data-theme="dark"] .feature,
         [data-theme="dark"] .testimonial,
@@ -726,32 +1014,33 @@
             background-color: #222;
             color: #eee;
         }
-        
+
         [data-theme="dark"] .lesson-card p,
         [data-theme="dark"] .lesson-meta,
         [data-theme="dark"] .feature p {
             color: #ccc;
         }
-        
+
         [data-theme="dark"] .lesson-meta {
             border-top: 1px solid #444;
         }
-        
+
         [data-theme="dark"] #features {
             background-color: #1a1a1a;
         }
-        
+
         [data-theme="dark"] .lesson-image {
             background-color: #333;
         }
     </style>
 </head>
+
 <body>
     <header role="banner">
         <div class="container header-container">
             <div class="logo">
-                <img src="abbey.jpg" alt="Musumba Space Logo" class="logo-img">
-                <h1>Musumba</h1>
+                <img src="opp3.jpg" alt="Musumba Space Logo" class="logo-img">
+                <h1>Python</h1>
             </div>
             <div class="header-controls">
                 <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
@@ -761,11 +1050,11 @@
     </header>
 
     <main class="container">
-        <!-- Dashboard View -->
         <div id="dashboard-view">
             <section id="hero">
                 <h2>Karibu! Welcome to Your Python Journey</h2>
-                <p>Learn in depth Python programming, designed for <strong>offline use</strong> across Uganda. Build real skills, step-by-step.</p>
+                <p>Learn in-depth Python programming, designed for <strong>offline use</strong> across Uganda. Build
+                    real skills, step-by-step.</p>
                 <div class="hero-actions">
                     <a href="#curriculum" class="button primary">Start Learning</a>
                     <a href="#" id="downloadAll" class="button secondary">Download Full Course (PDF)</a>
@@ -778,30 +1067,24 @@
 
             <section id="curriculum" class="curriculum-section">
                 <h2>Coverage</h2>
-                
+
                 <div class="module-header">
                     <h3>Python Fundamentals</h3>
                     <button class="module-toggle" data-module="fundamentals">Hide</button>
                 </div>
-                <div id="fundamentals-module" class="lesson-grid">
-                    <!-- Lesson cards will be dynamically inserted here by JavaScript -->
-                </div>
+                <div id="fundamentals-module" class="lesson-grid"></div>
 
                 <div class="module-header">
                     <h3>Python Collections</h3>
                     <button class="module-toggle" data-module="collections">Hide</button>
                 </div>
-                <div id="collections-module" class="lesson-grid">
-                    <!-- Collection lesson cards will be inserted here -->
-                </div>
+                <div id="collections-module" class="lesson-grid"></div>
 
                 <div class="module-header">
                     <h3>Object-Oriented Programming in Python</h3>
                     <button class="module-toggle" data-module="oop">Hide</button>
                 </div>
-                <div id="oop-module" class="lesson-grid">
-                    <!-- OOP lesson cards will be inserted here -->
-                </div>
+                <div id="oop-module" class="lesson-grid"></div>
             </section>
 
             <section id="features">
@@ -819,13 +1102,12 @@
                     </div>
                     <div class="feature">
                         <i class="fas fa-graduation-cap"></i>
-                        <h3>Education Context</h3>
-                        <p>Examples and projects relevant to the market and challenges</p>
+                        <h3>Ugandan Context</h3>
+                        <p>Examples and projects relevant to the Ugandan market and challenges</p>
                     </div>
                 </div>
             </section>
 
-            <!-- About Me Section -->
             <section id="about">
                 <h2>About Me</h2>
                 <div class="about-content">
@@ -847,7 +1129,6 @@
             </section>
         </div>
 
-        <!-- Lesson View (initially hidden) -->
         <div id="lesson-view">
             <div class="lesson-header">
                 <h2 id="lesson-title">Lesson Title</h2>
@@ -859,9 +1140,7 @@
             </div>
 
             <div class="lesson-content">
-                <div id="lesson-content-html">
-                    <!-- Lesson content will be loaded here -->
-                </div>
+                <div id="lesson-content-html"></div>
 
                 <div class="code-editor">
                     <div class="editor-header">
@@ -890,7 +1169,6 @@ print("Hello, Python!")</textarea>
         </div>
     </main>
 
-    <!-- Install Toast -->
     <div id="installToast">
         <div class="toast-content">
             <i class="fas fa-download fa-2x"></i>
@@ -902,7 +1180,37 @@ print("Hello, Python!")</textarea>
         </div>
     </div>
 
-    <!-- Download Modal -->
+    <div id="pythonNote">
+        <div class="note-header">
+            <h3>Python Editors & Installation</h3>
+            <button class="note-toggle" id="noteToggle">▼</button>
+        </div>
+        <div class="note-content" id="noteContent">
+            <p>Python editors make coding easier with features like syntax highlighting, debugging, and code completion.
+            </p>
+            <h4>Install Python</h4>
+            <p>To run Python locally, download and install it from the official website:</p>
+            <ul>
+                <li>Visit <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a></li>
+                <li>Choose the latest version (e.g., Python 3.13)</li>
+                <li>Windows: Run the installer, check "Add Python to PATH"</li>
+                <li>macOS/Linux: use <code>brew install python</code> or <code>sudo apt-get install python3</code></li>
+            </ul>
+            <h4>Recommended Editors</h4>
+            <ul>
+                <li><a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code</a> –
+                    lightweight, extensible, with Python extension support.</li>
+                <li><a href="https://www.jetbrains.com/pycharm/download/" target="_blank">PyCharm</a> – powerful IDE
+                    with advanced debugging and testing tools.</li>
+                <li><a href="https://www.python.org/downloads/" target="_blank">IDLE</a> – simple editor included with
+                    Python, great for beginners.</li>
+                <li><a href="https://thonny.org/" target="_blank">Thonny</a> – beginner-friendly with a simple
+                    interface.</li>
+            </ul>
+        </div>
+    </div>
+
+
     <div id="downloadModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -938,12 +1246,11 @@ print("Hello, Python!")</textarea>
     <footer>
         <div class="container">
             <p>© 2025 <a href="https://musumba.space">Musumba.space</a> | Built with ♥ for Ugandan developers.</p>
-            <p>Found a bug? <a href="mailto:abbey@musumba.space">Email the instructor</a>.</p>
+            <p>Found a bug? <a href="mailto:ssenkubugeabbey055@gmail.com">Email the instructor</a>.</p>
         </div>
     </footer>
 
     <script>
-        // Sample lesson data with images and content
         const fundamentalsLessons = [
             {
                 id: "1-intro",
@@ -1001,10 +1308,10 @@ age = 25           # integer
 height = 5.9       # float
 is_student = True  # boolean
 
-print("Name:", name)
-print("Age:", age)
-print("Height:", height)
-print("Is student:", is_student)`,
+print(f"Name: {name}")
+print(f"Age: {age}")
+print(f"Height: {height}")
+print(f"Is student: {is_student}")`,
                 challenge: "Create variables for a product name, price, and in_stock status, then print them",
                 module: "fundamentals"
             }
@@ -1028,17 +1335,17 @@ fruits = ["apple", "banana", "cherry"]
 numbers = [1, 2, 3, 4, 5]
 mixed = [1, "hello", 3.14, True]
 
-print("Fruits:", fruits)
-print("Numbers:", numbers)
-print("Mixed:", mixed)
+print(f"Fruits: {fruits}")
+print(f"Numbers: {numbers}")
+print(f"Mixed: {mixed}")
 
 # Access list items
-print("First fruit:", fruits[0])
-print("Last number:", numbers[-1])
+print(f"First fruit: {fruits[0]}")
+print(f"Last number: {numbers[-1]}")
 
 # Modify list
 fruits.append("orange")
-print("After append:", fruits)`,
+print(f"After append: {fruits}")`,
                 challenge: "Create a list of 5 numbers and calculate their sum",
                 module: "collections"
             },
@@ -1058,22 +1365,22 @@ print("After append:", fruits)`,
                 `,
                 defaultCode: `# Tuple example
 dimensions = (1920, 1080)
-print("Dimensions:", dimensions)
-print("Width:", dimensions[0])
+print(f"Dimensions: {dimensions}")
+print(f"Width: {dimensions[0]}")
 
 # Dictionary example
 person = {
     "name": "Alice",
-    "age": 20,
-    "city": "soroti"
+    "age": 30,
+    "city": "Kampala"
 }
 
-print("Person:", person)
-print("Name:", person["name"])
+print(f"Person: {person}")
+print(f"Name: {person['name']}")
 
 # Add new key-value pair
 person["occupation"] = "Developer"
-print("Updated person:", person)`,
+print(f"Updated person: {person}")`,
                 challenge: "Create a dictionary representing a product with name, price, and in_stock keys",
                 module: "collections"
             }
@@ -1086,7 +1393,7 @@ print("Updated person:", person)`,
                 description: "Introduction to Object-Oriented Programming with classes and objects in Python.",
                 estimatedTime: "60 mins",
                 challenges: 4,
-                image: "opp.png",
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
                 content: `
                     <h3>What is Object-Oriented Programming?</h3>
                     <p>Object-Oriented Programming (OOP) is a programming paradigm that relies on the concept of classes and objects.</p>
@@ -1102,10 +1409,10 @@ class Person:
         self.age = age
     
     def introduce(self):
-        print("Hello, my name is " + self.name + " and I am " + str(self.age) + " years old.")
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
 
 # Creating objects
-person1 = Person("Musumba", 23)
+person1 = Person("John", 25)
 person2 = Person("Sarah", 30)
 
 # Using object methods
@@ -1162,17 +1469,14 @@ print(cat.name + " says: " + cat.speak())`,
             }
         ];
 
-        // Combine all lessons
         const allLessons = [...fundamentalsLessons, ...collectionsLessons, ...oopLessons];
 
-        // PWA Installation variables
         let deferredPrompt;
         const installButton = document.getElementById('butInstall');
         const toastInstall = document.getElementById('toastInstall');
         const toastDismiss = document.getElementById('toastDismiss');
         const installToast = document.getElementById('installToast');
 
-        // Lesson navigation variables
         const dashboardView = document.getElementById('dashboard-view');
         const lessonView = document.getElementById('lesson-view');
         const lessonTitle = document.getElementById('lesson-title');
@@ -1189,7 +1493,6 @@ print(cat.name + " says: " + cat.speak())`,
         const markComplete = document.getElementById('mark-complete');
         const downloadAll = document.getElementById('downloadAll');
 
-        // Download modal variables
         const downloadModal = document.getElementById('downloadModal');
         const closeModal = document.querySelector('.close-modal');
         const downloadOptions = document.querySelectorAll('.download-option');
@@ -1197,19 +1500,31 @@ print(cat.name + " says: " + cat.speak())`,
         const downloadProgressBar = document.getElementById('downloadProgressBar');
         const downloadStatus = document.getElementById('downloadStatus');
 
-        // Module toggle buttons
+        const noteToggle = document.getElementById('noteToggle');
+        const noteContent = document.getElementById('noteContent');
+
         const moduleToggles = document.querySelectorAll('.module-toggle');
 
         let currentLessonIndex = 0;
 
-        // Load lesson data and render the dashboard
-        document.addEventListener('DOMContentLoaded', function() {
+        let pyodide;
+        let pyodideReadyPromise;
+
+        async function loadPyodideAndPackages() {
+            pyodide = await loadPyodide({
+                indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/",
+            });
+            return pyodide;
+        }
+
+        pyodideReadyPromise = loadPyodideAndPackages();
+
+        document.addEventListener('DOMContentLoaded', function () {
             renderLessonCards(fundamentalsLessons, 'fundamentals-module');
             renderLessonCards(collectionsLessons, 'collections-module');
             renderLessonCards(oopLessons, 'oop-module');
             updateOverallProgress(allLessons);
-            
-            // Theme toggle functionality
+
             const themeToggle = document.getElementById('themeToggle');
             themeToggle.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -1218,34 +1533,27 @@ print(cat.name + " says: " + cat.speak())`,
                 themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
                 localStorage.setItem('theme', newTheme);
             });
-            
-            // Check for saved theme
+
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
                 themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
             }
 
-            // Set up event listeners
             setupEventListeners();
-            
-            // Initialize PWA installation prompt
             initPWA();
         });
 
         function setupEventListeners() {
-            // Navigation
             backToDashboard.addEventListener('click', showDashboard);
             prevLesson.addEventListener('click', showPreviousLesson);
             nextLesson.addEventListener('click', showNextLesson);
-            
-            // Code editor
+
             runCode.addEventListener('click', executeCode);
             resetCode.addEventListener('click', resetCodeEditor);
             checkChallenge.addEventListener('click', checkChallengeSolution);
             markComplete.addEventListener('click', toggleLessonCompletion);
-            
-            // Download functionality
+
             downloadAll.addEventListener('click', showDownloadModal);
             closeModal.addEventListener('click', hideDownloadModal);
             downloadOptions.forEach(option => {
@@ -1254,16 +1562,12 @@ print(cat.name + " says: " + cat.speak())`,
                     handleDownload(downloadType);
                 });
             });
-            
-            // Module toggles - FIXED: Properly handle module visibility
+
             moduleToggles.forEach(toggle => {
                 toggle.addEventListener('click', () => {
                     const module = toggle.getAttribute('data-module');
                     const moduleElement = document.getElementById(`${module}-module`);
-                    
-                    // Check if the module is currently visible
                     const isVisible = moduleElement.style.display !== 'none';
-                    
                     if (isVisible) {
                         moduleElement.style.display = 'none';
                         toggle.textContent = 'Show';
@@ -1273,13 +1577,33 @@ print(cat.name + " says: " + cat.speak())`,
                     }
                 });
             });
-            
-            // PWA installation
+
+
+            const noteToggle = document.getElementById("noteToggle");
+            const noteContent = document.getElementById("noteContent");
+
+            if (noteToggle && noteContent) {
+                // start hidden
+                noteContent.classList.remove("active");
+                noteToggle.textContent = "▼";
+
+                noteToggle.addEventListener("click", () => {
+                    noteContent.classList.toggle("active");
+
+                    if (noteContent.classList.contains("active")) {
+                        noteToggle.textContent = "▲"; // expanded
+                    } else {
+                        noteToggle.textContent = "▼"; // collapsed
+                    }
+                });
+            } else {
+                console.error("noteToggle or noteContent not found");
+            }
+
             installButton.addEventListener('click', showInstallPrompt);
             toastInstall.addEventListener('click', installPWA);
             toastDismiss.addEventListener('click', dismissInstallPrompt);
-            
-            // Close modal when clicking outside
+
             window.addEventListener('click', (e) => {
                 if (e.target === downloadModal) {
                     hideDownloadModal();
@@ -1287,25 +1611,18 @@ print(cat.name + " says: " + cat.speak())`,
             });
         }
 
+
         function initPWA() {
-            // PWA Installation prompt
             window.addEventListener('beforeinstallprompt', (e) => {
-                // Prevent the mini-infobar from appearing on mobile
                 e.preventDefault();
-                // Stash the event so it can be triggered later
                 deferredPrompt = e;
-                // Show custom install button
                 installButton.style.display = 'block';
-                
-                // Show toast after 5 seconds
                 setTimeout(showInstallToast, 5000);
             });
 
             window.addEventListener('appinstalled', () => {
-                // Hide the app-provided install promotion
                 installButton.style.display = 'none';
                 installToast.style.display = 'none';
-                // Clear the deferredPrompt so it can be garbage collected
                 deferredPrompt = null;
                 console.log('PWA was installed');
             });
@@ -1313,9 +1630,7 @@ print(cat.name + " says: " + cat.speak())`,
 
         function showInstallPrompt() {
             if (deferredPrompt) {
-                // Show the install prompt
                 deferredPrompt.prompt();
-                // Wait for the user to respond to the prompt
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('User accepted the install prompt');
@@ -1354,7 +1669,7 @@ print(cat.name + " says: " + cat.speak())`,
 
         function renderLessonCards(lessons, containerId) {
             const lessonList = document.getElementById(containerId);
-            lessonList.innerHTML = ''; // Clear loading message
+            lessonList.innerHTML = '';
 
             lessons.forEach((lesson, index) => {
                 const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
@@ -1376,7 +1691,7 @@ print(cat.name + " says: " + cat.speak())`,
                         </ul>
                     </div>
                 `;
-                
+
                 card.addEventListener('click', () => {
                     const globalIndex = allLessons.findIndex(l => l.id === lesson.id);
                     showLesson(globalIndex);
@@ -1388,27 +1703,22 @@ print(cat.name + " says: " + cat.speak())`,
         function showLesson(index) {
             currentLessonIndex = index;
             const lesson = allLessons[index];
-            
-            // Update lesson view
+
             lessonTitle.textContent = lesson.title;
             lessonContentElement.innerHTML = lesson.content;
             codeInput.value = lesson.defaultCode;
             codeOutput.textContent = 'Output will appear here...';
             challengeText.textContent = lesson.challenge;
-            
-            // Update navigation buttons
+
             prevLesson.disabled = index === 0;
             nextLesson.disabled = index === allLessons.length - 1;
-            
-            // Check if lesson is completed
+
             const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
             markComplete.textContent = isCompleted ? 'Mark as Incomplete' : 'Mark as Complete';
-            
-            // Switch views
+
             dashboardView.style.display = 'none';
             lessonView.style.display = 'block';
-            
-            // Scroll to top
+
             window.scrollTo(0, 0);
         }
 
@@ -1433,225 +1743,34 @@ print(cat.name + " says: " + cat.speak())`,
             }
         }
 
-        function executeCode() {
+        async function executeCode() {
             const code = codeInput.value;
-            const output = [];
-            
+            codeOutput.textContent = "Running code...";
+
             try {
-                // Create a Python-like execution environment
-                const context = {
-                    // Variables storage
-                    variables: {},
-                    
-                    // Print function
-                    print: function(...args) {
-                        output.push(args.map(arg => {
-                            if (Array.isArray(arg)) {
-                                // Format as tuple
-                                return '(' + arg.map(item => {
-                                    if (typeof item === 'string') return `"${item}"`;
-                                    return String(item);
-                                }).join(', ') + ')';
-                            }
-                            if (typeof arg === 'object' && arg !== null) {
-                                try {
-                                    return JSON.stringify(arg);
-                                } catch (e) {
-                                    return String(arg);
-                                }
-                            }
-                            return String(arg);
-                        }).join(' '));
-                    },
-                    
-                    // List methods
-                    list: {
-                        append: function(list, item) {
-                            list.push(item);
-                            return list;
-                        }
-                    },
-                    
-                    // Execute the code line by line
-                    execute: function() {
-                        const lines = code.split('\n');
-                        
-                        for (let i = 0; i < lines.length; i++) {
-                            const line = lines[i].trim();
-                            
-                            // Skip empty lines and comments
-                            if (!line || line.startsWith('#')) continue;
-                            
-                            // Handle print statements with multiple arguments
-                            if (line.startsWith('print(') && line.endsWith(')')) {
-                                const content = line.substring(6, line.length - 1).trim();
-                                // Split by comma and evaluate each argument
-                                const args = content.split(',').map(arg => this.evaluateExpression(arg.trim()));
-                                this.print(...args);
-                            }
-                            // Handle variable assignments
-                            else if (line.includes('=')) {
-                                const parts = line.split('=');
-                                const varName = parts[0].trim();
-                                const value = parts.slice(1).join('=').trim();
-                                this.variables[varName] = this.evaluateExpression(value);
-                            }
-                            // Handle list append
-                            else if (line.includes('.append(')) {
-                                const parts = line.split('.append(');
-                                const listName = parts[0].trim();
-                                const item = parts[1].substring(0, parts[1].length - 1).trim();
-                                if (this.variables[listName] && Array.isArray(this.variables[listName])) {
-                                    this.variables[listName].push(this.evaluateExpression(item));
-                                }
-                            }
-                            // Handle dictionary key assignment
-                            else if (line.includes('[') && line.includes(']') && line.includes('=')) {
-                                const assignmentParts = line.split('=');
-                                const leftSide = assignmentParts[0].trim();
-                                const value = this.evaluateExpression(assignmentParts[1].trim());
-                                const dictParts = leftSide.split('[');
-                                const dictName = dictParts[0].trim();
-                                const key = dictParts[1].substring(0, dictParts[1].length - 1).replace(/['"]/g, '');
-                                if (this.variables[dictName] && typeof this.variables[dictName] === 'object') {
-                                    this.variables[dictName][key] = value;
-                                }
-                            }
-                            // Handle method calls
-                            else if (line.includes('.') && line.includes('(') && line.includes(')')) {
-                                const parts = line.split('.');
-                                const varName = parts[0].trim();
-                                const methodCall = parts[1];
-                                if (methodCall.includes('(') && methodCall.endsWith(')')) {
-                                    const methodName = methodCall.substring(0, methodCall.indexOf('('));
-                                    const methodArgs = methodCall.substring(methodCall.indexOf('(') + 1, methodCall.length - 1);
-                                    if (this.variables[varName] && typeof this.variables[varName] === 'object') {
-                                        const obj = this.variables[varName];
-                                        if (obj[methodName] && typeof obj[methodName] === 'function') {
-                                            const args = methodArgs ? methodArgs.split(',').map(arg => this.evaluateExpression(arg.trim())) : [];
-                                            const result = obj[methodName].apply(obj, args);
-                                            if (result !== undefined) {
-                                                this.print(result);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            // Handle class definitions (basic support)
-                            else if (line.startsWith('class ')) {
-                                // Skip class definitions for now, as we can't execute them directly in this simulator
-                            }
-                            // Handle def inside classes (skip)
-                            else if (line.startsWith('def ')) {
-                                // Skip method definitions
-                            }
-                        }
-                    },
-                    
-                    // Evaluate expressions
-                    evaluateExpression: function(expr) {
-                        // Handle strings
-                        if ((expr.startsWith('"') && expr.endsWith('"')) || 
-                            (expr.startsWith("'") && expr.endsWith("'"))) {
-                            return expr.substring(1, expr.length - 1);
-                        }
-                        
-                        // Handle numbers
-                        if (!isNaN(expr)) {
-                            return Number(expr);
-                        }
-                        
-                        // Handle booleans
-                        if (expr === 'True') return true;
-                        if (expr === 'False') return false;
-                        
-                        // Handle lists
-                        if (expr.startsWith('[') && expr.endsWith(']')) {
-                            const items = expr.substring(1, expr.length - 1).split(',').map(item => 
-                                this.evaluateExpression(item.trim())
-                            );
-                            return items;
-                        }
-                        
-                        // Handle tuples
-                        if (expr.startsWith('(') && expr.endsWith(')') && expr.includes(',')) {
-                            const items = expr.substring(1, expr.length - 1).split(',').map(item => 
-                                this.evaluateExpression(item.trim())
-                            );
-                            return items;
-                        }
-                        
-                        // Handle dictionaries
-                        if (expr.startsWith('{') && expr.endsWith('}')) {
-                            const pairs = expr.substring(1, expr.length - 1).split(',').map(pair => {
-                                const [key, value] = pair.split(':').map(part => part.trim());
-                                return [this.evaluateExpression(key), this.evaluateExpression(value)];
-                            });
-                            return Object.fromEntries(pairs);
-                        }
-                        
-                        // Handle variables
-                        if (this.variables[expr] !== undefined) {
-                            return this.variables[expr];
-                        }
-                        
-                        // Handle list/tuple access
-                        if (expr.includes('[') && expr.includes(']')) {
-                            const parts = expr.split('[');
-                            const varName = parts[0].trim();
-                            const indexPart = parts[1].substring(0, parts[1].length - 1);
-                            let index;
-                            
-                            // Handle negative indices
-                            if (indexPart.startsWith('-')) {
-                                index = parseInt(indexPart);
-                            } else {
-                                index = this.evaluateExpression(indexPart);
-                            }
-                            
-                            if (this.variables[varName] && Array.isArray(this.variables[varName])) {
-                                return this.variables[varName][index < 0 ? this.variables[varName].length + index : index];
-                            }
-                        }
-                        
-                        // Handle dictionary access
-                        if (expr.includes('["') && expr.includes('"]')) {
-                            const parts = expr.split('["');
-                            const varName = parts[0].trim();
-                            const key = parts[1].substring(0, parts[1].length - 2);
-                            if (this.variables[varName] && typeof this.variables[varName] === 'object') {
-                                return this.variables[varName][key];
-                            }
-                        }
-                        
-                        // Handle concatenation with +
-                        if (expr.includes('+')) {
-                            const parts = expr.split('+').map(part => this.evaluateExpression(part.trim()));
-                            return parts.reduce((acc, curr) => acc + String(curr), '');
-                        }
-                        
-                        // Handle str() calls (basic)
-                        if (expr.startsWith('str(') && expr.endsWith(')')) {
-                            const inner = this.evaluateExpression(expr.substring(4, expr.length - 1));
-                            return String(inner);
-                        }
-                        
-                        // Default to string if no other match
-                        return expr;
-                    }
-                };
-                
-                // Execute the code
-                context.execute();
-                
-                // Display the output
-                if (output.length === 0) {
-                    codeOutput.textContent = "Code executed successfully (no output).";
-                } else {
-                    codeOutput.textContent = output.join('\n');
+                await pyodideReadyPromise;
+
+                await pyodide.runPythonAsync(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+sys.stderr = StringIO()
+                `);
+
+                let result = await pyodide.runPythonAsync(code);
+
+                let stdout = pyodide.runPython("sys.stdout.getvalue()");
+                let stderr = pyodide.runPython("sys.stderr.getvalue()");
+
+                let output = stdout + stderr;
+
+                if (result !== undefined && !output) {
+                    output = result.toString();
                 }
-            } catch (error) {
-                codeOutput.textContent = `Error: ${error.message}`;
+
+                codeOutput.textContent = output || "Code executed successfully (no output).";
+            } catch (err) {
+                codeOutput.textContent = `Error: ${err.message}`;
             }
         }
 
@@ -1663,12 +1782,11 @@ print(cat.name + " says: " + cat.speak())`,
         function checkChallengeSolution() {
             const lesson = allLessons[currentLessonIndex];
             const code = codeInput.value;
-            
-            // Simple challenge checking based on lesson ID
+
             let passed = false;
             let message = "Try again!";
-            
-            switch(lesson.id) {
+
+            switch (lesson.id) {
                 case "1-intro":
                     passed = code.includes('print(') && !code.includes('"World"') && !code.includes("'World'");
                     message = passed ? "Great job! You personalized the message." : "Try printing your name instead of 'World'";
@@ -1696,14 +1814,14 @@ print(cat.name + " says: " + cat.speak())`,
                 default:
                     message = "Challenge checking not implemented for this lesson";
             }
-            
+
             alert(message);
         }
 
         function toggleLessonCompletion() {
             const lesson = allLessons[currentLessonIndex];
             const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
-            
+
             if (isCompleted) {
                 localStorage.removeItem(`lesson-${lesson.id}-completed`);
                 markComplete.textContent = 'Mark as Complete';
@@ -1711,7 +1829,7 @@ print(cat.name + " says: " + cat.speak())`,
                 localStorage.setItem(`lesson-${lesson.id}-completed`, 'true');
                 markComplete.textContent = 'Mark as Incomplete';
             }
-            
+
             updateOverallProgress(allLessons);
         }
 
@@ -1736,16 +1854,14 @@ print(cat.name + " says: " + cat.speak())`,
         }
 
         function handleDownload(downloadType) {
-            // Show progress bar
             downloadProgress.style.display = 'block';
             downloadStatus.textContent = 'Preparing download...';
-            
-            // Simulate download progress
+
             let progress = 0;
             const interval = setInterval(() => {
                 progress += 5;
                 downloadProgressBar.style.width = `${progress}%`;
-                
+
                 if (progress >= 100) {
                     clearInterval(interval);
                     generatePDF(downloadType);
@@ -1754,29 +1870,26 @@ print(cat.name + " says: " + cat.speak())`,
         }
 
         function generatePDF(downloadType) {
-            // Check if jsPDF is available
             if (typeof window.jspdf === 'undefined') {
                 downloadStatus.textContent = 'Error: PDF library not loaded. Please check your connection.';
                 setTimeout(hideDownloadModal, 3000);
                 return;
             }
-            
+
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            
+
             let content = '';
             let filename = '';
-            
-            // Get current lesson and module
+
             const currentLesson = allLessons[currentLessonIndex];
             const currentModule = currentLesson.module;
-            
-            switch(downloadType) {
+
+            switch (downloadType) {
                 case 'current-lesson':
                     content = createPDFContent([currentLesson]);
                     filename = `${currentLesson.id}.pdf`;
                     break;
-                    
                 case 'module-lessons':
                     let moduleLessons = [];
                     if (currentModule === 'fundamentals') {
@@ -1789,26 +1902,21 @@ print(cat.name + " says: " + cat.speak())`,
                     content = createPDFContent(moduleLessons);
                     filename = `python-${currentModule}-module.pdf`;
                     break;
-                    
                 case 'all-lesson':
                     content = createPDFContent(allLessons);
                     filename = 'python-bootcamp-complete.pdf';
                     break;
-                    
                 case 'code-examples':
                     content = createCodeExamplesPDF(allLessons);
                     filename = 'python-bootcamp-code-examples.pdf';
                     break;
             }
-            
-            // Add content to PDF
+
             doc.setFontSize(12);
-            
-            // Split content into pages
             const pageHeight = doc.internal.pageSize.height;
             const textLines = doc.splitTextToSize(content, 180);
             let y = 10;
-            
+
             for (let i = 0; i < textLines.length; i++) {
                 if (y > pageHeight - 10) {
                     doc.addPage();
@@ -1817,33 +1925,27 @@ print(cat.name + " says: " + cat.speak())`,
                 doc.text(textLines[i], 10, y);
                 y += 7;
             }
-            
-            // Create a Blob and download the PDF instead of using doc.save()
+
             const pdfBlob = doc.output('blob');
             const url = URL.createObjectURL(pdfBlob);
-            
-            // Create a download link and trigger the download
             const downloadLink = document.createElement('a');
             downloadLink.href = url;
             downloadLink.download = filename;
             document.body.appendChild(downloadLink);
             downloadLink.click();
-            
-            // Clean up
+
             setTimeout(() => {
                 document.body.removeChild(downloadLink);
                 URL.revokeObjectURL(url);
             }, 100);
-            
+
             downloadStatus.textContent = 'Download complete!';
-            
-            // Hide modal after a delay
             setTimeout(hideDownloadModal, 2000);
         }
 
         function createPDFContent(lessons) {
             let content = 'Musumba Python Bootcamp\n\n';
-            
+
             lessons.forEach(lesson => {
                 content += `# ${lesson.title}\n\n`;
                 content += `${lesson.description}\n\n`;
@@ -1852,19 +1954,20 @@ print(cat.name + " says: " + cat.speak())`,
                 content += `## Challenge\n${lesson.challenge}\n\n`;
                 content += '---\n\n';
             });
-            
+
             return content;
         }
 
         function createCodeExamplesPDF(lessons) {
             let content = 'Musumba Python Bootcamp - Code Examples\n\n';
-            
+
             lessons.forEach(lesson => {
                 content += `## ${lesson.title}\n${lesson.defaultCode}\n\n`;
             });
-            
+
             return content;
         }
     </script>
 </body>
+
 </html>
