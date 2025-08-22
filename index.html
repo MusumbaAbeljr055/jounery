@@ -872,15 +872,21 @@
         <h3>Design Inquiry</h3>
         <p>Got an idea and need design help? Reach out now</p>
 
-        <form action="https://formsubmit.co/ssenkubugeabbey055@gmail.com" method="POST">
+        <form action="https://formspree.io/f/mgvzgkow" method="POST">
+            <!-- Hidden fields -->
+            <input type="hidden" name="_subject" value="New Inquiry from Musumba.Space">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://your-portfolio-link.com/thank-you.html">
+            <input type="hidden" name="_next" value="https://musumba.space/thank-you.html">
+
+            <!-- Input fields -->
             <input type="text" name="name" placeholder="Name" required />
             <input type="email" name="email" placeholder="Email" required />
             <textarea name="message" placeholder="Message" rows="5" required></textarea>
+
             <button type="submit" class="btn">Submit Inquiry</button>
         </form>
     </div>
+
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/256782889754" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
@@ -890,8 +896,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-text">
-            <img src="abbey.jpg"
-                class="footer-logo" alt="Musumba Logo" />
+            <img src="abbey.jpg" class="footer-logo" alt="Musumba Logo" />
             &copy; <span id="year"></span> Musumba Abbey. All rights reserved.
         </div>
         <div class="footer-time" id="datetime"></div>
