@@ -22,6 +22,11 @@
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
             --border-radius: 10px;
+            --card-bg: #fff;
+            --text-color: #333;
+            --muted-text: #666;
+            --feature-bg: #fff;
+            --testimonial-bg: #fff;
         }
 
         [data-theme="dark"] {
@@ -29,6 +34,11 @@
             --color-light: #121212;
             --color-border: #444;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            --card-bg: #222;
+            --text-color: #f0f0f0;
+            --muted-text: #aaa;
+            --feature-bg: #222;
+            --testimonial-bg: #222;
         }
 
         * {
@@ -40,7 +50,7 @@
         body {
             font-family: var(--font-main);
             line-height: 1.6;
-            color: var(--color-dark);
+            color: var(--text-color);
             background-color: var(--color-light);
             transition: var(--transition);
             font-size: 16px;
@@ -238,7 +248,7 @@
         }
 
         .lesson-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -291,7 +301,7 @@
         }
 
         .lesson-card p {
-            color: #666;
+            color: var(--muted-text);
             margin-bottom: 0.8rem;
             flex-grow: 1;
             font-size: clamp(0.9rem, 2.5vw, 1rem);
@@ -302,8 +312,8 @@
             justify-content: space-between;
             list-style: none;
             padding-top: 0.8rem;
-            border-top: 1px solid #eee;
-            color: #777;
+            border-top: 1px solid var(--color-border);
+            color: var(--muted-text);
             font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
@@ -312,7 +322,7 @@
         }
 
         #features {
-            background-color: #f8f9fa;
+            background-color: var(--color-light);
             padding: 2rem 0;
             text-align: center;
             border-radius: var(--border-radius);
@@ -331,7 +341,7 @@
         }
 
         .feature {
-            background: white;
+            background: var(--feature-bg);
             padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
@@ -346,6 +356,10 @@
             font-size: 2.5rem;
             color: var(--color-primary);
             margin-bottom: 0.8rem;
+        }
+
+        .feature p {
+            color: var(--muted-text);
         }
 
         #testimonials {
@@ -366,7 +380,7 @@
         }
 
         .testimonial {
-            background: white;
+            background: var(--testimonial-bg);
             padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
@@ -387,6 +401,7 @@
         .testimonial-content {
             margin-bottom: 0.8rem;
             font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: var(--text-color);
         }
 
         .testimonial-author {
@@ -429,11 +444,12 @@
         }
 
         .lesson-content {
-            background: white;
+            background: var(--card-bg);
             padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             margin-bottom: 1.5rem;
+            color: var(--text-color);
         }
 
         .code-editor {
@@ -515,7 +531,7 @@
             position: fixed;
             bottom: 15px;
             right: 15px;
-            background: white;
+            background: var(--card-bg);
             padding: 0.8rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
@@ -523,12 +539,7 @@
             z-index: 1000;
             max-width: 90%;
             width: 300px;
-            color: var(--color-dark);
-        }
-
-        [data-theme="dark"] #installToast {
-            background: #333;
-            color: white;
+            color: var(--text-color);
         }
 
         .toast-content {
@@ -536,11 +547,7 @@
             align-items: center;
             gap: 8px;
             margin-bottom: 8px;
-            color: var(--color-dark);
-        }
-
-        [data-theme="dark"] .toast-content {
-            color: white;
+            color: var(--text-color);
         }
 
         .toast-actions {
@@ -553,15 +560,16 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background: #fff;
+            background: var(--card-bg);
             padding: 1rem;
             border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow);
             max-width: 90%;
             width: 320px;
             z-index: 1000;
             font-family: "Segoe UI", Roboto, sans-serif;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--text-color);
         }
 
         #pythonNote:hover {
@@ -578,7 +586,7 @@
 
         .note-header h3 {
             font-size: 1.1rem;
-            color: var(--color-primary, #0077cc);
+            color: var(--color-primary);
             margin: 0;
         }
 
@@ -587,13 +595,13 @@
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
-            color: var(--color-dark, #222);
+            color: var(--text-color);
             transition: transform 0.2s ease;
         }
 
         .note-toggle:hover {
             transform: scale(1.2);
-            color: var(--color-secondary, #cc5500);
+            color: var(--color-secondary);
         }
 
         /* Slide toggle effect */
@@ -603,19 +611,18 @@
             opacity: 0;
             transition: max-height 0.4s ease, opacity 0.4s ease;
             font-size: 0.95rem;
-            color: var(--color-dark, #333);
+            color: var(--text-color);
         }
 
         .note-content.active {
             max-height: 500px;
-            /* enough to show content */
             opacity: 1;
         }
 
         .note-content h4 {
             margin-top: 0.8rem;
             margin-bottom: 0.4rem;
-            color: var(--color-primary, #0077cc);
+            color: var(--color-primary);
             font-size: 1rem;
         }
 
@@ -631,7 +638,7 @@
         }
 
         .note-content a {
-            color: var(--color-secondary, #cc5500);
+            color: var(--color-secondary);
             text-decoration: none;
             font-weight: 500;
         }
@@ -669,17 +676,13 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 1.5rem;
             border-radius: var(--border-radius);
             max-width: 90%;
             width: 500px;
             box-shadow: var(--shadow);
-        }
-
-        [data-theme="dark"] .modal-content {
-            background-color: #333;
-            color: white;
+            color: var(--text-color);
         }
 
         .modal-header {
@@ -694,11 +697,7 @@
             border: none;
             font-size: 1.4rem;
             cursor: pointer;
-            color: var(--color-dark);
-        }
-
-        [data-theme="dark"] .close-modal {
-            color: white;
+            color: var(--text-color);
         }
 
         .download-options {
@@ -713,14 +712,15 @@
             border-radius: var(--border-radius);
             cursor: pointer;
             transition: var(--transition);
+            color: var(--text-color);
         }
 
         .download-option:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         [data-theme="dark"] .download-option:hover {
-            background-color: #444;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .download-option h3 {
@@ -732,7 +732,7 @@
         .download-progress {
             width: 100%;
             height: 8px;
-            background-color: #f0f0f0;
+            background-color: rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             margin-top: 0.8rem;
             overflow: hidden;
@@ -748,7 +748,7 @@
 
         #about {
             padding: 2rem 0;
-            background-color: #f8f9fa;
+            background-color: var(--color-light);
             border-radius: var(--border-radius);
             margin-top: 1.5rem;
         }
@@ -849,10 +849,12 @@
             padding: 1rem;
             margin: 1rem 0;
             border-radius: 4px;
+            color: #333;
         }
 
         [data-theme="dark"] .info-box {
             background: #1a2a3a;
+            color: #f0f0f0;
         }
 
         /* Quiz Styles */
@@ -877,11 +879,12 @@
         }
         
         .quiz-content {
-            background: white;
+            background: var(--card-bg);
             padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             margin-bottom: 1.5rem;
+            color: var(--text-color);
         }
         
         .quiz-progress {
@@ -910,10 +913,11 @@
             border-radius: var(--border-radius);
             cursor: pointer;
             transition: var(--transition);
+            color: var(--text-color);
         }
         
         .quiz-option:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(0, 0, 0, 0.05);
         }
         
         .quiz-option.selected {
@@ -936,6 +940,7 @@
         #quiz-results {
             text-align: center;
             padding: 2rem;
+            color: var(--text-color);
         }
         
         .score-circle {
@@ -967,7 +972,8 @@
             padding: 0.8rem;
             margin-bottom: 0.8rem;
             border-radius: var(--border-radius);
-            background-color: #f8f9fa;
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--text-color);
         }
         
         .feedback-correct {
@@ -977,21 +983,7 @@
         .feedback-incorrect {
             border-left: 4px solid var(--color-accent);
         }
-        
-        [data-theme="dark"] .quiz-content,
-        [data-theme="dark"] .feedback-item {
-            background-color: #222;
-            color: #eee;
-        }
-        
-        [data-theme="dark"] .quiz-option:hover {
-            background-color: #444;
-        }
-        
-        [data-theme="dark"] .feedback-item {
-            background-color: #333;
-        }
-        
+
         /* Admin Analytics Styles */
         #admin-login {
             display: none;
@@ -1007,17 +999,13 @@
         }
         
         .login-container {
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 2rem;
             border-radius: var(--border-radius);
             width: 90%;
             max-width: 400px;
             box-shadow: var(--shadow);
-        }
-        
-        [data-theme="dark"] .login-container {
-            background-color: #333;
-            color: white;
+            color: var(--text-color);
         }
         
         .login-container h2 {
@@ -1042,12 +1030,8 @@
             border: 1px solid var(--color-border);
             border-radius: var(--border-radius);
             font-size: 1rem;
-        }
-        
-        [data-theme="dark"] .form-group input {
-            background-color: #444;
-            color: white;
-            border-color: #555;
+            background-color: var(--card-bg);
+            color: var(--text-color);
         }
         
         .login-actions {
@@ -1078,15 +1062,12 @@
         }
         
         .stat-card {
-            background: white;
+            background: var(--card-bg);
             padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             text-align: center;
-        }
-        
-        [data-theme="dark"] .stat-card {
-            background: #222;
+            color: var(--text-color);
         }
         
         .stat-value {
@@ -1097,12 +1078,8 @@
         }
         
         .stat-label {
-            color: #666;
+            color: var(--muted-text);
             font-size: 0.9rem;
-        }
-        
-        [data-theme="dark"] .stat-label {
-            color: #ccc;
         }
         
         .analytics-actions {
@@ -1111,7 +1088,14 @@
             margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
-        
+
+        #analytics-data {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            color: var(--text-color);
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 0 0.5rem;
@@ -1301,7 +1285,6 @@
         }
 
         @media (max-width: 768px) {
-
             .lesson-grid,
             .features-grid,
             .testimonials-grid {
@@ -1320,32 +1303,6 @@
                 right: 10px;
                 max-width: 95%;
             }
-        }
-
-        [data-theme="dark"] .lesson-card,
-        [data-theme="dark"] .feature,
-        [data-theme="dark"] .testimonial,
-        [data-theme="dark"] .lesson-content {
-            background-color: #222;
-            color: #eee;
-        }
-
-        [data-theme="dark"] .lesson-card p,
-        [data-theme="dark"] .lesson-meta,
-        [data-theme="dark"] .feature p {
-            color: #ccc;
-        }
-
-        [data-theme="dark"] .lesson-meta {
-            border-top: 1px solid #444;
-        }
-
-        [data-theme="dark"] #features {
-            background-color: #1a1a1a;
-        }
-
-        [data-theme="dark"] .lesson-image {
-            background-color: #333;
         }
     </style>
 </head>
@@ -1577,7 +1534,7 @@ print("Hello, Python!")</textarea>
             <div class="analytics-actions">
                 <h3>Visitor Analytics</h3>
             </div>
-            <div id="analytics-data" style="background: white; padding: 1rem; border-radius: var(--border-radius);">
+            <div id="analytics-data">
                 <pre id="analytics-json">Loading analytics data...</pre>
             </div>
         </div>
@@ -2894,7 +2851,7 @@ print(cat.name + " says: " + cat.speak())`,
                     <div class="lesson-image">
                         <img src="${lesson.image}" alt="${lesson.title}">
                     </div>
-                    <div class="lesson-content">
+                     <div class="lesson-content">
                         <div class="lesson-status">${isCompleted ? '✓' : '→'}</div>
                         <h3>${lesson.title}</h3>
                         <p>${lesson.description}</p>
