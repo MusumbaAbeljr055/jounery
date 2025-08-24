@@ -855,6 +855,263 @@
             background: #1a2a3a;
         }
 
+        /* Quiz Styles */
+        #quiz-view {
+            display: none;
+            padding: 1.5rem 0;
+        }
+        
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .quiz-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .quiz-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 0.8rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .quiz-option:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .quiz-option.selected {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+        
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        #quiz-results {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .score-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-feedback {
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        
+        .feedback-item {
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border-radius: var(--border-radius);
+            background-color: #f8f9fa;
+        }
+        
+        .feedback-correct {
+            border-left: 4px solid var(--color-secondary);
+        }
+        
+        .feedback-incorrect {
+            border-left: 4px solid var(--color-accent);
+        }
+        
+        [data-theme="dark"] .quiz-content,
+        [data-theme="dark"] .feedback-item {
+            background-color: #222;
+            color: #eee;
+        }
+        
+        [data-theme="dark"] .quiz-option:hover {
+            background-color: #444;
+        }
+        
+        [data-theme="dark"] .feedback-item {
+            background-color: #333;
+        }
+        
+        /* Admin Analytics Styles */
+        #admin-login {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 400px;
+            box-shadow: var(--shadow);
+        }
+        
+        [data-theme="dark"] .login-container {
+            background-color: #333;
+            color: white;
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        [data-theme="dark"] .form-group input {
+            background-color: #444;
+            color: white;
+            border-color: #555;
+        }
+        
+        .login-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+        
+        #analytics-view {
+            display: none;
+            padding: 1.5rem 0;
+        }
+        
+        .analytics-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .analytics-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        [data-theme="dark"] .stat-card {
+            background: #222;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        [data-theme="dark"] .stat-label {
+            color: #ccc;
+        }
+        
+        .analytics-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
         @media (max-width: 480px) {
             .container {
                 padding: 0 0.5rem;
@@ -964,6 +1221,20 @@
             .profile-img {
                 width: 100px;
                 height: 100px;
+            }
+            
+            .quiz-actions {
+                flex-direction: column;
+            }
+            
+            .score-circle {
+                width: 100px;
+                height: 100px;
+                font-size: 1.5rem;
+            }
+            
+            .analytics-stats {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1088,6 +1359,7 @@
             </div>
             <div class="header-controls">
                 <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+                <button id="adminBtn" aria-label="Admin Login">🔒 Admin</button>
                 <button id="butInstall" aria-label="Install App" style="display: none;">Install App</button>
             </div>
         </div>
@@ -1220,10 +1492,115 @@ print("Hello, Python!")</textarea>
                 <div class="completion-section">
                     <p>Mark this lesson as completed when you're done:</p>
                     <button id="mark-complete">Mark as Complete</button>
+                    <button id="start-quiz">Take Quiz</button>
                 </div>
             </div>
         </div>
+
+        <!-- Quiz View -->
+        <div id="quiz-view">
+            <div class="quiz-header">
+                <h2 id="quiz-title">Quiz: Lesson Title</h2>
+                <div class="quiz-nav">
+                    <button id="back-from-quiz">Back to Lesson</button>
+                </div>
+            </div>
+
+            <div class="quiz-content" id="quiz-questions-container">
+                <div class="quiz-progress">
+                    <span id="quiz-progress-text">Question 1 of 15</span>
+                    <span id="quiz-timer">Time: 00:00</span>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3 id="quiz-question-text">Question text goes here</h3>
+                </div>
+                
+                <div class="quiz-options" id="quiz-options-container">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+                
+                <div class="quiz-actions">
+                    <button id="prev-question" disabled>Previous</button>
+                    <button id="next-question">Next</button>
+                    <button id="submit-quiz" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+            
+            <div class="quiz-content" id="quiz-results" style="display: none;">
+                <h3>Quiz Results</h3>
+                <div class="score-circle">
+                    <span id="quiz-score">0</span>
+                    <span>/100</span>
+                </div>
+                <div class="score-text" id="score-message">Keep practicing!</div>
+                <button id="review-quiz">Review Answers</button>
+                <button id="retake-quiz">Retake Quiz</button>
+                <button id="back-to-lesson">Back to Lesson</button>
+                
+                <div class="quiz-feedback" id="quiz-feedback" style="display: none;">
+                    <!-- Feedback will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Analytics View -->
+        <div id="analytics-view">
+            <div class="analytics-header">
+                <h2>Analytics Dashboard</h2>
+                <div>
+                    <button id="refresh-analytics">Refresh</button>
+                    <button id="export-analytics">Export as JSON</button>
+                    <button id="logout-admin">Logout</button>
+                </div>
+            </div>
+
+            <div class="analytics-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-visits">0</div>
+                    <div class="stat-label">Total Visits</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="unique-visitors">0</div>
+                    <div class="stat-label">Unique Visitors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="completed-lessons">0</div>
+                    <div class="stat-label">Completed Lessons</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-quiz-score">0%</div>
+                    <div class="stat-label">Average Quiz Score</div>
+                </div>
+            </div>
+
+            <div class="analytics-actions">
+                <h3>Visitor Analytics</h3>
+            </div>
+            <div id="analytics-data" style="background: white; padding: 1rem; border-radius: var(--border-radius);">
+                <pre id="analytics-json">Loading analytics data...</pre>
+            </div>
+        </div>
     </main>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login">
+        <div class="login-container">
+            <h2>Admin Login</h2>
+            <div class="form-group">
+                <label for="admin-username">Username</label>
+                <input type="text" id="admin-username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="admin-password">Password</label>
+                <input type="password" id="admin-password" placeholder="Enter password">
+            </div>
+            <div class="login-actions">
+                <button id="admin-login-btn">Login</button>
+                <button id="admin-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <div id="installToast">
         <div class="toast-content">
@@ -1266,7 +1643,6 @@ print("Hello, Python!")</textarea>
         </div>
     </div>
 
-
     <div id="downloadModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1307,6 +1683,7 @@ print("Hello, Python!")</textarea>
     </footer>
 
     <script>
+        // Lesson data
         const fundamentalsLessons = [
             {
                 id: "1-intro",
@@ -1795,11 +2172,365 @@ print(cat.name + " says: " + cat.speak())`,
         ];
 
         const allLessons = [...fundamentalsLessons, ...controlLessons, ...collectionsLessons, ...functionsLessons, ...oopLessons];
-  let deferredPrompt;
+
+        // Quiz data for each lesson
+        const quizData = {
+            "1-intro": [
+                {
+                    question: "What is Python?",
+                    options: [
+                        "A snake species",
+                        "A programming language",
+                        "A type of computer",
+                        "A web browser"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which of these is the correct way to print 'Hello, World!' in Python?",
+                    options: [
+                        "echo 'Hello, World!';",
+                        "console.log('Hello, World!');",
+                        "print('Hello, World!')",
+                        "printf('Hello, World!');"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "Who created Python?",
+                    options: [
+                        "Bill Gates",
+                        "Guido van Rossum",
+                        "Mark Zuckerberg",
+                        "Linus Torvalds"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "In which year was Python first released?",
+                    options: [
+                        "1989",
+                        "1991",
+                        "1995",
+                        "2000"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which of these is NOT a Python feature?",
+                    options: [
+                        "Easy to learn",
+                        "Complex syntax",
+                        "Interpreted language",
+                        "Dynamic typing"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What does the following code do: print(2 + 3)?",
+                    options: [
+                        "Prints '2 + 3'",
+                        "Prints 5",
+                        "Causes an error",
+                        "Prints 23"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which symbol is used for comments in Python?",
+                    options: [
+                        "//",
+                        "#",
+                        "/* */",
+                        "--"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What will be the output of: print(type(5))?",
+                    options: [
+                        "<class 'int'>",
+                        "<class 'float'>",
+                        "<class 'number'>",
+                        "<class 'str'>"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which of these is a valid variable name in Python?",
+                    options: [
+                        "2nd_variable",
+                        "my-variable",
+                        "_my_variable",
+                        "global"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is the result of: print('Hello' + 'World')?",
+                    options: [
+                        "HelloWorld",
+                        "Hello World",
+                        "Hello + World",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which function is used to get user input in Python?",
+                    options: [
+                        "input()",
+                        "get()",
+                        "read()",
+                        "scan()"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What does the len() function do?",
+                    options: [
+                        "Returns the length of an object",
+                        "Converts to lowercase",
+                        "Rounds a number",
+                        "Calculates logarithm"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which of these is a floating point number?",
+                    options: [
+                        "5",
+                        "'5.0'",
+                        "5.0",
+                        "five"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What will be the output of: print(10 / 3)?",
+                    options: [
+                        "3",
+                        "3.333...",
+                        "3.0",
+                        "Error"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which operator is used for exponentiation in Python?",
+                    options: [
+                        "^",
+                        "**",
+                        "//",
+                        "%%"
+                    ],
+                    correct: 1
+                }
+            ],
+            "2-variables": [
+                {
+                    question: "Which of these is a valid variable assignment in Python?",
+                    options: [
+                        "3x = 5",
+                        "x-1 = 10",
+                        "x = 5",
+                        "var = "
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What data type is the value 3.14?",
+                    options: [
+                        "int",
+                        "str",
+                        "float",
+                        "bool"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "How do you represent boolean true in Python?",
+                    options: [
+                        "true",
+                        "True",
+                        "1",
+                        "yes"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which of these is a string?",
+                    options: [
+                        "Hello",
+                        "'Hello'",
+                        "\"Hello\"",
+                        "All of the above"
+                    ],
+                    correct: 3
+                },
+                {
+                    question: "What is the result of: 5 + 3 * 2?",
+                    options: [
+                        "16",
+                        "11",
+                        "13",
+                        "10"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "How do you convert a string to an integer in Python?",
+                    options: [
+                        "int(string)",
+                        "strToInt(string)",
+                        "convertInt(string)",
+                        "string.int()"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What does the type() function do?",
+                    options: [
+                        "Returns the data type of a value",
+                        "Changes the type of a variable",
+                        "Prints the type of a variable",
+                        "Checks if a variable is defined"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which of these is a complex number in Python?",
+                    options: [
+                        "3+4j",
+                        "3+4i",
+                        "3j+4",
+                        "3i+4"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is the result of: '10' + '5'?",
+                    options: [
+                        "15",
+                        "105",
+                        "'105'",
+                        "Error"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "How do you create a multi-line string in Python?",
+                    options: [
+                        "Using triple quotes: ''' or \"\"\"",
+                        "Using parentheses",
+                        "Using backticks",
+                        "Using square brackets"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is the result of: bool(0)?",
+                    options: [
+                        "True",
+                        "False",
+                        "0",
+                        "Error"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is the result of: 10 // 3?",
+                    options: [
+                        "3.333...",
+                        "3",
+                        "3.0",
+                        "1"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which operator is used for floor division in Python?",
+                    options: [
+                        "/",
+                        "//",
+                        "%",
+                        "**"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is the result of: 2 ** 3?",
+                    options: [
+                        "6",
+                        "8",
+                        "9",
+                        "23"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "How do you check if two variables have the same value?",
+                    options: [
+                        "a = b",
+                        "a == b",
+                        "a === b",
+                        "a.equals(b)"
+                    ],
+                    correct: 1
+                }
+            ]
+            // Additional quiz data for other lessons would go here...
+        };
+
+        // Admin credentials
+        const ADMIN_CREDENTIALS = {
+            username: "admin",
+            password: "python2025"
+        };
+
+        // Analytics data structure
+        const ANALYTICS_DATA = {
+            totalVisits: 0,
+            uniqueVisitors: 0,
+            firstVisit: null,
+            lastVisit: null,
+            completedLessons: 0,
+            quizScores: {},
+            lessonsViewed: []
+        };
+
+        // Global variables
+        let deferredPrompt;
+        let pyodide;
+        let pyodideReadyPromise;
+        let currentLessonIndex = 0;
+        let currentQuizQuestions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let quizStartTime = 0;
+        let quizTimerInterval = null;
+
+        // DOM elements
         const installButton = document.getElementById('butInstall');
         const toastInstall = document.getElementById('toastInstall');
         const toastDismiss = document.getElementById('toastDismiss');
         const installToast = document.getElementById('installToast');
+        const themeToggle = document.getElementById('themeToggle');
+        const adminBtn = document.getElementById('adminBtn');
+        const adminLogin = document.getElementById('admin-login');
+        const adminUsername = document.getElementById('admin-username');
+        const adminPassword = document.getElementById('admin-password');
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const adminCancel = document.getElementById('admin-cancel');
+        const analyticsView = document.getElementById('analytics-view');
+        const refreshAnalytics = document.getElementById('refresh-analytics');
+        const exportAnalytics = document.getElementById('export-analytics');
+        const logoutAdmin = document.getElementById('logout-admin');
+        const totalVisits = document.getElementById('total-visits');
+        const uniqueVisitors = document.getElementById('unique-visitors');
+        const completedLessons = document.getElementById('completed-lessons');
+        const avgQuizScore = document.getElementById('avg-quiz-score');
+        const analyticsJson = document.getElementById('analytics-json');
 
         const dashboardView = document.getElementById('dashboard-view');
         const lessonView = document.getElementById('lesson-view');
@@ -1815,7 +2546,27 @@ print(cat.name + " says: " + cat.speak())`,
         const challengeText = document.getElementById('challenge-text');
         const checkChallenge = document.getElementById('check-challenge');
         const markComplete = document.getElementById('mark-complete');
+        const startQuiz = document.getElementById('start-quiz');
         const downloadAll = document.getElementById('downloadAll');
+
+        const quizView = document.getElementById('quiz-view');
+        const quizTitle = document.getElementById('quiz-title');
+        const quizProgressText = document.getElementById('quiz-progress-text');
+        const quizTimer = document.getElementById('quiz-timer');
+        const quizQuestionText = document.getElementById('quiz-question-text');
+        const quizOptionsContainer = document.getElementById('quiz-options-container');
+        const prevQuestionBtn = document.getElementById('prev-question');
+        const nextQuestionBtn = document.getElementById('next-question');
+        const submitQuizBtn = document.getElementById('submit-quiz');
+        const backFromQuizBtn = document.getElementById('back-from-quiz');
+        const quizQuestionsContainer = document.getElementById('quiz-questions-container');
+        const quizResults = document.getElementById('quiz-results');
+        const quizScore = document.getElementById('quiz-score');
+        const scoreMessage = document.getElementById('score-message');
+        const reviewQuizBtn = document.getElementById('review-quiz');
+        const retakeQuizBtn = document.getElementById('retake-quiz');
+        const backToLessonBtn = document.getElementById('back-to-lesson');
+        const quizFeedback = document.getElementById('quiz-feedback');
 
         const downloadModal = document.getElementById('downloadModal');
         const closeModal = document.querySelector('.close-modal');
@@ -1829,22 +2580,19 @@ print(cat.name + " says: " + cat.speak())`,
 
         const moduleToggles = document.querySelectorAll('.module-toggle');
 
-        let currentLessonIndex = 0;
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+            }
 
-        let pyodide;
-        let pyodideReadyPromise;
+            // Initialize analytics
+            initAnalytics();
 
-        async function loadPyodideAndPackages() {
-            pyodide = await loadPyodide({
-                indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/",
-            });
-            return pyodide;
-        }
- pyodideReadyPromise = loadPyodideAndPackages();
-        // ... (rest of the JavaScript code remains the same) ...
-        
-        // Update the renderLessonCards function calls to include the new modules
-        document.addEventListener('DOMContentLoaded', function () {
+            // Render lesson cards
             renderLessonCards(fundamentalsLessons, 'fundamentals-module');
             renderLessonCards(controlLessons, 'control-module');
             renderLessonCards(collectionsLessons, 'collections-module');
@@ -1852,35 +2600,42 @@ print(cat.name + " says: " + cat.speak())`,
             renderLessonCards(oopLessons, 'oop-module');
             updateOverallProgress(allLessons);
 
-        const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
-                localStorage.setItem('theme', newTheme);
-            });
-
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-            }
-
+            // Setup event listeners
             setupEventListeners();
+
+            // Initialize PWA
             initPWA();
+
+            // Initialize Pyodide
+            initPyodide();
         });
 
+        // Setup all event listeners
         function setupEventListeners() {
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+
+            // Admin functionality
+            adminBtn.addEventListener('click', showAdminLogin);
+            adminLoginBtn.addEventListener('click', attemptAdminLogin);
+            adminCancel.addEventListener('click', hideAdminLogin);
+            refreshAnalytics.addEventListener('click', refreshAnalyticsData);
+            exportAnalytics.addEventListener('click', exportAnalyticsData);
+            logoutAdmin.addEventListener('click', logoutAdminUser);
+
+            // Lesson navigation
             backToDashboard.addEventListener('click', showDashboard);
             prevLesson.addEventListener('click', showPreviousLesson);
             nextLesson.addEventListener('click', showNextLesson);
 
+            // Code editor
             runCode.addEventListener('click', executeCode);
             resetCode.addEventListener('click', resetCodeEditor);
             checkChallenge.addEventListener('click', checkChallengeSolution);
             markComplete.addEventListener('click', toggleLessonCompletion);
+            startQuiz.addEventListener('click', startLessonQuiz);
 
+            // Download functionality
             downloadAll.addEventListener('click', showDownloadModal);
             closeModal.addEventListener('click', hideDownloadModal);
             downloadOptions.forEach(option => {
@@ -1890,6 +2645,7 @@ print(cat.name + " says: " + cat.speak())`,
                 });
             });
 
+            // Module toggles
             moduleToggles.forEach(toggle => {
                 toggle.addEventListener('click', () => {
                     const module = toggle.getAttribute('data-module');
@@ -1905,40 +2661,602 @@ print(cat.name + " says: " + cat.speak())`,
                 });
             });
 
+            // Python note toggle
+            noteToggle.addEventListener('click', () => {
+                noteContent.classList.toggle('active');
+                noteToggle.textContent = noteContent.classList.contains('active') ? '▲' : '▼';
+            });
 
-            const noteToggle = document.getElementById("noteToggle");
-            const noteContent = document.getElementById("noteContent");
-
-            if (noteToggle && noteContent) {
-                // start hidden
-                noteContent.classList.remove("active");
-                noteToggle.textContent = "▼";
-
-                noteToggle.addEventListener("click", () => {
-                    noteContent.classList.toggle("active");
-
-                    if (noteContent.classList.contains("active")) {
-                        noteToggle.textContent = "▲"; // expanded
-                    } else {
-                        noteToggle.textContent = "▼"; // collapsed
-                    }
-                });
-            } else {
-                console.error("noteToggle or noteContent not found");
-            }
-
+            // PWA installation
             installButton.addEventListener('click', showInstallPrompt);
             toastInstall.addEventListener('click', installPWA);
             toastDismiss.addEventListener('click', dismissInstallPrompt);
 
+            // Quiz functionality
+            backFromQuizBtn.addEventListener('click', backToLessonFromQuiz);
+            prevQuestionBtn.addEventListener('click', showPreviousQuestion);
+            nextQuestionBtn.addEventListener('click', showNextQuestion);
+            submitQuizBtn.addEventListener('click', submitQuiz);
+            reviewQuizBtn.addEventListener('click', reviewQuiz);
+            retakeQuizBtn.addEventListener('click', retakeQuiz);
+            backToLessonBtn.addEventListener('click', backToLessonFromResults);
+
+            // Modal close on outside click
             window.addEventListener('click', (e) => {
                 if (e.target === downloadModal) {
                     hideDownloadModal();
                 }
+                if (e.target === adminLogin) {
+                    hideAdminLogin();
+                }
             });
         }
 
+        // Initialize Pyodide
+        async function initPyodide() {
+            try {
+                pyodideReadyPromise = loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/",
+                });
+                pyodide = await pyodideReadyPromise;
+                console.log("Pyodide loaded successfully");
+            } catch (error) {
+                console.error("Error loading Pyodide:", error);
+                codeOutput.textContent = "Error: Unable to load Python interpreter. Please check your internet connection.";
+            }
+        }
 
+        // Initialize analytics
+        function initAnalytics() {
+            // Load analytics data from localStorage or initialize
+            const savedAnalytics = localStorage.getItem('pythonBootcampAnalytics');
+            if (savedAnalytics) {
+                const parsedData = JSON.parse(savedAnalytics);
+                Object.assign(ANALYTICS_DATA, parsedData);
+            }
+
+            // Track this visit
+            trackVisit();
+
+            // Update admin button based on authentication
+            updateAdminButton();
+        }
+
+        // Track visitor
+        function trackVisit() {
+            // Generate a unique visitor ID if not exists
+            let visitorId = localStorage.getItem('visitorId');
+            if (!visitorId) {
+                visitorId = 'visitor_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('visitorId', visitorId);
+                ANALYTICS_DATA.uniqueVisitors++;
+            }
+
+            // Update visit counts
+            ANALYTICS_DATA.totalVisits++;
+            ANALYTICS_DATA.lastVisit = new Date().toISOString();
+            
+            if (!ANALYTICS_DATA.firstVisit) {
+                ANALYTICS_DATA.firstVisit = ANALYTICS_DATA.lastVisit;
+            }
+
+            // Save updated analytics
+            saveAnalyticsData();
+        }
+
+        // Track lesson view
+        function trackLessonView(lessonId) {
+            if (!ANALYTICS_DATA.lessonsViewed.includes(lessonId)) {
+                ANALYTICS_DATA.lessonsViewed.push(lessonId);
+                saveAnalyticsData();
+            }
+        }
+
+        // Track quiz score
+        function trackQuizScore(lessonId, score) {
+            if (!ANALYTICS_DATA.quizScores[lessonId]) {
+                ANALYTICS_DATA.quizScores[lessonId] = [];
+            }
+            ANALYTICS_DATA.quizScores[lessonId].push(score);
+            saveAnalyticsData();
+        }
+
+        // Save analytics data to localStorage
+        function saveAnalyticsData() {
+            localStorage.setItem('pythonBootcampAnalytics', JSON.stringify(ANALYTICS_DATA));
+        }
+
+        // Update admin button based on authentication
+        function updateAdminButton() {
+            const isAdmin = localStorage.getItem('adminAuthenticated') === 'true';
+            adminBtn.textContent = isAdmin ? '📊 Analytics' : '🔒 Admin';
+        }
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Admin functionality
+        function showAdminLogin() {
+            const isAdmin = localStorage.getItem('adminAuthenticated') === 'true';
+            if (isAdmin) {
+                showAnalyticsDashboard();
+            } else {
+                adminLogin.style.display = 'flex';
+            }
+        }
+
+        function hideAdminLogin() {
+            adminLogin.style.display = 'none';
+            adminUsername.value = '';
+            adminPassword.value = '';
+        }
+
+        function attemptAdminLogin() {
+            const username = adminUsername.value;
+            const password = adminPassword.value;
+
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                localStorage.setItem('adminAuthenticated', 'true');
+                updateAdminButton();
+                hideAdminLogin();
+                showAnalyticsDashboard();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        }
+
+        function showAnalyticsDashboard() {
+            dashboardView.style.display = 'none';
+            lessonView.style.display = 'none';
+            quizView.style.display = 'none';
+            analyticsView.style.display = 'block';
+
+            refreshAnalyticsData();
+        }
+
+        function refreshAnalyticsData() {
+            // Load the latest data
+            const savedAnalytics = localStorage.getItem('pythonBootcampAnalytics');
+            if (savedAnalytics) {
+                const parsedData = JSON.parse(savedAnalytics);
+                Object.assign(ANALYTICS_DATA, parsedData);
+            }
+
+            // Calculate completed lessons
+            let completedCount = 0;
+            allLessons.forEach(lesson => {
+                if (localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true') {
+                    completedCount++;
+                }
+            });
+            ANALYTICS_DATA.completedLessons = completedCount;
+
+            // Calculate average quiz score
+            let totalScores = 0;
+            let scoreCount = 0;
+            
+            for (const lessonId in ANALYTICS_DATA.quizScores) {
+                ANALYTICS_DATA.quizScores[lessonId].forEach(score => {
+                    totalScores += score;
+                    scoreCount++;
+                });
+            }
+            
+            const averageScore = scoreCount > 0 ? Math.round(totalScores / scoreCount) : 0;
+
+            // Update UI
+            totalVisits.textContent = ANALYTICS_DATA.totalVisits;
+            uniqueVisitors.textContent = ANALYTICS_DATA.uniqueVisitors;
+            completedLessons.textContent = ANALYTICS_DATA.completedLessons;
+            avgQuizScore.textContent = `${averageScore}%`;
+
+            // Show raw data
+            analyticsJson.textContent = JSON.stringify(ANALYTICS_DATA, null, 2);
+        }
+
+        function exportAnalyticsData() {
+            const dataStr = JSON.stringify(ANALYTICS_DATA, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `python-bootcamp-analytics-${new Date().toISOString().split('T')[0]}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+
+        function logoutAdminUser() {
+            localStorage.removeItem('adminAuthenticated');
+            updateAdminButton();
+            analyticsView.style.display = 'none';
+            dashboardView.style.display = 'block';
+        }
+
+        // Lesson functionality
+        function renderLessonCards(lessons, containerId) {
+            const lessonList = document.getElementById(containerId);
+            lessonList.innerHTML = '';
+
+            lessons.forEach((lesson, index) => {
+                const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
+                const card = document.createElement('div');
+                card.className = `lesson-card ${isCompleted ? 'completed' : ''}`;
+                card.dataset.index = allLessons.findIndex(l => l.id === lesson.id);
+
+                card.innerHTML = `
+                    <div class="lesson-image">
+                        <img src="${lesson.image}" alt="${lesson.title}">
+                    </div>
+                    <div class="lesson-content">
+                        <div class="lesson-status">${isCompleted ? '✓' : '→'}</div>
+                        <h3>${lesson.title}</h3>
+                        <p>${lesson.description}</p>
+                        <ul class="lesson-meta">
+                            <li>${lesson.estimatedTime}</li>
+                            <li>${lesson.challenges} Challenges</li>
+                        </ul>
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    const globalIndex = allLessons.findIndex(l => l.id === lesson.id);
+                    showLesson(globalIndex);
+                });
+                lessonList.appendChild(card);
+            });
+        }
+
+        function showLesson(index) {
+            currentLessonIndex = index;
+            const lesson = allLessons[index];
+
+            // Track lesson view
+            trackLessonView(lesson.id);
+
+            lessonTitle.textContent = lesson.title;
+            lessonContentElement.innerHTML = lesson.content;
+            codeInput.value = lesson.defaultCode;
+            codeOutput.textContent = 'Output will appear here...';
+            challengeText.textContent = lesson.challenge;
+
+            prevLesson.disabled = index === 0;
+            nextLesson.disabled = index === allLessons.length - 1;
+
+            const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
+            markComplete.textContent = isCompleted ? 'Mark as Incomplete' : 'Mark as Complete';
+
+            dashboardView.style.display = 'none';
+            lessonView.style.display = 'block';
+
+            window.scrollTo(0, 0);
+        }
+
+        function showDashboard() {
+            lessonView.style.display = 'none';
+            quizView.style.display = 'none';
+            analyticsView.style.display = 'none';
+            dashboardView.style.display = 'block';
+            
+            // Refresh lesson cards to update completion status
+            renderLessonCards(fundamentalsLessons, 'fundamentals-module');
+            renderLessonCards(controlLessons, 'control-module');
+            renderLessonCards(collectionsLessons, 'collections-module');
+            renderLessonCards(functionsLessons, 'functions-module');
+            renderLessonCards(oopLessons, 'oop-module');
+            updateOverallProgress(allLessons);
+        }
+
+        function showPreviousLesson() {
+            if (currentLessonIndex > 0) {
+                showLesson(currentLessonIndex - 1);
+            }
+        }
+
+        function showNextLesson() {
+            if (currentLessonIndex < allLessons.length - 1) {
+                showLesson(currentLessonIndex + 1);
+            }
+        }
+
+        async function executeCode() {
+            if (!pyodide) {
+                codeOutput.textContent = "Python interpreter is still loading. Please wait...";
+                return;
+            }
+
+            const code = codeInput.value;
+            codeOutput.textContent = "Running code...";
+
+            try {
+                await pyodideReadyPromise;
+
+                await pyodide.runPythonAsync(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+sys.stderr = StringIO()
+                `);
+
+                let result = await pyodide.runPythonAsync(code);
+
+                let stdout = pyodide.runPython("sys.stdout.getvalue()");
+                let stderr = pyodide.runPython("sys.stderr.getvalue()");
+
+                let output = stdout + stderr;
+
+                if (result !== undefined && !output) {
+                    output = result.toString();
+                }
+
+                codeOutput.textContent = output || "Code executed successfully (no output).";
+            } catch (err) {
+                codeOutput.textContent = `Error: ${err.message}`;
+            }
+        }
+
+        function resetCodeEditor() {
+            codeInput.value = allLessons[currentLessonIndex].defaultCode;
+            codeOutput.textContent = 'Output will appear here...';
+        }
+
+        function checkChallengeSolution() {
+            const lesson = allLessons[currentLessonIndex];
+            const code = codeInput.value;
+
+            let passed = false;
+            let message = "Try again!";
+
+            switch (lesson.id) {
+                case "1-intro":
+                    passed = code.includes('print(') && !code.includes('"World"') && !code.includes("'World'");
+                    message = passed ? "Great job! You personalized the message." : "Try printing your name instead of 'World'";
+                    break;
+                case "2-variables":
+                    passed = code.includes('=') && code.includes('print(');
+                    message = passed ? "Well done! You've created and displayed variables." : "Make sure to create variables and print them";
+                    break;
+                case "5-lists":
+                    passed = code.includes('sum(') || (code.includes('+') && code.includes('for'));
+                    message = passed ? "Great! You're working with lists." : "Try using the sum() function or a loop to calculate the sum";
+                    break;
+                case "6-tuples-dictionaries":
+                    passed = code.includes('{') && code.includes('}') && code.includes('[') && code.includes(']');
+                    message = passed ? "Excellent! You're using dictionaries." : "Make sure to create a dictionary with product information";
+                    break;
+                case "9-classes-objects":
+                    passed = code.includes('class') && code.includes('def __init__');
+                    message = passed ? "Great job! You're creating classes and objects." : "Make sure to define a class with a constructor";
+                    break;
+                case "10-inheritance":
+                    passed = code.includes('class') && code.includes('(') && code.includes(')');
+                    message = passed ? "Excellent! You're using inheritance." : "Try creating a child class that inherits from a parent class";
+                    break;
+                default:
+                    message = "Challenge checking not implemented for this lesson";
+            }
+
+            alert(message);
+        }
+
+        function toggleLessonCompletion() {
+            const lesson = allLessons[currentLessonIndex];
+            const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
+
+            if (isCompleted) {
+                localStorage.removeItem(`lesson-${lesson.id}-completed`);
+                markComplete.textContent = 'Mark as Complete';
+            } else {
+                localStorage.setItem(`lesson-${lesson.id}-completed`, 'true');
+                markComplete.textContent = 'Mark as Incomplete';
+            }
+
+            updateOverallProgress(allLessons);
+        }
+
+        function updateOverallProgress(lessons) {
+            const totalLessons = lessons.length;
+            const completedLessons = lessons.filter(lesson => localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true').length;
+            const progressPercentage = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+
+            document.getElementById('overallProgressBar').style.width = `${progressPercentage}%`;
+            document.getElementById('overallProgressText').innerHTML = `Overall Progress: <strong>${progressPercentage}%</strong> (${completedLessons}/${totalLessons} lessons)`;
+        }
+
+        // Quiz functionality
+        function startLessonQuiz() {
+            const lesson = allLessons[currentLessonIndex];
+            if (!lesson) return;
+            
+            // Set quiz title
+            quizTitle.textContent = `Quiz: ${lesson.title}`;
+            
+            // Get questions for this lesson and randomize order
+            currentQuizQuestions = [...quizData[lesson.id] || []];
+            if (currentQuizQuestions.length === 0) {
+                alert('No quiz questions available for this lesson yet.');
+                return;
+            }
+            
+            shuffleArray(currentQuizQuestions);
+            
+            // Reset quiz state
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentQuizQuestions.length).fill(null);
+            
+            // Start timer
+            quizStartTime = Date.now();
+            if (quizTimerInterval) clearInterval(quizTimerInterval);
+            quizTimerInterval = setInterval(updateQuizTimer, 1000);
+            
+            // Show first question
+            showQuestion(0);
+            
+            // Show quiz view, hide other views
+            dashboardView.style.display = 'none';
+            lessonView.style.display = 'none';
+            quizView.style.display = 'block';
+            
+            // Show quiz questions, hide results
+            quizQuestionsContainer.style.display = 'block';
+            quizResults.style.display = 'none';
+        }
+
+        function showQuestion(index) {
+            if (index < 0 || index >= currentQuizQuestions.length) return;
+            
+            currentQuestionIndex = index;
+            const question = currentQuizQuestions[index];
+            
+            // Update progress text
+            quizProgressText.textContent = `Question ${index + 1} of ${currentQuizQuestions.length}`;
+            
+            // Set question text
+            quizQuestionText.textContent = question.question;
+            
+            // Clear options container
+            quizOptionsContainer.innerHTML = '';
+            
+            // Add options
+            question.options.forEach((option, i) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = `quiz-option ${userAnswers[index] === i ? 'selected' : ''}`;
+                optionElement.textContent = option;
+                optionElement.addEventListener('click', () => selectOption(i));
+                quizOptionsContainer.appendChild(optionElement);
+            });
+            
+            // Update navigation buttons
+            prevQuestionBtn.disabled = index === 0;
+            nextQuestionBtn.disabled = index === currentQuizQuestions.length - 1;
+            nextQuestionBtn.style.display = index === currentQuizQuestions.length - 1 ? 'none' : 'block';
+            submitQuizBtn.style.display = index === currentQuizQuestions.length - 1 ? 'block' : 'none';
+        }
+
+        function selectOption(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            
+            // Update visual selection
+            const options = quizOptionsContainer.querySelectorAll('.quiz-option');
+            options.forEach((option, i) => {
+                option.classList.toggle('selected', i === optionIndex);
+            });
+        }
+
+        function showPreviousQuestion() {
+            if (currentQuestionIndex > 0) {
+                showQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        function showNextQuestion() {
+            if (currentQuestionIndex < currentQuizQuestions.length - 1) {
+                showQuestion(currentQuestionIndex + 1);
+            }
+        }
+
+        function updateQuizTimer() {
+            const elapsedSeconds = Math.floor((Date.now() - quizStartTime) / 1000);
+            const minutes = Math.floor(elapsedSeconds / 60);
+            const seconds = elapsedSeconds % 60;
+            quizTimer.textContent = `Time: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function submitQuiz() {
+            // Stop timer
+            if (quizTimerInterval) {
+                clearInterval(quizTimerInterval);
+                quizTimerInterval = null;
+            }
+            
+            // Calculate score
+            let correctCount = 0;
+            currentQuizQuestions.forEach((question, i) => {
+                if (userAnswers[i] === question.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const score = Math.round((correctCount / currentQuizQuestions.length) * 100);
+            quizScore.textContent = score;
+            
+            // Set score message
+            if (score >= 80) {
+                scoreMessage.textContent = "Excellent work!";
+            } else if (score >= 60) {
+                scoreMessage.textContent = "Good job!";
+            } else if (score >= 40) {
+                scoreMessage.textContent = "Not bad, but keep practicing!";
+            } else {
+                scoreMessage.textContent = "Keep studying and try again!";
+            }
+            
+            // Save quiz score
+            const currentLessonId = allLessons[currentLessonIndex].id;
+            trackQuizScore(currentLessonId, score);
+            
+            // Show results, hide questions
+            quizQuestionsContainer.style.display = 'none';
+            quizResults.style.display = 'block';
+            quizFeedback.style.display = 'none';
+        }
+
+        function reviewQuiz() {
+            quizFeedback.innerHTML = '';
+            
+            currentQuizQuestions.forEach((question, i) => {
+                const isCorrect = userAnswers[i] === question.correct;
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = `feedback-item ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`;
+                
+                feedbackItem.innerHTML = `
+                    <p><strong>Question ${i + 1}:</strong> ${question.question}</p>
+                    <p><strong>Your answer:</strong> ${question.options[userAnswers[i]] || 'Not answered'}</p>
+                    ${!isCorrect ? `<p><strong>Correct answer:</strong> ${question.options[question.correct]}</p>` : ''}
+                `;
+                
+                quizFeedback.appendChild(feedbackItem);
+            });
+            
+            quizFeedback.style.display = 'block';
+        }
+
+        function retakeQuiz() {
+            startLessonQuiz();
+        }
+
+        function backToLessonFromQuiz() {
+            // Stop timer if running
+            if (quizTimerInterval) {
+                clearInterval(quizTimerInterval);
+                quizTimerInterval = null;
+            }
+            
+            quizView.style.display = 'none';
+            lessonView.style.display = 'block';
+        }
+
+        function backToLessonFromResults() {
+            quizView.style.display = 'none';
+            lessonView.style.display = 'block';
+        }
+
+        // Utility function to shuffle array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // PWA functionality
         function initPWA() {
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
@@ -1994,181 +3312,7 @@ print(cat.name + " says: " + cat.speak())`,
             localStorage.setItem('dismissedInstall', 'true');
         }
 
-        function renderLessonCards(lessons, containerId) {
-            const lessonList = document.getElementById(containerId);
-            lessonList.innerHTML = '';
-
-            lessons.forEach((lesson, index) => {
-                const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
-                const card = document.createElement('div');
-                card.className = `lesson-card ${isCompleted ? 'completed' : ''}`;
-                card.dataset.index = allLessons.findIndex(l => l.id === lesson.id);
-
-                card.innerHTML = `
-                    <div class="lesson-image">
-                        <img src="${lesson.image}" alt="${lesson.title}">
-                    </div>
-                    <div class="lesson-content">
-                        <div class="lesson-status">${isCompleted ? '✓' : '→'}</div>
-                        <h3>${lesson.title}</h3>
-                        <p>${lesson.description}</p>
-                        <ul class="lesson-meta">
-                            <li>${lesson.estimatedTime}</li>
-                            <li>${lesson.challenges} Challenges</li>
-                        </ul>
-                    </div>
-                `;
-
-                card.addEventListener('click', () => {
-                    const globalIndex = allLessons.findIndex(l => l.id === lesson.id);
-                    showLesson(globalIndex);
-                });
-                lessonList.appendChild(card);
-            });
-        }
-
-        function showLesson(index) {
-            currentLessonIndex = index;
-            const lesson = allLessons[index];
-
-            lessonTitle.textContent = lesson.title;
-            lessonContentElement.innerHTML = lesson.content;
-            codeInput.value = lesson.defaultCode;
-            codeOutput.textContent = 'Output will appear here...';
-            challengeText.textContent = lesson.challenge;
-
-            prevLesson.disabled = index === 0;
-            nextLesson.disabled = index === allLessons.length - 1;
-
-            const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
-            markComplete.textContent = isCompleted ? 'Mark as Incomplete' : 'Mark as Complete';
-
-            dashboardView.style.display = 'none';
-            lessonView.style.display = 'block';
-
-            window.scrollTo(0, 0);
-        }
-
-        function showDashboard() {
-            lessonView.style.display = 'none';
-            dashboardView.style.display = 'block';
-            renderLessonCards(fundamentalsLessons, 'fundamentals-module');
-            renderLessonCards(collectionsLessons, 'collections-module');
-            renderLessonCards(oopLessons, 'oop-module');
-            updateOverallProgress(allLessons);
-        }
-
-        function showPreviousLesson() {
-            if (currentLessonIndex > 0) {
-                showLesson(currentLessonIndex - 1);
-            }
-        }
-
-        function showNextLesson() {
-            if (currentLessonIndex < allLessons.length - 1) {
-                showLesson(currentLessonIndex + 1);
-            }
-        }
-
-        async function executeCode() {
-            const code = codeInput.value;
-            codeOutput.textContent = "Running code...";
-
-            try {
-                await pyodideReadyPromise;
-
-                await pyodide.runPythonAsync(`
-import sys
-from io import StringIO
-sys.stdout = StringIO()
-sys.stderr = StringIO()
-                `);
-
-                let result = await pyodide.runPythonAsync(code);
-
-                let stdout = pyodide.runPython("sys.stdout.getvalue()");
-                let stderr = pyodide.runPython("sys.stderr.getvalue()");
-
-                let output = stdout + stderr;
-
-                if (result !== undefined && !output) {
-                    output = result.toString();
-                }
-
-                codeOutput.textContent = output || "Code executed successfully (no output).";
-            } catch (err) {
-                codeOutput.textContent = `Error: ${err.message}`;
-            }
-        }
-
-        function resetCodeEditor() {
-            codeInput.value = allLessons[currentLessonIndex].defaultCode;
-            codeOutput.textContent = 'Output will appear here...';
-        }
-
-        function checkChallengeSolution() {
-            const lesson = allLessons[currentLessonIndex];
-            const code = codeInput.value;
-
-            let passed = false;
-            let message = "Try again!";
-
-            switch (lesson.id) {
-                case "1-intro":
-                    passed = code.includes('print(') && !code.includes('"World"') && !code.includes("'World'");
-                    message = passed ? "Great job! You personalized the message." : "Try printing your name instead of 'World'";
-                    break;
-                case "2-variables":
-                    passed = code.includes('=') && code.includes('print(');
-                    message = passed ? "Well done! You've created and displayed variables." : "Make sure to create variables and print them";
-                    break;
-                case "3-lists":
-                    passed = code.includes('sum(') || (code.includes('+') && code.includes('for'));
-                    message = passed ? "Great! You're working with lists." : "Try using the sum() function or a loop to calculate the sum";
-                    break;
-                case "4-tuples-dictionaries":
-                    passed = code.includes('{') && code.includes('}') && code.includes('[') && code.includes(']');
-                    message = passed ? "Excellent! You're using dictionaries." : "Make sure to create a dictionary with product information";
-                    break;
-                case "5-classes-objects":
-                    passed = code.includes('class') && code.includes('def __init__');
-                    message = passed ? "Great job! You're creating classes and objects." : "Make sure to define a class with a constructor";
-                    break;
-                case "6-inheritance":
-                    passed = code.includes('class') && code.includes('(') && code.includes(')');
-                    message = passed ? "Excellent! You're using inheritance." : "Try creating a child class that inherits from a parent class";
-                    break;
-                default:
-                    message = "Challenge checking not implemented for this lesson";
-            }
-
-            alert(message);
-        }
-
-        function toggleLessonCompletion() {
-            const lesson = allLessons[currentLessonIndex];
-            const isCompleted = localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true';
-
-            if (isCompleted) {
-                localStorage.removeItem(`lesson-${lesson.id}-completed`);
-                markComplete.textContent = 'Mark as Complete';
-            } else {
-                localStorage.setItem(`lesson-${lesson.id}-completed`, 'true');
-                markComplete.textContent = 'Mark as Incomplete';
-            }
-
-            updateOverallProgress(allLessons);
-        }
-
-        function updateOverallProgress(lessons) {
-            const totalLessons = lessons.length;
-            const completedLessons = lessons.filter(lesson => localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true').length;
-            const progressPercentage = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
-
-            document.getElementById('overallProgressBar').style.width = `${progressPercentage}%`;
-            document.getElementById('overallProgressText').innerHTML = `Overall Progress: <strong>${progressPercentage}%</strong> (${completedLessons}/${totalLessons} lessons)`;
-        }
-
+        // Download functionality
         function showDownloadModal() {
             downloadModal.style.display = 'flex';
         }
@@ -2221,8 +3365,12 @@ sys.stderr = StringIO()
                     let moduleLessons = [];
                     if (currentModule === 'fundamentals') {
                         moduleLessons = fundamentalsLessons;
+                    } else if (currentModule === 'control') {
+                        moduleLessons = controlLessons;
                     } else if (currentModule === 'collections') {
                         moduleLessons = collectionsLessons;
+                    } else if (currentModule === 'functions') {
+                        moduleLessons = functionsLessons;
                     } else if (currentModule === 'oop') {
                         moduleLessons = oopLessons;
                     }
