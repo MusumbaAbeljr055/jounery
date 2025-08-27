@@ -1268,7 +1268,7 @@
             margin-bottom: 2rem;
         }
 
-.forum-category {
+        .forum-category {
             background: var(--card-bg);
             padding: 1.5rem;
             border-radius: var(--border-radius);
@@ -3075,7 +3075,7 @@ print(cat.name + " says: " + cat.speak())`,
             DAILY_CHALLENGER: { id: 'daily-challenger', name: 'Daily Challenger', description: 'Complete 7 daily challenges' },
             PYTHON_PRO: { id: 'python-pro', name: 'Python Pro', description: 'Complete all lessons' },
             FORUM_CONTRIBUTOR: { id: 'forum-contributor', name: 'Forum Contributor', description: 'Post 10 messages in the forum' },
-            HELPFUL_SOUL: { id: 'helpful-soul', name: 'Helpful Soul', description: 'Help 5 other users in the forum' },
+            HELPFUL_SOUL: { id: 'helpful-soul', name: 'Helpful Soul', description: 'Help 5 other other users in the forum' },
             EARLY_BIRD: { id: 'early-bird', name: 'Early Bird', description: 'Complete a lesson before 8 AM' },
             NIGHT_OWL: { id: 'night-owl', name: 'Night Owl', description: 'Complete a lesson after 10 PM' },
             PERSEVERANCE: { id: 'perseverance', name: 'Perseverance', description: 'Retry a quiz 3 times until passing' }
@@ -3382,6 +3382,8 @@ print(cat.name + " says: " + cat.speak())`,
             checkChallenge.addEventListener('click', checkChallengeSolution);
             markComplete.addEventListener('click', toggleLessonCompletion);
             startQuiz.addEventListener('click', startLessonQuiz);
+            codeInput.addEventListener('keydown', handleCodeIndentation);
+            codeInput.addEventListener('input', saveCodeToLocalStorage);
 
             // Download functionality
             downloadAll.addEventListener('click', showDownloadModal);
@@ -3477,6 +3479,7 @@ print(cat.name + " says: " + cat.speak())`,
             backFromChallenge.addEventListener('click', showDashboard);
             submitChallenge.addEventListener('click', submitDailyChallenge);
             closeChallenge.addEventListener('click', showDashboard);
+            challengeCodeInput.addEventListener('keydown', handleCodeIndentation);
 
             // Modal close on outside click
             window.addEventListener('click', (e) => {
@@ -3487,6 +3490,40 @@ print(cat.name + " says: " + cat.speak())`,
                     hideAdminLogin();
                 }
             });
+        }
+
+        // Handle code indentation
+        function handleCodeIndentation(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                const textBefore = this.value.substring(0, start);
+                const lastLine = textBefore.split('\n').pop();
+                const indentMatch = lastLine.match(/^\s*/);
+                let indent = indentMatch ? indentMatch[0] : '';
+                if (lastLine.trim().endsWith(':')) {
+                    indent += '    ';
+                }
+                this.value = textBefore + '\n' + indent + this.value.substring(end);
+                this.selectionStart = this.selectionEnd = start + 1 + indent.length;
+            } else if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                if (start === end) {
+                    this.value = this.value.substring(0, start) + '    ' + this.value.substring(end);
+                    this.selectionStart = this.selectionEnd = start + 4;
+                }
+            } else if (e.ctrlKey && e.key === 'Enter') {
+                executeCode();
+            }
+        }
+
+        // Save code to local storage
+        function saveCodeToLocalStorage() {
+            const lesson = allLessons[currentLessonIndex];
+            localStorage.setItem(`lesson-${lesson.id}-code`, this.value);
         }
 
         // Initialize user data
@@ -3957,7 +3994,8 @@ print(cat.name + " says: " + cat.speak())`,
             // Award forum contributor badge
             const userData = JSON.parse(localStorage.getItem('userData') || '{}');
             if (userData.isLoggedIn) {
-                awardBadge(userData.currentUser.id, 'FORUM_CONTRIBUTOR');
+                const userId = userData.currentUser.id;
+                awardBadge(userId, 'FORUM_CONTRIBUTOR');
             }
         }
 
@@ -4048,7 +4086,7 @@ sys.stderr = StringIO()
                         // Run the test case
                         let result;
                         if (testCase.input) {
-                                                  result = await pyodide.runPythonAsync(`
+                            result = await pyodide.runPythonAsync(`
 ${code}
 # Test case execution
 result = solution(${testCase.input})
@@ -4435,7 +4473,8 @@ exec(compile("""${code}""", 'user_code', 'exec'))
 
             lessonTitle.textContent = lesson.title;
             lessonContentElement.innerHTML = lesson.content;
-            codeInput.value = lesson.defaultCode;
+            const savedCode = localStorage.getItem(`lesson-${lesson.id}-code`);
+            codeInput.value = savedCode || lesson.defaultCode;
             codeOutput.textContent = 'Output will appear here...';
             challengeText.textContent = lesson.challenge;
 
