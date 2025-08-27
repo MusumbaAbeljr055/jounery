@@ -43,32 +43,18 @@
             background-color: rgba(0, 0, 0, 0.8);
             filter: drop-shadow(10px);
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             z-index: 100;
             backdrop-filter: blur(10px);
         }
 
         @keyframes colorChange {
-            0% {
-                color: #b74b4b;
-            }
-
-            25% {
-                color: #00ffcc;
-            }
-
-            50% {
-                color: #ff6f6f;
-            }
-
-            75% {
-                color: #ffcc00;
-            }
-
-            100% {
-                color: #b74b4b;
-            }
+            0% { color: #b74b4b; }
+            25% { color: #00ffcc; }
+            50% { color: #ff6f6f; }
+            75% { color: #ffcc00; }
+            100% { color: #b74b4b; }
         }
 
         .logo span {
@@ -98,6 +84,181 @@
             border-radius: 50%;
             margin-right: 10px;
             border: 2px solid #b74b4b;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            background: linear-gradient(45deg, transparent, rgba(183, 75, 75, 0.1));
+            border: 1px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(183, 75, 75, 0.3), transparent);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #b74b4b, #ff6f6f);
+            border: 1px solid #ff6f6f;
+            box-shadow: 0 0 20px rgba(183, 75, 75, 0.5);
+            transform: translateY(-3px);
+        }
+
+        nav a.active {
+            color: #fff;
+            background: linear-gradient(45deg, #b74b4b, #ff6f6f);
+            border: 1px solid #ff6f6f;
+            box-shadow: 0 0 15px rgba(183, 75, 75, 0.4);
+        }
+
+        /* Tooltip Styling */
+        nav a .tooltip {
+            visibility: hidden;
+            background-color: #b74b4b;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.4rem;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        nav a:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 2.5rem;
+            color: #b74b4b;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1001;
+        }
+
+        .hamburger:hover {
+            color: #ff6f6f;
+        }
+
+        .hamburger.active .fa-bars {
+            display: none;
+        }
+
+        .hamburger.active .fa-times {
+            display: inline;
+        }
+
+        .hamburger .fa-times {
+            display: none;
+        }
+
+        /* Mobile Menu Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 70px;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 2rem;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 0 20px rgba(183, 75, 75, 0.3);
+                width: 100%;
+                max-width: 250px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            nav.active {
+                display: flex;
+                transform: translateX(0);
+            }
+
+            nav a {
+                font-size: 1.8rem;
+                padding: 1.2rem;
+                margin: 0.5rem 0;
+                justify-content: center;
+                touch-action: manipulation;
+            }
+
+            nav a .tooltip {
+                bottom: auto;
+                left: 110%;
+                transform: translateY(-50%);
+            }
+        }
+
+        @media (max-width: 450px) {
+            nav {
+                max-width: 200px;
+            }
+
+            nav a {
+                font-size: 1.6rem;
+                padding: 1rem;
+            }
         }
 
         section {
@@ -223,43 +384,19 @@
         }
 
         @keyframes cursor {
-            to {
-                border-left: 3px solid #b74b4b;
-            }
+            to { border-left: 3px solid #b74b4b; }
         }
 
         @keyframes words {
-
-            0%,
-            20% {
-                content: "Web Developer";
-            }
-
-            21%,
-            40% {
-                content: "Developer";
-            }
-
-            41%,
-            60% {
-                content: "Web Designer";
-            }
-
-            61%,
-            80% {
-                content: "App Developer";
-            }
-
-            81%,
-            100% {
-                content: "Script Writer";
-            }
+            0%, 20% { content: "Web Developer"; }
+            21%, 40% { content: "Developer"; }
+            41%, 60% { content: "Web Designer"; }
+            61%, 80% { content: "App Developer"; }
+            81%, 100% { content: "Script Writer"; }
         }
 
         @media (max-width: 1000px) {
-            .home {
-                gap: 4rem;
-            }
+            .home { gap: 4rem; }
         }
 
         @media (max-width: 995px) {
@@ -267,19 +404,9 @@
                 flex-direction: column;
                 margin: 5rem 4rem;
             }
-
-            .home .home-content h3 {
-                font-size: 2.5rem;
-            }
-
-            .home-content h1 {
-                font-size: 5rem;
-            }
-
-            .home-img img {
-                width: 70vw;
-                margin-top: 4rem;
-            }
+            .home .home-content h3 { font-size: 2.5rem; }
+            .home-content h1 { font-size: 5rem; }
+            .home-img img { width: 70vw; margin-top: 4rem; }
         }
 
         /* SERVICES SECTION */
@@ -313,7 +440,6 @@
             transition: all 0.4s ease-in-out;
         }
 
-        /* Centered Folded State */
         .service-card {
             position: absolute;
             top: 0;
@@ -363,7 +489,6 @@
             z-index: 2;
         }
 
-        /* Service-specific background images */
         .service1::before {
             background-image: url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
         }
@@ -376,7 +501,6 @@
             background-image: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
         }
 
-        /* Folded state centered */
         .service1 {
             transform: rotate(-15deg);
             z-index: 3;
@@ -395,7 +519,6 @@
             left: calc(50% - 30px);
         }
 
-        /* Expanded state */
         .services-stack-container.expanded .service1 {
             transform: rotate(0deg);
             left: 0;
@@ -481,12 +604,12 @@
 
         .bootcamp-btn {
             display: inline-block;
-            padding: 1.2rem 3rem;
+            padding: 1.5rem 4rem;
             background: linear-gradient(45deg, #b74b4b, #ff6f6f);
             color: white;
             border-radius: 50px;
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -501,19 +624,12 @@
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            html {
-                font-size: 55%;
-            }
+            html { font-size: 55%; }
         }
 
         @media (max-width: 991px) {
-            section {
-                padding: 5rem 3% 5rem;
-            }
-
-            .services {
-                padding: 8rem 3% 6rem;
-            }
+            section { padding: 5rem 3% 5rem; }
+            .services { padding: 8rem 3% 6rem; }
         }
 
         @media (max-width: 895px) {
@@ -551,62 +667,25 @@
                 gap: 4rem;
             }
 
-            .home-img img {
-                width: 70vw;
-            }
-
-            .home-content h1 {
-                font-size: 5rem;
-            }
-
-            .home-content h3 {
-                font-size: 2.5rem;
-            }
-
-            .bootcamp h2 {
-                font-size: 3rem;
-            }
-
-            .bootcamp-card {
-                padding: 2rem;
-            }
-
-            .service-card {
-                width: 90%;
-            }
+            .home-img img { width: 70vw; }
+            .home-content h1 { font-size: 5rem; }
+            .home-content h3 { font-size: 2.5rem; }
+            .bootcamp h2 { font-size: 3rem; }
+            .bootcamp-card { padding: 2rem; }
+            .service-card { width: 90%; }
         }
 
         @media (max-width: 617px) {
-            .home-content h1 {
-                font-size: 4rem;
-            }
-
-            .home-content h3 {
-                font-size: 2rem;
-            }
-
-            .typing-text {
-                font-size: 2.5rem;
-                min-width: 220px;
-            }
-
-            .bootcamp h2 {
-                font-size: 2.8rem;
-            }
+            .home-content h1 { font-size: 4rem; }
+            .home-content h3 { font-size: 2rem; }
+            .typing-text { font-size: 2.5rem; min-width: 220px; }
+            .bootcamp h2 { font-size: 2.8rem; }
         }
 
         @media (max-width: 450px) {
-            html {
-                font-size: 50%;
-            }
-
-            .home-content h1 {
-                font-size: 3.5rem;
-            }
-
-            .service-card {
-                width: 100%;
-            }
+            html { font-size: 50%; }
+            .home-content h1 { font-size: 3.5rem; }
+            .service-card { width: 100%; }
         }
 
         /* Floating WhatsApp Button */
@@ -705,20 +784,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
-            }
-
-            70% {
-                transform: scale(1.2);
-                box-shadow: 0 0 0 10px rgba(0, 255, 0, 0);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
-            }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+            70% { transform: scale(1.2); box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
         }
 
         /* Footer */
@@ -784,10 +852,21 @@
             <img src="abbey.jpg" alt="Musumba Logo" class="logo-img" />
             <span>Musumba</span>
         </div>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </div>
+        <nav>
+            <a href="#home" aria-label="Go to Home section"><i class="fas fa-home"></i> Home <span class="tooltip">Welcome to my portfolio</span></a>
+            <a href="#services" aria-label="Go to Services section"><i class="fas fa-cogs"></i> Services <span class="tooltip">Explore my offerings</span></a>
+            <a href="#bootcamp" aria-label="Go to Bootcamp section"><i class="fas fa-laptop-code"></i> Bootcamp <span class="tooltip">Learn about my Python Bootcamp</span></a>
+            <a href="#inquiry-form" aria-label="Go to Contact section"><i class="fas fa-envelope"></i> Contact <span class="tooltip">Get in touch with me</span></a>
+        </nav>
+        <div class="overlay"></div>
     </header>
 
     <!-- Home Section -->
-    <section class="home">
+    <section class="home" id="home">
         <div class="home-img">
             <img src="abbey.jpg" alt="Profile Picture" />
         </div>
@@ -868,7 +947,7 @@
     </section>
 
     <!-- Inquiry Form Section -->
-    <div class="inquiry-form" id="inquiry-form">
+    <section class="inquiry-form" id="inquiry-form">
         <h2><span class="online-dot"></span> AVAILABLE FOR WORK</h2>
         <h3>Design Inquiry</h3>
         <p>Got an idea and need design help? Reach out now</p>
@@ -886,8 +965,7 @@
 
             <button type="submit" class="btn">Submit Inquiry</button>
         </form>
-    </div>
-
+    </section>
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/256782889754" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
@@ -908,10 +986,61 @@
 
     <!-- Scripts -->
     <script>
-        // Smooth scroll
-        document.querySelector('a[href="#inquiry-form"]').addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector('#inquiry-form').scrollIntoView({ behavior: 'smooth' });
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        const overlay = document.querySelector('.overlay');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        // Close menu when clicking overlay
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                // Remove active class from all links
+                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                // Close mobile menu on click
+                if (window.innerWidth <= 768) {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll-based active link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === currentSection) {
+                    link.classList.add('active');
+                }
+            });
         });
 
         // Confetti on page load
