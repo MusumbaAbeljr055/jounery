@@ -984,68 +984,13 @@
             border-left: 4px solid var(--color-accent);
         }
 
-        /* Admin Analytics Styles */
-        #admin-login {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .login-container {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            width: 90%;
-            max-width: 400px;
-            box-shadow: var(--shadow);
-            color: var(--text-color);
-        }
-        
-        .login-container h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--color-primary);
-        }
-        
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-        }
-        
-        .login-actions {
-            display: flex;
-            justify-content: space-between;
-            gap: 0.8rem;
-        }
-        
-        #analytics-view {
+        /* Visitor View Styles */
+        #visitor-view {
             display: none;
             padding: 1.5rem 0;
         }
         
-        .analytics-header {
+        .visitor-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1054,7 +999,7 @@
             gap: 0.8rem;
         }
         
-        .analytics-stats {
+        .visitor-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.2rem;
@@ -1082,14 +1027,14 @@
             font-size: 0.9rem;
         }
         
-        .analytics-actions {
+        .visitor-actions {
             display: flex;
             gap: 0.8rem;
             margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
-        #analytics-data {
+        #visitor-data {
             background: var(--card-bg);
             padding: 1rem;
             border-radius: var(--border-radius);
@@ -1576,7 +1521,7 @@
                 font-size: 1.5rem;
             }
             
-            .analytics-stats {
+            .visitor-stats {
                 grid-template-columns: 1fr;
             }
 
@@ -1706,7 +1651,7 @@
                 </div>
                 <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
                 <button id="userBtn" aria-label="User Account">👤 Login</button>
-                <button id="adminBtn" aria-label="Admin Login">🔒 Admin</button>
+                <button id="visitorBtn" aria-label="View Visitors">👥 Visitors</button>
                 <button id="butInstall" aria-label="Install App" style="display: none;">Install App</button>
             </div>
         </div>
@@ -1910,41 +1855,28 @@ print("Hello, Python!")</textarea>
             </div>
         </div>
 
-        <!-- Admin Analytics View -->
-        <div id="analytics-view">
-            <div class="analytics-header">
-                <h2>Analytics Dashboard</h2>
+        <!-- Visitor View -->
+        <div id="visitor-view">
+            <div class="visitor-header">
+                <h2>Visitor Dashboard (For Study)</h2>
                 <div>
-                    <button id="refresh-analytics">Refresh</button>
-                    <button id="export-analytics">Export as JSON</button>
-                    <button id="logout-admin">Logout</button>
+                    <button id="refresh-visitors">Refresh</button>
+                    <button id="back-to-dashboard-from-visitors">Back to Dashboard</button>
                 </div>
             </div>
 
-            <div class="analytics-stats">
-                <div class="stat-card">
-                    <div class="stat-value" id="total-visits">0</div>
-                    <div class="stat-label">Total Visits</div>
-                </div>
+            <div class="visitor-stats">
                 <div class="stat-card">
                     <div class="stat-value" id="unique-visitors">0</div>
                     <div class="stat-label">Unique Visitors</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="completed-lessons">0</div>
-                    <div class="stat-label">Completed Lessons</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="avg-quiz-score">0%</div>
-                    <div class="stat-label">Average Quiz Score</div>
-                </div>
             </div>
 
-            <div class="analytics-actions">
-                <h3>Visitor Analytics</h3>
+            <div class="visitor-actions">
+                <h3>Visitor Data</h3>
             </div>
-            <div id="analytics-data">
-                <pre id="analytics-json">Loading analytics data...</pre>
+            <div id="visitor-data">
+                <pre id="visitor-json">Loading visitor data...</pre>
             </div>
         </div>
 
@@ -2142,25 +2074,6 @@ print("Hello, Python!")</textarea>
             </div>
         </div>
     </main>
-
-    <!-- Admin Login Modal -->
-    <div id="admin-login">
-        <div class="login-container">
-            <h2>Admin Login</h2>
-            <div class="form-group">
-                <label for="admin-username">Username</label>
-                <input type="text" id="admin-username" placeholder="Enter username">
-            </div>
-            <div class="form-group">
-                <label for="admin-password">Password</label>
-                <input type="password" id="admin-password" placeholder="Enter password">
-            </div>
-            <div class="login-actions">
-                <button id="admin-login-btn">Login</button>
-                <button id="admin-cancel">Cancel</button>
-            </div>
-        </div>
-    </div>
 
     <div id="installToast">
         <div class="toast-content">
@@ -3044,28 +2957,1224 @@ print(cat.name + " says: " + cat.speak())`,
                     ],
                     correct: 1
                 }
+            ],
+            "3-control-statements": [
+                {
+                    question: "What does the 'if' statement do?",
+                    options: [
+                        "Executes code if condition is true",
+                        "Repeats code while condition is true",
+                        "Defines a function",
+                        "Imports a module"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which keyword is used for alternative conditions?",
+                    options: [
+                        "else",
+                        "elif",
+                        "switch",
+                        "case"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is the output of: if 5 > 3: print('Yes')?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Error",
+                        "Nothing"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "How does Python denote code blocks?",
+                    options: [
+                        "Curly braces {}",
+                        "Indentation",
+                        "Parentheses ()",
+                        "Square brackets []"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What does 'for' loop do?",
+                    options: [
+                        "Repeats while condition true",
+                        "Iterates over sequence",
+                        "Defines class",
+                        "Handles exceptions"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is the output of: for i in range(3): print(i)?",
+                    options: [
+                        "0 1 2",
+                        "1 2 3",
+                        "0 1 2 3",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What does 'while' loop do?",
+                    options: [
+                        "Iterates over list",
+                        "Repeats as long as condition is true",
+                        "Defines function",
+                        "Imports library"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which is correct syntax for else clause?",
+                    options: [
+                        "if condition: code else: code",
+                        "if condition: code; else: code",
+                        "if condition: code\nelse: code",
+                        "if condition { code } else { code }"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is nesting in control statements?",
+                    options: [
+                        "Putting one statement inside another",
+                        "Defining functions",
+                        "Importing modules",
+                        "Creating lists"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What will 'if not True:' do?",
+                    options: [
+                        "Execute the block",
+                        "Skip the block",
+                        "Error",
+                        "Loop forever"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "How to loop through dictionary keys?",
+                    options: [
+                        "for key in dict:",
+                        "for key in dict.keys():",
+                        "Both A and B",
+                        "None"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is range(1,5) output in loop?",
+                    options: [
+                        "1 2 3 4",
+                        "1 2 3 4 5",
+                        "0 1 2 3 4",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Which operator checks equality?",
+                    options: [
+                        "=",
+                        "==",
+                        "===",
+                        "eq"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What does 'and' operator do?",
+                    options: [
+                        "Logical AND",
+                        "Bitwise AND",
+                        "Addition",
+                        "Multiplication"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is infinite loop?",
+                    options: [
+                        "while True:",
+                        "for i in range(10):",
+                        "if True:",
+                        "def loop():"
+                    ],
+                    correct: 0
+                }
+            ],
+            "4-advanced-control": [
+                {
+                    question: "What does 'break' do?",
+                    options: [
+                        "Exits the loop",
+                        "Skips current iteration",
+                        "Does nothing",
+                        "Throws error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What does 'continue' do?",
+                    options: [
+                        "Exits the loop",
+                        "Skips to next iteration",
+                        "Stops program",
+                        "Defines placeholder"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is 'pass' used for?",
+                    options: [
+                        "Placeholder for code",
+                        "Exit loop",
+                        "Skip iteration",
+                        "Throw exception"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "In nested loops, 'break' affects?",
+                    options: [
+                        "All loops",
+                        "Innermost loop",
+                        "Outermost loop",
+                        "None"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "How to skip even numbers in loop?",
+                    options: [
+                        "if i % 2 == 0: continue",
+                        "if i % 2 == 0: break",
+                        "if i % 2 == 0: pass",
+                        "if i % 2 == 0: return"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is output of for i in range(5): if i==3: break print(i)?",
+                    options: [
+                        "0 1 2",
+                        "0 1 2 3",
+                        "0 1 2 3 4",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is output of for i in range(5): if i==2: continue print(i)?",
+                    options: [
+                        "0 1 3 4",
+                        "0 1 2 3 4",
+                        "0 1 2",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "When is 'pass' useful?",
+                    options: [
+                        "Empty functions/classes",
+                        "In loops",
+                        "For errors",
+                        "All time"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Can 'break' be used in if statements?",
+                    options: [
+                        "No, only in loops",
+                        "Yes",
+                        "Only in switch",
+                        "Only in functions"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What happens without 'break' in loop?",
+                    options: [
+                        "Continues until condition false",
+                        "Immediate exit",
+                        "Skip all",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "How to exit nested loops?",
+                    options: [
+                        "Use flag variable",
+                        "Multiple breaks",
+                        "Can't",
+                        "Use return"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is labeled break?",
+                    options: [
+                        "Python doesn't have it",
+                        "Breaks specific loop",
+                        "Breaks all",
+                        "Skips label"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Use of 'else' with loops?",
+                    options: [
+                        "Executes if no break",
+                        "Always executes",
+                        "Never executes",
+                        "For errors"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is 'for else'?",
+                    options: [
+                        "Executes if loop completes normally",
+                        "Alternative to for",
+                        "Error handler",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is 'while else'?",
+                    options: [
+                        "Same as for else",
+                        "Doesn't exist",
+                        "Always runs",
+                        "Runs on break"
+                    ],
+                    correct: 0
+                }
+            ],
+            "5-lists": [
+                {
+                    question: "How to create a list?",
+                    options: [
+                        "[]",
+                        "()",
+                        "{}",
+                        "<>"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Lists are mutable?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Sometimes",
+                        "Only strings"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "How to access first element?",
+                    options: [
+                        "list[0]",
+                        "list(0)",
+                        "list.first()",
+                        "list.get(1)"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What does append() do?",
+                    options: [
+                        "Adds to end",
+                        "Adds to start",
+                        "Removes last",
+                        "Sorts list"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is list slicing?",
+                    options: [
+                        "list[start:end]",
+                        "list.slice()",
+                        "list.cut()",
+                        "list.split()"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is output of [1,2,3][1] ?",
+                    options: [
+                        "2",
+                        "1",
+                        "3",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "How to remove item?",
+                    options: [
+                        "remove(value)",
+                        "delete(index)",
+                        "pop()",
+                        "All of above"
+                    ],
+                    correct: 3
+                },
+                {
+                    question: "What does sort() do?",
+                    options: [
+                        "Sorts in place",
+                        "Returns sorted copy",
+                        "Reverses",
+                        "Shuffles"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is len(list)?",
+                    options: [
+                        "Length of list",
+                        "Sum of elements",
+                        "Max element",
+                        "Min element"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Can lists have mixed types?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Only numbers",
+                        "Only strings"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is list comprehension?",
+                    options: [
+                        "[x for x in range(10)]",
+                        "list(range(10))",
+                        "Both",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "How to copy list?",
+                    options: [
+                        "list.copy()",
+                        "list[:]",
+                        "list(list)",
+                        "All"
+                    ],
+                    correct: 3
+                },
+                {
+                    question: "What does extend() do?",
+                    options: [
+                        "Adds multiple items",
+                        "Adds single item",
+                        "Removes items",
+                        "Sorts"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is index()?",
+                    options: [
+                        "Finds position of value",
+                        "Adds at index",
+                        "Removes at index",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Lists can be nested?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Only two levels",
+                        "Only flat"
+                    ],
+                    correct: 0
+                }
+            ],
+            "6-tuples-dictionaries": [
+                {
+                    question: "How to create tuple?",
+                    options: [
+                        "()",
+                        "[]",
+                        "{}",
+                        "<>"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Tuples are immutable?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Sometimes",
+                        "Like lists"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "How to create dictionary?",
+                    options: [
+                        "{}",
+                        "[]",
+                        "()",
+                        "dict()"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Dictionary keys must be?",
+                    options: [
+                        "Immutable",
+                        "Mutable",
+                        "Lists",
+                        "Any"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Access dict value?",
+                    options: [
+                        "dict[key]",
+                        "dict.get(key)",
+                        "Both",
+                        "dict.value(key)"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "Tuple unpacking?",
+                    options: [
+                        "a,b = (1,2)",
+                        "a = (1,2)",
+                        "unpack((1,2))",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Dict items() returns?",
+                    options: [
+                        "Key-value pairs",
+                        "Keys only",
+                        "Values only",
+                        "Length"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Can tuples be keys in dict?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Only strings",
+                        "Only numbers"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is dict.pop(key)?",
+                    options: [
+                        "Removes and returns value",
+                        "Removes key",
+                        "Adds key",
+                        "Gets value"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Tuple can have one element?",
+                    options: [
+                        "(1,)",
+                        "(1)",
+                        "[1]",
+                        "{1}"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Dict comprehension?",
+                    options: [
+                        "{k:v for k,v in items}",
+                        "[k:v for k,v in items]",
+                        "(k:v for k,v in items)",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Update dict?",
+                    options: [
+                        "dict.update(other)",
+                        "dict + other",
+                        "dict.merge(other)",
+                        "All"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Tuple vs List?",
+                    options: [
+                        "Tuple immutable, list mutable",
+                        "Opposite",
+                        "Same",
+                        "Tuple faster"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Dict keys() returns?",
+                    options: [
+                        "View of keys",
+                        "List of values",
+                        "Pairs",
+                        "Length"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Can dict have duplicate keys?",
+                    options: [
+                        "No",
+                        "Yes",
+                        "Only values",
+                        "Sometimes"
+                    ],
+                    correct: 0
+                }
+            ],
+            "7-functions": [
+                {
+                    question: "How to define function?",
+                    options: [
+                        "def func():",
+                        "function func():",
+                        "func def():",
+                        "define func():"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Functions can return values?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Only print",
+                        "Only void"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Default parameters?",
+                    options: [
+                        "def func(a=1):",
+                        "def func(a):",
+                        "def func(1=a):",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is *args?",
+                    options: [
+                        "Variable arguments",
+                        "Keyword arguments",
+                        "Default",
+                        "Return"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is **kwargs?",
+                    options: [
+                        "Keyword arguments",
+                        "Variable arguments",
+                        "Positional",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Functions are first-class?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Sometimes",
+                        "No in Python"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Return multiple values?",
+                    options: [
+                        "return a,b",
+                        "return [a,b]",
+                        "Both",
+                        "Can't"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is docstring?",
+                    options: [
+                        "'''doc'''",
+                        "Comment",
+                        "Print",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Function scope?",
+                    options: [
+                        "Local first",
+                        "Global first",
+                        "No scope",
+                        "Module"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Anonymous function?",
+                    options: [
+                        "lambda",
+                        "def",
+                        "anon",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is global keyword?",
+                    options: [
+                        "Access global var",
+                        "Create local",
+                        "Delete var",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Nonlocal keyword for?",
+                    options: [
+                        "Nested functions",
+                        "Global",
+                        "Local",
+                        "Module"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Functions can be nested?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Only top level",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is closure?",
+                    options: [
+                        "Function remembering values",
+                        "Closed function",
+                        "Error handler",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Recursive functions?",
+                    options: [
+                        "Call themselves",
+                        "Call others",
+                        "No call",
+                        "Error"
+                    ],
+                    correct: 0
+                }
+            ],
+            "8-advanced-functions": [
+                {
+                    question: "What is lambda function?",
+                    options: [
+                        "Anonymous function",
+                        "Named function",
+                        "Class",
+                        "Module"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Lambda can have multiple expressions?",
+                    options: [
+                        "No",
+                        "Yes",
+                        "Sometimes",
+                        "With def"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is recursion?",
+                    options: [
+                        "Function calls itself",
+                        "Calls another",
+                        "Loop",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Base case in recursion?",
+                    options: [
+                        "Stops recursion",
+                        "Starts recursion",
+                        "Errors",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Global scope?",
+                    options: [
+                        "Outside functions",
+                        "Inside functions",
+                        "In classes",
+                        "In modules"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Local scope?",
+                    options: [
+                        "Inside function",
+                        "Outside",
+                        "Global",
+                        "Module"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is map()?",
+                    options: [
+                        "Applies function to iterable",
+                        "Creates dict",
+                        "Filters",
+                        "Reduces"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "filter() does?",
+                    options: [
+                        "Filters based on function",
+                        "Maps",
+                        "Reduces",
+                        "Sorts"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "reduce() from functools?",
+                    options: [
+                        "Reduces to single value",
+                        "Filters",
+                        "Maps",
+                        "Sorts"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is decorator?",
+                    options: [
+                        "@decorator",
+                        "Function wrapper",
+                        "Both",
+                        "Class"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "Generator functions?",
+                    options: [
+                        "yield",
+                        "return",
+                        "print",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is iter()?",
+                    options: [
+                        "Makes iterator",
+                        "Makes list",
+                        "Makes dict",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "next() does?",
+                    options: [
+                        "Gets next item",
+                        "Previous item",
+                        "First item",
+                        "Last item"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is partial from functools?",
+                    options: [
+                        "Partial function application",
+                        "Full function",
+                        "Error",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is nonlocal?",
+                    options: [
+                        "Access enclosing scope",
+                        "Global",
+                        "Local",
+                        "Module"
+                    ],
+                    correct: 0
+                }
+            ],
+            "9-classes-objects": [
+                {
+                    question: "What is class?",
+                    options: [
+                        "Blueprint for objects",
+                        "Function",
+                        "Variable",
+                        "Module"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "How to define class?",
+                    options: [
+                        "class Name:",
+                        "def class Name:",
+                        "class def Name:",
+                        "define class Name:"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is __init__?",
+                    options: [
+                        "Constructor",
+                        "Destructor",
+                        "Method",
+                        "Variable"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Self refers to?",
+                    options: [
+                        "Instance",
+                        "Class",
+                        "Module",
+                        "Function"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Objects are?",
+                    options: [
+                        "Instances of class",
+                        "Classes",
+                        "Functions",
+                        "Variables"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Attributes are?",
+                    options: [
+                        "Variables in class",
+                        "Methods",
+                        "Classes",
+                        "Modules"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Methods are?",
+                    options: [
+                        "Functions in class",
+                        "Variables",
+                        "Classes",
+                        "Objects"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Class variables shared by?",
+                    options: [
+                        "All instances",
+                        "One instance",
+                        "None",
+                        "Functions"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Instance variables?",
+                    options: [
+                        "Unique to instance",
+                        "Shared",
+                        "Static",
+                        "Global"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is encapsulation?",
+                    options: [
+                        "Hiding implementation",
+                        "Inheritance",
+                        "Polymorphism",
+                        "Abstraction"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Private attributes?",
+                    options: [
+                        "__attr",
+                        "_attr",
+                        "attr_",
+                        "attr__"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Protected attributes?",
+                    options: [
+                        "_attr",
+                        "__attr",
+                        "attr_",
+                        "attr__"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is str() method?",
+                    options: [
+                        "String representation",
+                        "Constructor",
+                        "Destructor",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "del object does?",
+                    options: [
+                        "Calls __del__",
+                        "Deletes class",
+                        "Deletes method",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Classes can inherit?",
+                    options: [
+                        "Yes",
+                        "No",
+                        "Only single",
+                        "Only multiple"
+                    ],
+                    correct: 0
+                }
+            ],
+            "10-inheritance": [
+                {
+                    question: "What is inheritance?",
+                    options: [
+                        "Class deriving from another",
+                        "Copying class",
+                        "Merging classes",
+                        "Deleting class"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Base class is?",
+                    options: [
+                        "Parent class",
+                        "Child class",
+                        "Instance",
+                        "Method"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Derived class is?",
+                    options: [
+                        "Child class",
+                        "Parent class",
+                        "Object",
+                        "Function"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Syntax for inheritance?",
+                    options: [
+                        "class Child(Parent):",
+                        "class Child extends Parent:",
+                        "class Child inherits Parent:",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Multiple inheritance?",
+                    options: [
+                        "class C(A,B):",
+                        "Not supported",
+                        "Only two",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "super() does?",
+                    options: [
+                        "Calls parent method",
+                        "Calls child",
+                        "Creates super class",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Method overriding?",
+                    options: [
+                        "Child redefines parent method",
+                        "Parent calls child",
+                        "Error",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is MRO?",
+                    options: [
+                        "Method Resolution Order",
+                        "Multiple Return Order",
+                        "Method Return Object",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "issubclass(A,B)?",
+                    options: [
+                        "Checks if A subclass of B",
+                        "Checks instance",
+                        "Checks equality",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "isinstance(obj, Class)?",
+                    options: [
+                        "Checks if obj instance of Class",
+                        "Checks subclass",
+                        "Checks equality",
+                        "None"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Diamond problem in?",
+                    options: [
+                        "Multiple inheritance",
+                        "Single inheritance",
+                        "No problem",
+                        "Functions"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Python solves diamond with?",
+                    options: [
+                        "MRO (C3 linearization)",
+                        "Virtual inheritance",
+                        "No solution",
+                        "Error"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Abstract classes?",
+                    options: [
+                        "Using abc module",
+                        "Native abstract",
+                        "No support",
+                        "With pass"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "Interfaces in Python?",
+                    options: [
+                        "No formal, use ABC",
+                        "interface keyword",
+                        "Yes",
+                        "No"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is polymorphism?",
+                    options: [
+                        "Same method different behavior",
+                        "Different names",
+                        "Same behavior",
+                        "None"
+                    ],
+                    correct: 0
+                }
             ]
-            // Additional quiz data for other lessons would go here...
         };
-
-        // Admin credentials
-        const ADMIN_CREDENTIALS = {
-            username: "admin",
-            password: "python2025"
-        };
-
-        // Analytics data structure
-        const ANALYTICS_DATA = {
-            totalVisits: 0,
-            uniqueVisitors: 0,
-            firstVisit: null,
-            lastVisit: null,
-            completedLessons: 0,
-            quizScores: {},
-            lessonsViewed: []
-        };
-
-        // NEW DATA STRUCTURES FOR ADDED FEATURES
 
         // Gamification data
         const BADGES = {
@@ -3075,7 +4184,7 @@ print(cat.name + " says: " + cat.speak())`,
             DAILY_CHALLENGER: { id: 'daily-challenger', name: 'Daily Challenger', description: 'Complete 7 daily challenges' },
             PYTHON_PRO: { id: 'python-pro', name: 'Python Pro', description: 'Complete all lessons' },
             FORUM_CONTRIBUTOR: { id: 'forum-contributor', name: 'Forum Contributor', description: 'Post 10 messages in the forum' },
-            HELPFUL_SOUL: { id: 'helpful-soul', name: 'Helpful Soul', description: 'Help 5 other other users in the forum' },
+            HELPFUL_SOUL: { id: 'helpful-soul', name: 'Helpful Soul', description: 'Help 5 other users in the forum' },
             EARLY_BIRD: { id: 'early-bird', name: 'Early Bird', description: 'Complete a lesson before 8 AM' },
             NIGHT_OWL: { id: 'night-owl', name: 'Night Owl', description: 'Complete a lesson after 10 PM' },
             PERSEVERANCE: { id: 'perseverance', name: 'Perseverance', description: 'Retry a quiz 3 times until passing' }
@@ -3168,6 +4277,12 @@ print(cat.name + " says: " + cat.speak())`,
             }
         };
 
+        // Visitor data structure
+        const VISITOR_DATA = {
+            uniqueVisitors: 0,
+            visitors: []
+        };
+
         // Global variables
         let deferredPrompt;
         let pyodide;
@@ -3188,21 +4303,12 @@ print(cat.name + " says: " + cat.speak())`,
         const toastDismiss = document.getElementById('toastDismiss');
         const installToast = document.getElementById('installToast');
         const themeToggle = document.getElementById('themeToggle');
-        const adminBtn = document.getElementById('adminBtn');
-        const adminLogin = document.getElementById('admin-login');
-        const adminUsername = document.getElementById('admin-username');
-        const adminPassword = document.getElementById('admin-password');
-        const adminLoginBtn = document.getElementById('admin-login-btn');
-        const adminCancel = document.getElementById('admin-cancel');
-        const analyticsView = document.getElementById('analytics-view');
-        const refreshAnalytics = document.getElementById('refresh-analytics');
-        const exportAnalytics = document.getElementById('export-analytics');
-        const logoutAdmin = document.getElementById('logout-admin');
-        const totalVisits = document.getElementById('total-visits');
-        const uniqueVisitors = document.getElementById('unique-visitors');
-        const completedLessons = document.getElementById('completed-lessons');
-        const avgQuizScore = document.getElementById('avg-quiz-score');
-        const analyticsJson = document.getElementById('analytics-json');
+        const visitorBtn = document.getElementById('visitorBtn');
+        const visitorView = document.getElementById('visitor-view');
+        const refreshVisitors = document.getElementById('refresh-visitors');
+        const backToDashboardFromVisitors = document.getElementById('back-to-dashboard-from-visitors');
+        const uniqueVisitorsElement = document.getElementById('unique-visitors');
+        const visitorJson = document.getElementById('visitor-json');
 
         const dashboardView = document.getElementById('dashboard-view');
         const lessonView = document.getElementById('lesson-view');
@@ -3328,8 +4434,8 @@ print(cat.name + " says: " + cat.speak())`,
                 themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
             }
 
-            // Initialize analytics
-            initAnalytics();
+            // Initialize visitor tracking
+            initVisitorTracking();
 
             // Initialize user data
             initUserData();
@@ -3363,13 +4469,10 @@ print(cat.name + " says: " + cat.speak())`,
             // Theme toggle
             themeToggle.addEventListener('click', toggleTheme);
 
-            // Admin functionality
-            adminBtn.addEventListener('click', showAdminLogin);
-            adminLoginBtn.addEventListener('click', attemptAdminLogin);
-            adminCancel.addEventListener('click', hideAdminLogin);
-            refreshAnalytics.addEventListener('click', refreshAnalyticsData);
-            exportAnalytics.addEventListener('click', exportAnalyticsData);
-            logoutAdmin.addEventListener('click', logoutAdminUser);
+            // Visitor functionality
+            visitorBtn.addEventListener('click', showVisitorDashboard);
+            refreshVisitors.addEventListener('click', refreshVisitorData);
+            backToDashboardFromVisitors.addEventListener('click', showDashboard);
 
             // Lesson navigation
             backToDashboard.addEventListener('click', showDashboard);
@@ -3486,9 +4589,6 @@ print(cat.name + " says: " + cat.speak())`,
                 if (e.target === downloadModal) {
                     hideDownloadModal();
                 }
-                if (e.target === adminLogin) {
-                    hideAdminLogin();
-                }
             });
         }
 
@@ -3579,6 +4679,65 @@ print(cat.name + " says: " + cat.speak())`,
                 updateChallengeTimer();
             }
             return challengeData;
+        }
+
+        // Initialize visitor tracking
+        function initVisitorTracking() {
+            // Load visitor data from localStorage or initialize
+            const savedVisitors = localStorage.getItem('pythonBootcampVisitors');
+            if (savedVisitors) {
+                const parsedData = JSON.parse(savedVisitors);
+                Object.assign(VISITOR_DATA, parsedData);
+            }
+
+            // Track this visit
+            trackVisitor();
+        }
+
+        // Track visitor
+        function trackVisitor() {
+            // Generate a unique visitor ID if not exists
+            let visitorId = localStorage.getItem('visitorId');
+            if (!visitorId) {
+                visitorId = 'visitor_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('visitorId', visitorId);
+                VISITOR_DATA.uniqueVisitors++;
+                VISITOR_DATA.visitors.push({
+                    id: visitorId,
+                    firstVisit: new Date().toISOString()
+                });
+            }
+
+            // Save updated visitor data
+            saveVisitorData();
+        }
+
+        // Save visitor data to localStorage
+        function saveVisitorData() {
+            localStorage.setItem('pythonBootcampVisitors', JSON.stringify(VISITOR_DATA));
+        }
+
+        // Show visitor dashboard
+        function showVisitorDashboard() {
+            hideAllViews();
+            visitorView.style.display = 'block';
+            refreshVisitorData();
+        }
+
+        // Refresh visitor data
+        function refreshVisitorData() {
+            // Load the latest data
+            const savedVisitors = localStorage.getItem('pythonBootcampVisitors');
+            if (savedVisitors) {
+                const parsedData = JSON.parse(savedVisitors);
+                Object.assign(VISITOR_DATA, parsedData);
+            }
+
+            // Update UI
+            uniqueVisitorsElement.textContent = VISITOR_DATA.uniqueVisitors;
+
+            // Show visitor list
+            visitorJson.textContent = JSON.stringify(VISITOR_DATA.visitors, null, 2);
         }
 
         // Update user button based on authentication status
@@ -4235,7 +5394,7 @@ exec(compile("""${code}""", 'user_code', 'exec'))
             dashboardView.style.display = 'none';
             lessonView.style.display = 'none';
             quizView.style.display = 'none';
-            analyticsView.style.display = 'none';
+            visitorView.style.display = 'none';
             leaderboardView.style.display = 'none';
             forumView.style.display = 'none';
             dailyChallengeView.style.display = 'none';
@@ -4257,72 +5416,6 @@ exec(compile("""${code}""", 'user_code', 'exec'))
             }
         }
 
-        // Initialize analytics
-        function initAnalytics() {
-            // Load analytics data from localStorage or initialize
-            const savedAnalytics = localStorage.getItem('pythonBootcampAnalytics');
-            if (savedAnalytics) {
-                const parsedData = JSON.parse(savedAnalytics);
-                Object.assign(ANALYTICS_DATA, parsedData);
-            }
-
-            // Track this visit
-            trackVisit();
-
-            // Update admin button based on authentication
-            updateAdminButton();
-        }
-
-        // Track visitor
-        function trackVisit() {
-            // Generate a unique visitor ID if not exists
-            let visitorId = localStorage.getItem('visitorId');
-            if (!visitorId) {
-                visitorId = 'visitor_' + Math.random().toString(36).substr(2, 9);
-                localStorage.setItem('visitorId', visitorId);
-                ANALYTICS_DATA.uniqueVisitors++;
-            }
-
-            // Update visit counts
-            ANALYTICS_DATA.totalVisits++;
-            ANALYTICS_DATA.lastVisit = new Date().toISOString();
-            
-            if (!ANALYTICS_DATA.firstVisit) {
-                ANALYTICS_DATA.firstVisit = ANALYTICS_DATA.lastVisit;
-            }
-
-            // Save updated analytics
-            saveAnalyticsData();
-        }
-
-        // Track lesson view
-        function trackLessonView(lessonId) {
-            if (!ANALYTICS_DATA.lessonsViewed.includes(lessonId)) {
-                ANALYTICS_DATA.lessonsViewed.push(lessonId);
-                saveAnalyticsData();
-            }
-        }
-
-        // Track quiz score
-        function trackQuizScore(lessonId, score) {
-            if (!ANALYTICS_DATA.quizScores[lessonId]) {
-                ANALYTICS_DATA.quizScores[lessonId] = [];
-            }
-            ANALYTICS_DATA.quizScores[lessonId].push(score);
-            saveAnalyticsData();
-        }
-
-        // Save analytics data to localStorage
-        function saveAnalyticsData() {
-            localStorage.setItem('pythonBootcampAnalytics', JSON.stringify(ANALYTICS_DATA));
-        }
-
-        // Update admin button based on authentication
-        function updateAdminButton() {
-            const isAdmin = localStorage.getItem('adminAuthenticated') === 'true';
-            adminBtn.textContent = isAdmin ? '📊 Analytics' : '🔒 Admin';
-        }
-
         // Theme toggle functionality
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -4330,104 +5423,6 @@ exec(compile("""${code}""", 'user_code', 'exec'))
             document.documentElement.setAttribute('data-theme', newTheme);
             themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
             localStorage.setItem('theme', newTheme);
-        }
-
-        // Admin functionality
-        function showAdminLogin() {
-            const isAdmin = localStorage.getItem('adminAuthenticated') === 'true';
-            if (isAdmin) {
-                showAnalyticsDashboard();
-            } else {
-                adminLogin.style.display = 'flex';
-            }
-        }
-
-        function hideAdminLogin() {
-            adminLogin.style.display = 'none';
-            adminUsername.value = '';
-            adminPassword.value = '';
-        }
-
-        function attemptAdminLogin() {
-            const username = adminUsername.value;
-            const password = adminPassword.value;
-
-            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-                localStorage.setItem('adminAuthenticated', 'true');
-                updateAdminButton();
-                hideAdminLogin();
-                showAnalyticsDashboard();
-            } else {
-                alert('Invalid credentials. Please try again.');
-            }
-        }
-
-        function showAnalyticsDashboard() {
-            dashboardView.style.display = 'none';
-            lessonView.style.display = 'none';
-            quizView.style.display = 'none';
-            analyticsView.style.display = 'block';
-
-            refreshAnalyticsData();
-        }
-
-        function refreshAnalyticsData() {
-            // Load the latest data
-            const savedAnalytics = localStorage.getItem('pythonBootcampAnalytics');
-            if (savedAnalytics) {
-                const parsedData = JSON.parse(savedAnalytics);
-                Object.assign(ANALYTICS_DATA, parsedData);
-            }
-
-            // Calculate completed lessons
-            let completedCount = 0;
-            allLessons.forEach(lesson => {
-                if (localStorage.getItem(`lesson-${lesson.id}-completed`) === 'true') {
-                    completedCount++;
-                }
-            });
-            ANALYTICS_DATA.completedLessons = completedCount;
-
-            // Calculate average quiz score
-            let totalScores = 0;
-            let scoreCount = 0;
-            
-            for (const lessonId in ANALYTICS_DATA.quizScores) {
-                ANALYTICS_DATA.quizScores[lessonId].forEach(score => {
-                    totalScores += score;
-                    scoreCount++;
-                });
-            }
-            
-            const averageScore = scoreCount > 0 ? Math.round(totalScores / scoreCount) : 0;
-
-            // Update UI
-            totalVisits.textContent = ANALYTICS_DATA.totalVisits;
-            uniqueVisitors.textContent = ANALYTICS_DATA.uniqueVisitors;
-            completedLessons.textContent = ANALYTICS_DATA.completedLessons;
-            avgQuizScore.textContent = `${averageScore}%`;
-
-            // Show raw data
-            analyticsJson.textContent = JSON.stringify(ANALYTICS_DATA, null, 2);
-        }
-
-        function exportAnalyticsData() {
-            const dataStr = JSON.stringify(ANALYTICS_DATA, null, 2);
-            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-            
-            const exportFileDefaultName = `python-bootcamp-analytics-${new Date().toISOString().split('T')[0]}.json`;
-            
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
-        }
-
-        function logoutAdminUser() {
-            localStorage.removeItem('adminAuthenticated');
-            updateAdminButton();
-            analyticsView.style.display = 'none';
-            dashboardView.style.display = 'block';
         }
 
         // Lesson functionality
@@ -4468,9 +5463,6 @@ exec(compile("""${code}""", 'user_code', 'exec'))
             currentLessonIndex = index;
             const lesson = allLessons[index];
 
-            // Track lesson view
-            trackLessonView(lesson.id);
-
             lessonTitle.textContent = lesson.title;
             lessonContentElement.innerHTML = lesson.content;
             const savedCode = localStorage.getItem(`lesson-${lesson.id}-code`);
@@ -4493,7 +5485,7 @@ exec(compile("""${code}""", 'user_code', 'exec'))
         function showDashboard() {
             lessonView.style.display = 'none';
             quizView.style.display = 'none';
-            analyticsView.style.display = 'none';
+            visitorView.style.display = 'none';
             leaderboardView.style.display = 'none';
             forumView.style.display = 'none';
             dailyChallengeView.style.display = 'none';
@@ -4783,10 +5775,6 @@ sys.stderr = StringIO()
                 scoreMessage.textContent = "Keep studying and try again!";
             }
             
-            // Save quiz score
-            const currentLessonId = allLessons[currentLessonIndex].id;
-            trackQuizScore(currentLessonId, score);
-            
             // Award points and badge for perfect score
             const userData = JSON.parse(localStorage.getItem('userData') || '{}');
             if (userData.isLoggedIn && score === 100) {
@@ -4954,12 +5942,11 @@ sys.stderr = StringIO()
 
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
+            const currentLesson = allLessons[currentLessonIndex];
+            const currentModule = currentLesson.module;
 
             let content = '';
             let filename = '';
-
-            const currentLesson = allLessons[currentLessonIndex];
-            const currentModule = currentLesson.module;
 
             switch (downloadType) {
                 case 'current-lesson':
@@ -4968,17 +5955,11 @@ sys.stderr = StringIO()
                     break;
                 case 'module-lessons':
                     let moduleLessons = [];
-                    if (currentModule === 'fundamentals') {
-                        moduleLessons = fundamentalsLessons;
-                    } else if (currentModule === 'control') {
-                        moduleLessons = controlLessons;
-                    } else if (currentModule === 'collections') {
-                        moduleLessons = collectionsLessons;
-                    } else if (currentModule === 'functions') {
-                        moduleLessons = functionsLessons;
-                    } else if (currentModule === 'oop') {
-                        moduleLessons = oopLessons;
-                    }
+                    if (currentModule === 'fundamentals') moduleLessons = fundamentalsLessons;
+                    else if (currentModule === 'control') moduleLessons = controlLessons;
+                    else if (currentModule === 'collections') moduleLessons = collectionsLessons;
+                    else if (currentModule === 'functions') moduleLessons = functionsLessons;
+                    else if (currentModule === 'oop') moduleLessons = oopLessons;
                     content = createPDFContent(moduleLessons);
                     filename = `python-${currentModule}-module.pdf`;
                     break;
@@ -4997,7 +5978,7 @@ sys.stderr = StringIO()
             const textLines = doc.splitTextToSize(content, 180);
             let y = 10;
 
-            for (let i = 0; i < textLines.length; i) {
+            for (let i = 0; i < textLines.length; i++) {
                 if (y > pageHeight - 10) {
                     doc.addPage();
                     y = 10;
