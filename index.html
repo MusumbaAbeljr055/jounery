@@ -296,12 +296,15 @@
         }
 
         .home-img {
+            position: relative;
             border-radius: 50%;
+            display: inline-block;
         }
 
         .home-img img {
             position: relative;
-            width: 32vw;
+            z-index: 1;
+            width: 25vw;
             border-radius: 50%;
             box-shadow: 0 0 25px solid #b74b4b;
             cursor: pointer;
@@ -311,6 +314,50 @@
         .home-img img:hover {
             transform: scale(1.05);
             box-shadow: 0 0 30px #b74b4b;
+        }
+
+        .orbit-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            transform-origin: center;
+            animation: orbit 10s linear infinite;
+        }
+
+        .dot1 {
+            background-color: #ff0000;
+            animation-duration: 8s;
+        }
+
+        .dot2 {
+            background-color: #00ff00;
+            animation-duration: 12s;
+            animation-delay: -3s;
+            animation-direction: reverse;
+        }
+
+        .dot3 {
+            background-color: #0000ff;
+            animation-duration: 10s;
+            animation-delay: -5s;
+        }
+
+        .dot4 {
+            background-color: #ffff00;
+            animation-duration: 15s;
+            animation-delay: -2s;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(15vw) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(15vw) rotate(-360deg);
+            }
         }
 
         .social-icons a {
@@ -668,6 +715,14 @@
             }
 
             .home-img img { width: 70vw; }
+            @keyframes orbit {
+                0% {
+                    transform: rotate(0deg) translateX(40vw) rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg) translateX(40vw) rotate(-360deg);
+                }
+            }
             .home-content h1 { font-size: 5rem; }
             .home-content h3 { font-size: 2.5rem; }
             .bootcamp h2 { font-size: 3rem; }
@@ -869,6 +924,10 @@
     <section class="home" id="home">
         <div class="home-img">
             <img src="abbey.jpg" alt="Profile Picture" />
+            <div class="orbit-dot dot1"></div>
+            <div class="orbit-dot dot2"></div>
+            <div class="orbit-dot dot3"></div>
+            <div class="orbit-dot dot4"></div>
         </div>
         <div class="home-content">
             <h1>Hi, It's <span>Musumba</span></h1>
