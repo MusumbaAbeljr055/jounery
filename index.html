@@ -1045,6 +1045,13 @@
 
     <!-- Scripts -->
     <script>
+        // Prevent Ctrl+U (view source)
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && (event.key === 'u' || event.key === 'U')) {
+                event.preventDefault();
+            }
+        });
+
         // Hamburger Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const nav = document.querySelector('nav');
