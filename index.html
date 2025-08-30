@@ -1168,6 +1168,24 @@
                 alert("Oops! There was an error submitting the form.");
             }
         });
+            // Disable right-click
+    document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        alert("Right-click is disabled on this site!");
+    });
+
+    // Disable common key shortcuts
+    document.addEventListener("keydown", function(e){
+        // F12, Ctrl+Shift+I/J/C, Ctrl+U
+        if (
+            e.keyCode == 123 || 
+            (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) ||
+            (e.ctrlKey && e.keyCode == 85)
+        ) {
+            e.preventDefault();
+            alert("This action is disabled!");
+        }
+    });
     </script>
 </body>
 
