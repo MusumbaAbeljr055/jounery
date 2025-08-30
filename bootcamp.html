@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
@@ -1041,125 +1042,6 @@
             color: var(--text-color);
         }
 
-        /* NEW STYLES FOR ADDED FEATURES */
-
-        /* Gamification Elements */
-        .gamification-bar {
-            position: fixed;
-            top: 70px;
-            right: 20px;
-            background: var(--card-bg);
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 200px;
-        }
-
-        .points-display {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: bold;
-        }
-
-        .badges-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 10px;
-        }
-
-        .badge {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--color-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.8rem;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .badge[data-tooltip]:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-dark);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            z-index: 1000;
-        }
-
-        .notification-toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--color-secondary);
-            color: white;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .notification-toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .leaderboard-view {
-            display: none;
-            padding: 1.5rem 0;
-        }
-
-        .leaderboard-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .leaderboard-table th,
-        .leaderboard-table td {
-            padding: 0.8rem;
-            text-align: left;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .leaderboard-table th {
-            background-color: var(--color-primary);
-            color: white;
-        }
-
-        .leaderboard-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .leaderboard-table tr:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
         /* Search Functionality */
         .search-container {
             position: relative;
@@ -1198,206 +1080,6 @@
 
         .search-result-item:hover {
             background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        /* Community Forum */
-        .forum-view {
-            display: none;
-            padding: 1.5rem 0;
-        }
-
-        .forum-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .forum-category {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .forum-category:hover {
-            transform: translateY(-3px);
-        }
-
-        .forum-category h3 {
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .thread-list {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .thread-item {
-            padding: 1rem;
-            border-bottom: 1px solid var(--color-border);
-            cursor: pointer;
-        }
-
-        .thread-item:last-child {
-            border-bottom: none;
-        }
-
-        .thread-item:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        .thread-view {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .post {
-            padding: 1rem;
-            border-bottom: 1px solid var(--color-border);
-            margin-bottom: 1rem;
-        }
-
-        .post:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .post-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--muted-text);
-        }
-
-        .reply-form {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--color-border);
-        }
-
-        /* Daily Challenges */
-        .daily-challenge-view {
-            display: none;
-            padding: 1.5rem 0;
-        }
-
-        .challenge-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .challenge-timer {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 1rem 0;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--color-accent);
-        }
-
-        .difficulty-indicator {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .difficulty-easy {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .difficulty-medium {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-
-        .difficulty-hard {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
-        /* User Accounts */
-        .auth-view {
-            display: none;
-            padding: 1.5rem 0;
-        }
-
-        .auth-form {
-            max-width: 400px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .form-toggle {
-            text-align: center;
-            margin-top: 1rem;
-            color: var(--muted-text);
-        }
-
-        .form-toggle a {
-            color: var(--color-primary);
-            cursor: pointer;
-        }
-
-        .profile-view {
-            display: none;
-            padding: 1.5rem 0;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .profile-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .progress-chart {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .progress-item {
-            background: var(--card-bg);
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            text-align: center;
         }
 
         @media (max-width: 480px) {
@@ -1526,12 +1208,6 @@
             }
 
             /* New responsive styles */
-            .gamification-bar {
-                position: static;
-                margin: 1rem 0;
-                width: 100%;
-            }
-
             .search-container {
                 width: 100%;
                 margin: 0.5rem 0;
@@ -1539,10 +1215,6 @@
 
             .search-input {
                 width: 100%;
-            }
-
-            .forum-categories {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -1627,12 +1299,6 @@
                 right: 10px;
                 max-width: 95%;
             }
-
-            .gamification-bar {
-                position: static;
-                margin: 1rem 0;
-                width: 100%;
-            }
         }
     </style>
 </head>
@@ -1650,24 +1316,11 @@
                     <div class="search-results" id="searchResults"></div>
                 </div>
                 <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
-                <button id="userBtn" aria-label="User Account">👤 Login</button>
                 <button id="visitorBtn" aria-label="View Visitors">👥 Visitors</button>
                 <button id="butInstall" aria-label="Install App" style="display: none;">Install App</button>
             </div>
         </div>
     </header>
-
-    <!-- Gamification Bar -->
-    <div class="gamification-bar" id="gamificationBar">
-        <div class="points-display">
-            <i class="fas fa-star"></i>
-            <span id="userPoints">0</span> points
-        </div>
-        <div class="badges-container" id="badgesContainer">
-            <!-- Badges will be populated by JavaScript -->
-        </div>
-        <button id="showLeaderboard">View Leaderboard</button>
-    </div>
 
     <main class="container">
         <div id="dashboard-view">
@@ -1678,8 +1331,6 @@
                 <div class="hero-actions">
                     <a href="#curriculum" class="button primary">Start Learning</a>
                     <a href="#" id="downloadAll" class="button secondary">Download Full Course (PDF)</a>
-                    <button id="dailyChallengeBtn" class="button secondary">Daily Challenge</button>
-                    <button id="forumBtn" class="button secondary">Community Forum</button>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="overallProgressBar" style="width: 0%;"></div>
@@ -1879,200 +1530,6 @@ print("Hello, Python!")</textarea>
                 <pre id="visitor-json">Loading visitor data...</pre>
             </div>
         </div>
-
-        <!-- NEW VIEWS FOR ADDED FEATURES -->
-
-        <!-- Leaderboard View -->
-        <div id="leaderboard-view" class="leaderboard-view">
-            <div class="leaderboard-header">
-                <h2>Leaderboard</h2>
-                <button id="back-from-leaderboard">Back to Dashboard</button>
-            </div>
-            <table class="leaderboard-table">
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>User</th>
-                        <th>Points</th>
-                        <th>Badges</th>
-                    </tr>
-                </thead>
-                <tbody id="leaderboard-body">
-                    <!-- Leaderboard data will be populated by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Forum View -->
-        <div id="forum-view" class="forum-view">
-            <div class="forum-header">
-                <h2>Community Forum</h2>
-                <div>
-                    <button id="new-thread-btn">New Thread</button>
-                    <button id="back-from-forum">Back to Dashboard</button>
-                </div>
-            </div>
-
-            <div class="forum-categories">
-                <div class="forum-category" data-category="general">
-                    <h3>General Discussion</h3>
-                    <p>Talk about Python programming in general</p>
-                </div>
-                <div class="forum-category" data-category="help">
-                    <h3>Help & Support</h3>
-                    <p>Get help with specific coding problems</p>
-                </div>
-                <div class="forum-category" data-category="projects">
-                    <h3>Projects & Showcase</h3>
-                    <p>Share your Python projects and get feedback</p>
-                </div>
-                <div class="forum-category" data-category="career">
-                    <h3>Career Advice</h3>
-                    <p>Discuss Python careers in Uganda and beyond</p>
-                </div>
-            </div>
-
-            <div id="threads-container">
-                <!-- Threads will be populated by JavaScript -->
-            </div>
-
-            <div id="thread-view" style="display: none;">
-                <!-- Single thread view will be populated by JavaScript -->
-            </div>
-
-            <div id="new-thread-view" style="display: none;">
-                <div class="thread-view">
-                    <h3>Create New Thread</h3>
-                    <div class="form-group">
-                        <label for="thread-title">Title</label>
-                        <input type="text" id="thread-title" placeholder="Enter thread title">
-                    </div>
-                    <div class="form-group">
-                        <label for="thread-content">Content</label>
-                        <textarea id="thread-content" rows="5" placeholder="Enter your message"></textarea>
-                    </div>
-                    <div class="form-actions">
-                        <button id="create-thread">Create Thread</button>
-                        <button id="cancel-thread">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Daily Challenge View -->
-        <div id="daily-challenge-view" class="daily-challenge-view">
-            <div class="challenge-header">
-                <h2>Daily Challenge</h2>
-                <button id="back-from-challenge">Back to Dashboard</button>
-            </div>
-
-            <div class="challenge-timer">
-                <i class="fas fa-clock"></i>
-                <span id="challenge-countdown">Next challenge in: 24:00:00</span>
-            </div>
-
-            <div class="challenge-card" id="current-challenge">
-                <span class="difficulty-indicator difficulty-medium">Medium</span>
-                <h3 id="challenge-title">Challenge Title</h3>
-                <p id="challenge-description">Challenge description goes here...</p>
-                <div class="code-editor">
-                    <div class="editor-header">
-                        <span>Your Solution</span>
-                    </div>
-                    <textarea class="code-area" id="challenge-code-input" placeholder="Write your solution here..."></textarea>
-                </div>
-                <button id="submit-challenge">Submit Solution</button>
-                <div class="output-area" id="challenge-output"></div>
-            </div>
-
-            <div class="challenge-card" id="challenge-rewards" style="display: none;">
-                <h3>Challenge Completed!</h3>
-                <p>You earned <span id="challenge-points">50</span> points!</p>
-                <button id="close-challenge">Continue Learning</button>
-            </div>
-        </div>
-
-        <!-- User Authentication View -->
-        <div id="auth-view" class="auth-view">
-            <div class="auth-form" id="login-form">
-                <h2>Login to Your Account</h2>
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" placeholder="Enter your password">
-                </div>
-                <button id="login-btn">Login</button>
-                <div class="form-toggle">
-                    Don't have an account? <a id="show-register">Register</a>
-                </div>
-            </div>
-
-            <div class="auth-form" id="register-form" style="display: none;">
-                <h2>Create an Account</h2>
-                <div class="form-group">
-                    <label for="register-name">Full Name</label>
-                    <input type="text" id="register-name" placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="register-email">Email</label>
-                    <input type="email" id="register-email" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="register-password">Password</label>
-                    <input type="password" id="register-password" placeholder="Create a password">
-                </div>
-                <div class="form-group">
-                    <label for="register-confirm">Confirm Password</label>
-                    <input type="password" id="register-confirm" placeholder="Confirm your password">
-                </div>
-                <button id="register-btn">Register</button>
-                <div class="form-toggle">
-                    Already have an account? <a id="show-login">Login</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- User Profile View -->
-        <div id="profile-view" class="profile-view">
-            <div class="profile-header">
-                <div class="profile-avatar" id="profile-avatar">U</div>
-                <div>
-                    <h2 id="profile-name">User Name</h2>
-                    <p id="profile-email">user@example.com</p>
-                </div>
-            </div>
-
-            <div class="progress-chart">
-                <div class="progress-item">
-                    <h3>Points</h3>
-                    <p id="profile-points">0</p>
-                </div>
-                <div class="progress-item">
-                    <h3>Lessons Completed</h3>
-                    <p id="profile-lessons">0/20</p>
-                </div>
-                <div class="progress-item">
-                    <h3>Badges Earned</h3>
-                    <p id="profile-badges">0/10</p>
-                </div>
-                <div class="progress-item">
-                    <h3>Daily Challenges</h3>
-                    <p id="profile-challenges">0/7</p>
-                </div>
-            </div>
-
-            <div class="badges-container" id="profile-badges-container">
-                <!-- Badges will be populated by JavaScript -->
-            </div>
-
-            <div class="profile-actions">
-                <button id="logout-btn">Logout</button>
-                <button id="back-from-profile">Back to Dashboard</button>
-            </div>
-        </div>
     </main>
 
     <div id="installToast">
@@ -2146,12 +1603,6 @@ print("Hello, Python!")</textarea>
             </div>
             <div id="downloadStatus"></div>
         </div>
-    </div>
-
-    <!-- Notification Toast -->
-    <div class="notification-toast" id="notificationToast">
-        <i class="fas fa-trophy"></i>
-        <div id="notification-message">You earned a new badge!</div>
     </div>
 
     <footer>
@@ -2389,7 +1840,7 @@ print(f"After append: {fruits}")`,
                     <p>Tuples are used to store multiple items in a single variable. A tuple is a collection which is ordered and unchangeable.</p>
                     
                     <h3>Dictionaries</h3>
-                    <p>Dictionaries are used to store data values in key:value pairs. A dictionary is a collection which is ordered, changeable and does not allow duplicates.</p>
+                    <p>Dictionaries are used to store data values in key:value pairs. A dictionary is a dictionary which is ordered, changeable and does not allow duplicates.</p>
                 `,
                 defaultCode: `# Tuple example
 dimensions = (1920, 1080)
@@ -3035,7 +2486,7 @@ print(cat.name + " says: " + cat.speak())`,
                         "if condition: code else: code",
                         "if condition: code; else: code",
                         "if condition: code\nelse: code",
-                        "if condition { code } else { code }"
+                        "if condition: code { } else { code }"
                     ],
                     correct: 2
                 },
@@ -4176,107 +3627,6 @@ print(cat.name + " says: " + cat.speak())`,
             ]
         };
 
-        // Gamification data
-        const BADGES = {
-            FIRST_STEPS: { id: 'first-steps', name: 'First Steps', description: 'Complete your first lesson' },
-            QUIZ_MASTER: { id: 'quiz-master', name: 'Quiz Master', description: 'Score 100% on any quiz' },
-            CODE_WARRIOR: { id: 'code-warrior', name: 'Code Warrior', description: 'Complete 10 coding challenges' },
-            DAILY_CHALLENGER: { id: 'daily-challenger', name: 'Daily Challenger', description: 'Complete 7 daily challenges' },
-            PYTHON_PRO: { id: 'python-pro', name: 'Python Pro', description: 'Complete all lessons' },
-            FORUM_CONTRIBUTOR: { id: 'forum-contributor', name: 'Forum Contributor', description: 'Post 10 messages in the forum' },
-            HELPFUL_SOUL: { id: 'helpful-soul', name: 'Helpful Soul', description: 'Help 5 other users in the forum' },
-            EARLY_BIRD: { id: 'early-bird', name: 'Early Bird', description: 'Complete a lesson before 8 AM' },
-            NIGHT_OWL: { id: 'night-owl', name: 'Night Owl', description: 'Complete a lesson after 10 PM' },
-            PERSEVERANCE: { id: 'perseverance', name: 'Perseverance', description: 'Retry a quiz 3 times until passing' }
-        };
-
-        // Daily challenges data
-        const DAILY_CHALLENGES = [
-            {
-                id: 1,
-                title: "FizzBuzz",
-                description: "Write a program that prints the numbers from 1 to 100. But for multiples of three print 'Fizz' instead of the number and for the multiples of five print 'Buzz'. For numbers which are multiples of both three and five print 'FizzBuzz'.",
-                difficulty: "medium",
-                points: 50,
-                testCases: [
-                    { input: "", expected: "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz 31 32 Fizz 34 Buzz Fizz 37 38 Fizz Buzz 41 Fizz 43 44 FizzBuzz 46 47 Fizz 49 Buzz Fizz 52 53 Fizz Buzz 56 Fizz 58 59 FizzBuzz 61 62 Fizz 64 Buzz Fizz 67 68 Fizz Buzz 71 Fizz 73 74 FizzBuzz 76 77 Fizz 79 Buzz Fizz 82 83 Fizz Buzz 86 Fizz 88 89 FizzBuzz 91 92 Fizz 94 Buzz Fizz 97 98 Fizz Buzz" }
-                ]
-            },
-            {
-                id: 2,
-                title: "Palindrome Checker",
-                description: "Write a function that checks if a given string is a palindrome (reads the same forwards and backwards). Ignore case and non-alphanumeric characters.",
-                difficulty: "easy",
-                points: 30,
-                testCases: [
-                    { input: "'racecar'", expected: "True" },
-                    { input: "'A man, a plan, a canal, Panama!'", expected: "True" },
-                    { input: "'hello'", expected: "False" }
-                ]
-            },
-            {
-                id: 3,
-                title: "Prime Number Generator",
-                description: "Write a function that returns all prime numbers up to a given number n using the Sieve of Eratosthenes algorithm.",
-                difficulty: "hard",
-                points: 75,
-                testCases: [
-                    { input: "30", expected: "[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]" }
-                ]
-            }
-        ];
-
-        // Forum categories and sample data
-        const FORUM_CATEGORIES = {
-            general: "General Discussion",
-            help: "Help & Support",
-            projects: "Projects & Showcase",
-            career: "Career Advice"
-        };
-
-        const SAMPLE_THREADS = {
-            general: [
-                { id: 1, title: "Welcome to the Python Bootcamp!", author: "Admin", date: "2025-01-15", replies: 5, views: 120 },
-                { id: 2, title: "What inspired you to learn Python?", author: "PythonLover", date: "2025-01-16", replies: 12, views: 200 }
-            ],
-            help: [
-                { id: 3, title: "Need help with function parameters", author: "BeginnerCoder", date: "2025-01-17", replies: 3, views: 45 },
-                { id: 4, title: "Understanding list comprehensions", author: "ConfusedStudent", date: "2025-01-18", replies: 7, views: 89 }
-            ],
-            projects: [
-                { id: 5, title: "My first Python game: Snake", author: "GameDevNewbie", date: "2025-01-19", replies: 15, views: 250 },
-                { id: 6, title: "Web scraper for Ugandan news sites", author: "DataEnthusiast", date: "2025-01-20", replies: 8, views: 150 }
-            ],
-            career: [
-                { id: 7, title: "Python job opportunities in Kampala", author: "JobSeeker", date: "2025-01-21", replies: 10, views: 180 },
-                { id: 8, title: "Freelancing with Python skills", author: "Freelancer2025", date: "2025-01-22", replies: 6, views: 95 }
-            ]
-        };
-
-        const SAMPLE_THREAD_CONTENT = {
-            1: {
-                title: "Welcome to the Python Bootcamp!",
-                author: "Admin",
-                date: "2025-01-15",
-                content: "Welcome everyone to the Python Bootcamp! This is a space where we can all learn and grow together. Feel free to introduce yourself and share your Python journey so far.",
-                replies: [
-                    { author: "PythonNewbie", date: "2025-01-15", content: "Thanks for creating this bootcamp! I'm excited to start my Python journey." },
-                    { author: "CoderGirl", date: "2025-01-15", content: "Hello everyone! I've been learning Python for a month now and I'm loving it!" },
-                    { author: "FutureDev", date: "2025-01-16", content: "Great to be here. Looking forward to learning with all of you." }
-                ]
-            },
-            3: {
-                title: "Need help with function parameters",
-                author: "BeginnerCoder",
-                date: "2025-01-17",
-                content: "I'm having trouble understanding how default parameters work in Python functions. Can someone explain with a simple example?",
-                replies: [
-                    { author: "PythonExpert", date: "2025-01-17", content: "Default parameters are values that are pre-set in the function definition. Here's an example:\n\n```python\ndef greet(name, message='Hello'):\n    print(f'{message}, {name}!')\n\ngreet('John')  # Uses default message: Hello, John!\ngreet('Sarah', 'Hi')  # Overrides default: Hi, Sarah!\n```" },
-                    { author: "CodeHelper", date: "2025-01-17", content: "Just remember that parameters with default values must come after parameters without defaults in the function definition." }
-                ]
-            }
-        };
-
         // Visitor data structure
         const VISITOR_DATA = {
             uniqueVisitors: 0,
@@ -4293,9 +3643,6 @@ print(cat.name + " says: " + cat.speak())`,
         let userAnswers = [];
         let quizStartTime = 0;
         let quizTimerInterval = null;
-        let currentChallenge = null;
-        let challengeTimerInterval = null;
-        let nextChallengeTime = null;
 
         // DOM elements
         const installButton = document.getElementById('butInstall');
@@ -4358,72 +3705,8 @@ print(cat.name + " says: " + cat.speak())`,
 
         const moduleToggles = document.querySelectorAll('.module-toggle');
 
-        // NEW DOM ELEMENTS FOR ADDED FEATURES
-        const userBtn = document.getElementById('userBtn');
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
-        const gamificationBar = document.getElementById('gamificationBar');
-        const userPoints = document.getElementById('userPoints');
-        const badgesContainer = document.getElementById('badgesContainer');
-        const showLeaderboard = document.getElementById('showLeaderboard');
-        const notificationToast = document.getElementById('notificationToast');
-        const notificationMessage = document.getElementById('notification-message');
-        const dailyChallengeBtn = document.getElementById('dailyChallengeBtn');
-        const forumBtn = document.getElementById('forumBtn');
-        
-        const leaderboardView = document.getElementById('leaderboard-view');
-        const backFromLeaderboard = document.getElementById('back-from-leaderboard');
-        const leaderboardBody = document.getElementById('leaderboard-body');
-        
-        const forumView = document.getElementById('forum-view');
-        const backFromForum = document.getElementById('back-from-forum');
-        const newThreadBtn = document.getElementById('new-thread-btn');
-        const threadsContainer = document.getElementById('threads-container');
-        const threadView = document.getElementById('thread-view');
-        const newThreadView = document.getElementById('new-thread-view');
-        const threadTitle = document.getElementById('thread-title');
-        const threadContent = document.getElementById('thread-content');
-        const createThread = document.getElementById('create-thread');
-        const cancelThread = document.getElementById('cancel-thread');
-        
-        const dailyChallengeView = document.getElementById('daily-challenge-view');
-        const backFromChallenge = document.getElementById('back-from-challenge');
-        const challengeCountdown = document.getElementById('challenge-countdown');
-        const currentChallengeCard = document.getElementById('current-challenge');
-        const challengeTitle = document.getElementById('challenge-title');
-        const challengeDescription = document.getElementById('challenge-description');
-        const challengeCodeInput = document.getElementById('challenge-code-input');
-        const submitChallenge = document.getElementById('submit-challenge');
-        const challengeOutput = document.getElementById('challenge-output');
-        const challengeRewards = document.getElementById('challenge-rewards');
-        const challengePoints = document.getElementById('challenge-points');
-        const closeChallenge = document.getElementById('close-challenge');
-        
-        const authView = document.getElementById('auth-view');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        const loginEmail = document.getElementById('login-email');
-        const loginPassword = document.getElementById('login-password');
-        const loginBtn = document.getElementById('login-btn');
-        const showRegister = document.getElementById('show-register');
-        const registerName = document.getElementById('register-name');
-        const registerEmail = document.getElementById('register-email');
-        const registerPassword = document.getElementById('register-password');
-        const registerConfirm = document.getElementById('register-confirm');
-        const registerBtn = document.getElementById('register-btn');
-        const showLogin = document.getElementById('show-login');
-        
-        const profileView = document.getElementById('profile-view');
-        const profileAvatar = document.getElementById('profile-avatar');
-        const profileName = document.getElementById('profile-name');
-        const profileEmail = document.getElementById('profile-email');
-        const profilePoints = document.getElementById('profile-points');
-        const profileLessons = document.getElementById('profile-lessons');
-        const profileBadges = document.getElementById('profile-badges');
-        const profileChallenges = document.getElementById('profile-challenges');
-        const profileBadgesContainer = document.getElementById('profile-badges-container');
-        const logoutBtn = document.getElementById('logout-btn');
-        const backFromProfile = document.getElementById('back-from-profile');
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
@@ -4436,15 +3719,6 @@ print(cat.name + " says: " + cat.speak())`,
 
             // Initialize visitor tracking
             initVisitorTracking();
-
-            // Initialize user data
-            initUserData();
-
-            // Initialize gamification
-            initGamification();
-
-            // Initialize daily challenges
-            initDailyChallenges();
 
             // Render lesson cards
             renderLessonCards(fundamentalsLessons, 'fundamentals-module');
@@ -4534,8 +3808,6 @@ print(cat.name + " says: " + cat.speak())`,
             retakeQuizBtn.addEventListener('click', retakeQuiz);
             backToLessonBtn.addEventListener('click', backToLessonFromResults);
 
-            // NEW EVENT LISTENERS FOR ADDED FEATURES
-
             // Search functionality
             searchInput.addEventListener('input', handleSearch);
             searchInput.addEventListener('focus', () => {
@@ -4549,45 +3821,19 @@ print(cat.name + " says: " + cat.speak())`,
                 }, 200);
             });
 
-            // User authentication
-            userBtn.addEventListener('click', handleUserButtonClick);
-            showRegister.addEventListener('click', showRegisterForm);
-            showLogin.addEventListener('click', showLoginForm);
-            loginBtn.addEventListener('click', attemptLogin);
-            registerBtn.addEventListener('click', attemptRegister);
-            logoutBtn.addEventListener('click', logoutUser);
-            backFromProfile.addEventListener('click', showDashboard);
-
-            // Gamification
-            showLeaderboard.addEventListener('click', showLeaderboardView);
-            backFromLeaderboard.addEventListener('click', showDashboard);
-
-            // Forum
-            forumBtn.addEventListener('click', showForumView);
-            backFromForum.addEventListener('click', showDashboard);
-            newThreadBtn.addEventListener('click', showNewThreadView);
-            cancelThread.addEventListener('click', cancelNewThread);
-            createThread.addEventListener('click', createNewThread);
-            
-            // Forum categories
-            document.querySelectorAll('.forum-category').forEach(category => {
-                category.addEventListener('click', () => {
-                    const categoryId = category.getAttribute('data-category');
-                    showForumThreads(categoryId);
-                });
-            });
-
-            // Daily challenges
-            dailyChallengeBtn.addEventListener('click', showDailyChallengeView);
-            backFromChallenge.addEventListener('click', showDashboard);
-            submitChallenge.addEventListener('click', submitDailyChallenge);
-            closeChallenge.addEventListener('click', showDashboard);
-            challengeCodeInput.addEventListener('keydown', handleCodeIndentation);
-
             // Modal close on outside click
             window.addEventListener('click', (e) => {
                 if (e.target === downloadModal) {
                     hideDownloadModal();
+                }
+            });
+
+            // Prevent view source and right-click
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+                    e.preventDefault();
+                    return false;
                 }
             });
         }
@@ -4624,61 +3870,6 @@ print(cat.name + " says: " + cat.speak())`,
         function saveCodeToLocalStorage() {
             const lesson = allLessons[currentLessonIndex];
             localStorage.setItem(`lesson-${lesson.id}-code`, this.value);
-        }
-
-        // Initialize user data
-        function initUserData() {
-            let userData = localStorage.getItem('userData');
-            if (!userData) {
-                // Create default user data structure
-                userData = {
-                    isLoggedIn: false,
-                    users: {},
-                    currentUser: null
-                };
-                localStorage.setItem('userData', JSON.stringify(userData));
-            } else {
-                userData = JSON.parse(userData);
-                updateUserButton(userData.isLoggedIn, userData.currentUser);
-            }
-            return userData;
-        }
-
-        // Initialize gamification
-        function initGamification() {
-            let gamificationData = localStorage.getItem('gamificationData');
-            if (!gamificationData) {
-                // Create default gamification data structure
-                gamificationData = {
-                    leaderboard: [],
-                    userStats: {}
-                };
-                localStorage.setItem('gamificationData', JSON.stringify(gamificationData));
-            } else {
-                gamificationData = JSON.parse(gamificationData);
-                updateGamificationBar();
-            }
-            return gamificationData;
-        }
-
-        // Initialize daily challenges
-        function initDailyChallenges() {
-            let challengeData = localStorage.getItem('challengeData');
-            if (!challengeData) {
-                // Create default challenge data structure
-                challengeData = {
-                    lastChallengeDate: null,
-                    currentChallenge: null,
-                    completedChallenges: {},
-                    nextChallengeTime: new Date().getTime() + (24 * 60 * 60 * 1000) // 24 hours from now
-                };
-                localStorage.setItem('challengeData', JSON.stringify(challengeData));
-            } else {
-                challengeData = JSON.parse(challengeData);
-                nextChallengeTime = challengeData.nextChallengeTime;
-                updateChallengeTimer();
-            }
-            return challengeData;
         }
 
         // Initialize visitor tracking
@@ -4740,666 +3931,12 @@ print(cat.name + " says: " + cat.speak())`,
             visitorJson.textContent = JSON.stringify(VISITOR_DATA.visitors, null, 2);
         }
 
-        // Update user button based on authentication status
-        function updateUserButton(isLoggedIn, user) {
-            if (isLoggedIn && user) {
-                userBtn.textContent = `👤 ${user.name.split(' ')[0]}`;
-                userBtn.setAttribute('aria-label', `User Profile: ${user.name}`);
-            } else {
-                userBtn.textContent = '👤 Login';
-                userBtn.setAttribute('aria-label', 'User Login');
-            }
-        }
-
-        // Update gamification bar with user points and badges
-        function updateGamificationBar() {
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            const gamificationData = JSON.parse(localStorage.getItem('gamificationData') || '{}');
-            
-            if (userData.isLoggedIn && userData.currentUser) {
-                const userId = userData.currentUser.id;
-                const userStats = gamificationData.userStats[userId] || { points: 0, badges: [] };
-                
-                userPoints.textContent = userStats.points;
-                
-                // Update badges
-                badgesContainer.innerHTML = '';
-                userStats.badges.forEach(badgeId => {
-                    const badge = BADGES[badgeId];
-                    if (badge) {
-                        const badgeElement = document.createElement('div');
-                        badgeElement.className = 'badge';
-                        badgeElement.innerHTML = '🏆';
-                        badgeElement.setAttribute('data-tooltip', badge.name);
-                        badgesContainer.appendChild(badgeElement);
-                    }
-                });
-                
-                gamificationBar.style.display = 'flex';
-            } else {
-                gamificationBar.style.display = 'none';
-            }
-        }
-
-        // Update challenge timer
-        function updateChallengeTimer() {
-            if (!nextChallengeTime) return;
-            
-            if (challengeTimerInterval) {
-                clearInterval(challengeTimerInterval);
-            }
-            
-            challengeTimerInterval = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = nextChallengeTime - now;
-                
-                if (distance < 0) {
-                    clearInterval(challengeTimerInterval);
-                    challengeCountdown.textContent = "New challenge available!";
-                    return;
-                }
-                
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                challengeCountdown.textContent = `Next challenge in: ${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            }, 1000);
-        }
-
-        // Show notification
-        function showNotification(message) {
-            notificationMessage.textContent = message;
-            notificationToast.classList.add('show');
-            
-            setTimeout(() => {
-                notificationToast.classList.remove('show');
-            }, 3000);
-        }
-
-        // Handle user button click
-        function handleUserButtonClick() {
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            
-            if (userData.isLoggedIn) {
-                showProfileView();
-            } else {
-                showAuthView();
-            }
-        }
-
-        // Show authentication view
-        function showAuthView() {
-            hideAllViews();
-            authView.style.display = 'block';
-            loginForm.style.display = 'block';
-            registerForm.style.display = 'none';
-        }
-
-        // Show profile view
-        function showProfileView() {
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            const gamificationData = JSON.parse(localStorage.getItem('gamificationData') || '{}');
-            
-            if (!userData.isLoggedIn || !userData.currentUser) {
-                showAuthView();
-                return;
-            }
-            
-            const user = userData.currentUser;
-            const userStats = gamificationData.userStats[user.id] || { points: 0, badges: [], lessonsCompleted: 0, challengesCompleted: 0 };
-            
-            // Update profile information
-            profileAvatar.textContent = user.name.charAt(0).toUpperCase();
-            profileName.textContent = user.name;
-            profileEmail.textContent = user.email;
-            profilePoints.textContent = userStats.points;
-            profileLessons.textContent = `${userStats.lessonsCompleted || 0}/${allLessons.length}`;
-            profileBadges.textContent = `${userStats.badges ? userStats.badges.length : 0}/${Object.keys(BADGES).length}`;
-            profileChallenges.textContent = `${userStats.challengesCompleted || 0}/7`;
-            
-            // Update badges
-            profileBadgesContainer.innerHTML = '';
-            if (userStats.badges) {
-                userStats.badges.forEach(badgeId => {
-                    const badge = BADGES[badgeId];
-                    if (badge) {
-                        const badgeElement = document.createElement('div');
-                        badgeElement.className = 'badge';
-                        badgeElement.innerHTML = '🏆';
-                        badgeElement.setAttribute('data-tooltip', `${badge.name}: ${badge.description}`);
-                        profileBadgesContainer.appendChild(badgeElement);
-                    }
-                });
-            }
-            
-            hideAllViews();
-            profileView.style.display = 'block';
-        }
-
-        // Show login form
-        function showLoginForm() {
-            loginForm.style.display = 'block';
-            registerForm.style.display = 'none';
-        }
-
-        // Show register form
-        function showRegisterForm() {
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'block';
-        }
-
-        // Attempt login
-        function attemptLogin() {
-            const email = loginEmail.value;
-            const password = loginPassword.value;
-            
-            if (!email || !password) {
-                showNotification('Please enter both email and password');
-                return;
-            }
-            
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            const user = Object.values(userData.users || {}).find(u => u.email === email);
-            
-            if (!user || user.password !== password) {
-                showNotification('Invalid email or password');
-                return;
-            }
-            
-            // Login successful
-            userData.isLoggedIn = true;
-            userData.currentUser = { id: user.id, name: user.name, email: user.email };
-            localStorage.setItem('userData', JSON.stringify(userData));
-            
-            updateUserButton(true, userData.currentUser);
-            updateGamificationBar();
-            showDashboard();
-            showNotification(`Welcome back, ${user.name}!`);
-        }
-
-        // Attempt register
-        function attemptRegister() {
-            const name = registerName.value;
-            const email = registerEmail.value;
-            const password = registerPassword.value;
-            const confirmPassword = registerConfirm.value;
-            
-            if (!name || !email || !password || !confirmPassword) {
-                showNotification('Please fill in all fields');
-                return;
-            }
-            
-            if (password !== confirmPassword) {
-                showNotification('Passwords do not match');
-                return;
-            }
-            
-            if (password.length < 6) {
-                showNotification('Password must be at least 6 characters long');
-                return;
-            }
-            
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            
-            // Check if user already exists
-            if (userData.users && Object.values(userData.users).some(u => u.email === email)) {
-                showNotification('User with this email already exists');
-                return;
-            }
-            
-            // Create new user
-            const userId = 'user_' + Math.random().toString(36).substr(2, 9);
-            userData.users = userData.users || {};
-            userData.users[userId] = {
-                id: userId,
-                name,
-                email,
-                password,
-                joined: new Date().toISOString()
-            };
-            userData.isLoggedIn = true;
-            userData.currentUser = { id: userId, name, email };
-            
-            // Initialize user stats
-            const gamificationData = JSON.parse(localStorage.getItem('gamificationData') || '{}');
-            gamificationData.userStats = gamificationData.userStats || {};
-            gamificationData.userStats[userId] = {
-                points: 0,
-                badges: [],
-                lessonsCompleted: 0,
-                challengesCompleted: 0
-            };
-            
-            localStorage.setItem('userData', JSON.stringify(userData));
-            localStorage.setItem('gamificationData', JSON.stringify(gamificationData));
-            
-            updateUserButton(true, userData.currentUser);
-            updateGamificationBar();
-            showDashboard();
-            showNotification(`Welcome to Python Bootcamp, ${name}!`);
-            
-            // Award first login badge
-            awardBadge(userId, 'FIRST_STEPS');
-        }
-
-        // Logout user
-        function logoutUser() {
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            userData.isLoggedIn = false;
-            userData.currentUser = null;
-            localStorage.setItem('userData', JSON.stringify(userData));
-            
-            updateUserButton(false, null);
-            updateGamificationBar();
-            showDashboard();
-            showNotification('You have been logged out');
-        }
-
-        // Show leaderboard view
-        function showLeaderboardView() {
-            const gamificationData = JSON.parse(localStorage.getItem('gamificationData') || '{}');
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            
-            // Get leaderboard data
-            let leaderboard = [];
-            if (gamificationData.userStats) {
-                leaderboard = Object.entries(gamificationData.userStats).map(([userId, stats]) => {
-                    const user = userData.users ? userData.users[userId] : null;
-                    return {
-                        name: user ? user.name : 'Unknown User',
-                        points: stats.points || 0,
-                        badges: stats.badges ? stats.badges.length : 0
-                    };
-                });
-            }
-            
-            // Sort by points (descending)
-            leaderboard.sort((a, b) => b.points - a.points);
-            
-            // Update leaderboard table
-            leaderboardBody.innerHTML = '';
-            leaderboard.forEach((user, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${user.name}</td>
-                    <td>${user.points}</td>
-                    <td>${user.badges}</td>
-                `;
-                leaderboardBody.appendChild(row);
-            });
-            
-            hideAllViews();
-            leaderboardView.style.display = 'block';
-        }
-
-        // Show forum view
-        function showForumView() {
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            
-            if (!userData.isLoggedIn) {
-                showAuthView();
-                showNotification('Please login to access the forum');
-                return;
-            }
-            
-            hideAllViews();
-            forumView.style.display = 'block';
-            threadsContainer.style.display = 'none';
-            threadView.style.display = 'none';
-            newThreadView.style.display = 'none';
-        }
-
-        // Show forum threads for a category
-        function showForumThreads(categoryId) {
-            const threads = SAMPLE_THREADS[categoryId] || [];
-            
-            threadsContainer.innerHTML = `
-                <h3>${FORUM_CATEGORIES[categoryId]} Threads</h3>
-                ${threads.map(thread => `
-                    <div class="thread-item" data-thread-id="${thread.id}">
-                        <h4>${thread.title}</h4>
-                        <p>By ${thread.author} on ${thread.date} | Replies: ${thread.replies} | Views: ${thread.views}</p>
-                    </div>
-                `).join('')}
-            `;
-            
-            // Add event listeners to thread items
-            document.querySelectorAll('.thread-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const threadId = item.getAttribute('data-thread-id');
-                    showThread(threadId);
-                });
-            });
-            
-            threadsContainer.style.display = 'block';
-            threadView.style.display = 'none';
-            newThreadView.style.display = 'none';
-        }
-
-        // Show single thread
-        function showThread(threadId) {
-            const thread = SAMPLE_THREAD_CONTENT[threadId];
-            
-            if (!thread) {
-                showNotification('Thread not found');
-                return;
-            }
-            
-            threadView.innerHTML = `
-                <div class="thread-view">
-                    <h3>${thread.title}</h3>
-                    <div class="post">
-                        <div class="post-header">
-                            <span>By ${thread.author}</span>
-                            <span>${thread.date}</span>
-                        </div>
-                        <p>${thread.content}</p>
-                    </div>
-                    ${thread.replies.map(reply => `
-                        <div class="post">
-                            <div class="post-header">
-                                <span>By ${reply.author}</span>
-                                <span>${reply.date}</span>
-                            </div>
-                            <p>${reply.content}</p>
-                        </div>
-                    `).join('')}
-                    <div class="reply-form">
-                        <h4>Post a Reply</h4>
-                        <textarea placeholder="Write your reply..." rows="3"></textarea>
-                        <button>Post Reply</button>
-                    </div>
-                </div>
-            `;
-            
-            threadsContainer.style.display = 'none';
-            threadView.style.display = 'block';
-        }
-
-        // Show new thread view
-        function showNewThreadView() {
-            threadsContainer.style.display = 'none';
-            threadView.style.display = 'none';
-            newThreadView.style.display = 'block';
-        }
-
-        // Cancel new thread
-        function cancelNewThread() {
-            threadTitle.value = '';
-            threadContent.value = '';
-            newThreadView.style.display = 'none';
-            threadsContainer.style.display = 'block';
-        }
-
-        // Create new thread
-        function createNewThread() {
-            const title = threadTitle.value;
-            const content = threadContent.value;
-            
-            if (!title || !content) {
-                showNotification('Please fill in both title and content');
-                return;
-            }
-            
-            // In a real app, this would send the data to a server
-            showNotification('Thread created successfully!');
-            threadTitle.value = '';
-            threadContent.value = '';
-            newThreadView.style.display = 'none';
-            threadsContainer.style.display = 'block';
-            
-            // Award forum contributor badge
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            if (userData.isLoggedIn) {
-                const userId = userData.currentUser.id;
-                awardBadge(userId, 'FORUM_CONTRIBUTOR');
-            }
-        }
-
-        // Show daily challenge view
-        function showDailyChallengeView() {
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            
-            if (!userData.isLoggedIn) {
-                showAuthView();
-                showNotification('Please login to access daily challenges');
-                return;
-            }
-            
-            const challengeData = JSON.parse(localStorage.getItem('challengeData') || '{}');
-            const now = new Date().getTime();
-            
-            // Check if it's time for a new challenge
-            if (!challengeData.currentChallenge || now >= challengeData.nextChallengeTime) {
-                // Select a random challenge
-                const randomIndex = Math.floor(Math.random() * DAILY_CHALLENGES.length);
-                currentChallenge = DAILY_CHALLENGES[randomIndex];
-                
-                // Update challenge data
-                challengeData.currentChallenge = currentChallenge;
-                challengeData.nextChallengeTime = now + (24 * 60 * 60 * 1000); // 24 hours from now
-                localStorage.setItem('challengeData', JSON.stringify(challengeData));
-                
-                nextChallengeTime = challengeData.nextChallengeTime;
-                updateChallengeTimer();
-            } else {
-                currentChallenge = challengeData.currentChallenge;
-            }
-            
-            // Update UI with current challenge
-            challengeTitle.textContent = currentChallenge.title;
-            challengeDescription.textContent = currentChallenge.description;
-            challengeCodeInput.value = '';
-            challengeOutput.textContent = '';
-            
-            // Set difficulty class
-            const difficultyIndicator = currentChallengeCard.querySelector('.difficulty-indicator');
-            difficultyIndicator.className = 'difficulty-indicator';
-            difficultyIndicator.classList.add(`difficulty-${currentChallenge.difficulty}`);
-            difficultyIndicator.textContent = currentChallenge.difficulty.charAt(0).toUpperCase() + currentChallenge.difficulty.slice(1);
-            
-            currentChallengeCard.style.display = 'block';
-            challengeRewards.style.display = 'none';
-            
-            hideAllViews();
-            dailyChallengeView.style.display = 'block';
-        }
-
-        // Submit daily challenge
-        async function submitDailyChallenge() {
-            if (!currentChallenge) return;
-            
-            const code = challengeCodeInput.value;
-            if (!code) {
-                showNotification('Please write some code first');
-                return;
-            }
-            
-            challengeOutput.textContent = "Testing your solution...";
-            
-            try {
-                await pyodideReadyPromise;
-                
-                // Prepare test environment
-                await pyodide.runPythonAsync(`
-import sys
-from io import StringIO
-sys.stdout = StringIO()
-sys.stderr = StringIO()
-                `);
-                
-                // Run the user's code
-                await pyodide.runPythonAsync(code);
-                
-                // Test each test case
-                let allPassed = true;
-                for (const testCase of currentChallenge.testCases) {
-                    await pyodide.runPythonAsync(`
-sys.stdout = StringIO()
-sys.stderr = StringIO()
-                    `);
-                    
-                    try {
-                        // Run the test case
-                        let result;
-                        if (testCase.input) {
-                            result = await pyodide.runPythonAsync(`
-${code}
-# Test case execution
-result = solution(${testCase.input})
-print(result)
-                            `);
-                        } else {
-                            result = await pyodide.runPythonAsync(`
-${code}
-# For challenges that don't take input
-exec(compile("""${code}""", 'user_code', 'exec'))
-                            `);
-                        }
-                        
-                        let output = pyodide.runPython("sys.stdout.getvalue()");
-                        let error = pyodide.runPython("sys.stderr.getvalue()");
-                        
-                        if (error) {
-                            challengeOutput.textContent = `Error: ${error}`;
-                            allPassed = false;
-                            break;
-                        }
-                        
-                        // Check if output matches expected result
-                        if (output.trim() !== testCase.expected) {
-                            challengeOutput.textContent = `Test failed. Expected: ${testCase.expected}, Got: ${output}`;
-                            allPassed = false;
-                            break;
-                        }
-                    } catch (err) {
-                        challengeOutput.textContent = `Error: ${err.message}`;
-                        allPassed = false;
-                        break;
-                    }
-                }
-                
-                if (allPassed) {
-                    challengeOutput.textContent = "Congratulations! All tests passed!";
-                    
-                    // Award points and badge
-                    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-                    if (userData.isLoggedIn) {
-                        const userId = userData.currentUser.id;
-                        const gamificationData = JSON.parse(localStorage.getItem('gamificationData') || '{}');
-                        
-                        // Update points
-                        gamificationData.userStats[userId] = gamificationData.userStats[userId] || { points: 0, badges: [] };
-                        gamificationData.userStats[userId].points += currentChallenge.points;
-                        
-                        // Update challenges completed
-                        gamificationData.userStats[userId].challengesCompleted = (gamificationData.userStats[userId].challengesCompleted || 0) + 1;
-                        
-                        // Update challenge data
-                        const challengeData = JSON.parse(localStorage.getItem('challengeData') || '{}');
-                        challengeData.completedChallenges = challengeData.completedChallenges || {};
-                        challengeData.completedChallenges[userId] = challengeData.completedChallenges[userId] || [];
-                        challengeData.completedChallenges[userId].push(currentChallenge.id);
-                        
-                        localStorage.setItem('gamificationData', JSON.stringify(gamificationData));
-                        localStorage.setItem('challengeData', JSON.stringify(challengeData));
-                        
-                        // Update UI
-                        challengePoints.textContent = currentChallenge.points;
-                        currentChallengeCard.style.display = 'none';
-                        challengeRewards.style.display = 'block';
-                        
-                        // Award badge if completed 7 challenges
-                        if (gamificationData.userStats[userId].challengesCompleted >= 7) {
-                            awardBadge(userId, 'DAILY_CHALLENGER');
-                        }
-                        
-                        showNotification(`You earned ${currentChallenge.points} points!`);
-                        updateGamificationBar();
-                    }
-                }
-            } catch (err) {
-                challengeOutput.textContent = `Error: ${err.message}`;
-            }
-        }
-
-        // Award badge to user
-        function awardBadge(userId, badgeKey) {
-            const gamificationData = JSON.parse(localStorage.getItem('gamificationData') || '{}');
-            gamificationData.userStats[userId] = gamificationData.userStats[userId] || { points: 0, badges: [] };
-            
-            // Check if user already has this badge
-            if (!gamificationData.userStats[userId].badges.includes(badgeKey)) {
-                gamificationData.userStats[userId].badges.push(badgeKey);
-                localStorage.setItem('gamificationData', JSON.stringify(gamificationData));
-                
-                // Show notification
-                const badge = BADGES[badgeKey];
-                showNotification(`You earned a new badge: ${badge.name}!`);
-                
-                return true;
-            }
-            return false;
-        }
-
-        // Handle search functionality
-        function handleSearch() {
-            const query = searchInput.value.toLowerCase().trim();
-            
-            if (query.length === 0) {
-                searchResults.style.display = 'none';
-                return;
-            }
-            
-            // Search through lessons
-            const results = allLessons.filter(lesson => 
-                lesson.title.toLowerCase().includes(query) || 
-                lesson.description.toLowerCase().includes(query) ||
-                lesson.content.toLowerCase().includes(query)
-            );
-            
-            // Display results
-            if (results.length > 0) {
-                searchResults.innerHTML = results.map(lesson => `
-                    <div class="search-result-item" data-lesson-id="${lesson.id}">
-                        <strong>${lesson.title}</strong>
-                        <p>${lesson.description}</p>
-                    </div>
-                `).join('');
-                
-                searchResults.style.display = 'block';
-                
-                // Add event listeners to search results
-                document.querySelectorAll('.search-result-item').forEach(item => {
-                    item.addEventListener('click', () => {
-                        const lessonId = item.getAttribute('data-lesson-id');
-                        const lessonIndex = allLessons.findIndex(lesson => lesson.id === lessonId);
-                        if (lessonIndex !== -1) {
-                            showLesson(lessonIndex);
-                            searchResults.style.display = 'none';
-                            searchInput.value = '';
-                        }
-                    });
-                });
-            } else {
-                searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
-                searchResults.style.display = 'block';
-            }
-        }
-
         // Hide all views
         function hideAllViews() {
             dashboardView.style.display = 'none';
             lessonView.style.display = 'none';
             quizView.style.display = 'none';
             visitorView.style.display = 'none';
-            leaderboardView.style.display = 'none';
-            forumView.style.display = 'none';
-            dailyChallengeView.style.display = 'none';
-            authView.style.display = 'none';
-            profileView.style.display = 'none';
         }
 
         // Initialize Pyodide
@@ -5486,11 +4023,6 @@ exec(compile("""${code}""", 'user_code', 'exec'))
             lessonView.style.display = 'none';
             quizView.style.display = 'none';
             visitorView.style.display = 'none';
-            leaderboardView.style.display = 'none';
-            forumView.style.display = 'none';
-            dailyChallengeView.style.display = 'none';
-            authView.style.display = 'none';
-            profileView.style.display = 'none';
             dashboardView.style.display = 'block';
             
             // Refresh lesson cards to update completion status
@@ -5604,35 +4136,6 @@ sys.stderr = StringIO()
             } else {
                 localStorage.setItem(`lesson-${lesson.id}-completed`, 'true');
                 markComplete.textContent = 'Mark as Incomplete';
-                
-                // Award points and badge for completion
-                const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-                if (userData.isLoggedIn) {
-                    const userId = userData.currentUser.id;
-                    const gamificationData = JSON.parse(localStorage.getItem('gamificationData') || '{}');
-                    
-                    // Update points (10 points per lesson)
-                    gamificationData.userStats[userId] = gamificationData.userStats[userId] || { points: 0, badges: [] };
-                    gamificationData.userStats[userId].points += 10;
-                    
-                    // Update lessons completed
-                    gamificationData.userStats[userId].lessonsCompleted = (gamificationData.userStats[userId].lessonsCompleted || 0) + 1;
-                    
-                    localStorage.setItem('gamificationData', JSON.stringify(gamificationData));
-                    
-                    // Award first steps badge if first lesson
-                    if (gamificationData.userStats[userId].lessonsCompleted === 1) {
-                        awardBadge(userId, 'FIRST_STEPS');
-                    }
-                    
-                    // Award python pro badge if all lessons completed
-                    if (gamificationData.userStats[userId].lessonsCompleted >= allLessons.length) {
-                        awardBadge(userId, 'PYTHON_PRO');
-                    }
-                    
-                    showNotification('Lesson completed! +10 points');
-                    updateGamificationBar();
-                }
             }
 
             updateOverallProgress(allLessons);
@@ -5773,25 +4276,6 @@ sys.stderr = StringIO()
                 scoreMessage.textContent = "Not bad, but keep practicing!";
             } else {
                 scoreMessage.textContent = "Keep studying and try again!";
-            }
-            
-            // Award points and badge for perfect score
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            if (userData.isLoggedIn && score === 100) {
-                const userId = userData.currentUser.id;
-                const gamificationData = JSON.parse(localStorage.getItem('gamificationData') || '{}');
-                
-                // Update points (25 points for perfect score)
-                gamificationData.userStats[userId] = gamificationData.userStats[userId] || { points: 0, badges: [] };
-                gamificationData.userStats[userId].points += 25;
-                
-                localStorage.setItem('gamificationData', JSON.stringify(gamificationData));
-                
-                // Award quiz master badge
-                awardBadge(userId, 'QUIZ_MASTER');
-                
-                showNotification('Perfect score! +25 points');
-                updateGamificationBar();
             }
             
             // Show results, hide questions
@@ -6027,6 +4511,51 @@ sys.stderr = StringIO()
             });
 
             return content;
+        }
+
+        // Handle search functionality
+        function handleSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (query.length === 0) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            // Search through lessons
+            const results = allLessons.filter(lesson => 
+                lesson.title.toLowerCase().includes(query) || 
+                lesson.description.toLowerCase().includes(query) ||
+                lesson.content.toLowerCase().includes(query)
+            );
+            
+            // Display results
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(lesson => `
+                    <div class="search-result-item" data-lesson-id="${lesson.id}">
+                        <strong>${lesson.title}</strong>
+                        <p>${lesson.description}</p>
+                    </div>
+                `).join('');
+                
+                searchResults.style.display = 'block';
+                
+                // Add event listeners to search results
+                document.querySelectorAll('.search-result-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const lessonId = item.getAttribute('data-lesson-id');
+                        const lessonIndex = allLessons.findIndex(lesson => lesson.id === lessonId);
+                        if (lessonIndex !== -1) {
+                            showLesson(lessonIndex);
+                            searchResults.style.display = 'none';
+                            searchInput.value = '';
+                        }
+                    });
+                });
+            } else {
+                searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+                searchResults.style.display = 'block';
+            }
         }
     </script>
 </body>
