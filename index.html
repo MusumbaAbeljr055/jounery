@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Journey</title>
+    <title>Musumba</title>
     <link rel="icon" type="image/png" href="musumba.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
@@ -29,32 +29,30 @@
             width: 100%;
             min-height: 100vh;
             overflow-x: hidden;
-            background-color: black;
+            background-color: #0a0f1e; /* Darker blue-toned background */
             color: white;
         }
 
         header {
-            margin-top: 20px;
+            margin-top: 0;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1rem 9%;
-            background-color: rgba(0, 0, 0, 0.8);
-            filter: drop-shadow(10px);
+            padding: 2rem 9%;
+            background-color: rgba(10, 15, 30, 0.9); /* Semi-transparent dark */
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            backdrop-filter: blur(10px);
         }
 
         @keyframes colorChange {
-            0% { color: #b74b4b; }
+            0% { color: #00aaff; }
             25% { color: #00ffcc; }
-            50% { color: #ff6f6f; }
-            75% { color: #ffcc00; }
-            100% { color: #b74b4b; }
+            50% { color: #00aaff; }
+            75% { color: #00ffcc; }
+            100% { color: #00aaff; }
         }
 
         .logo span {
@@ -67,7 +65,7 @@
             display: flex;
             align-items: center;
             font-size: 3rem;
-            color: #b74b4b;
+            color: white;
             font-weight: 800;
             cursor: pointer;
             transition: 0.5s ease;
@@ -77,28 +75,33 @@
             transform: scale(1.05);
         }
 
+        .logo::after {
+            content: '.';
+            color: #00aaff;
+        }
+
         .logo-img {
             width: 40px;
             height: 40px;
             object-fit: cover;
             border-radius: 50%;
             margin-right: 10px;
-            border: 2px solid #b74b4b;
+            border: 2px solid #00aaff;
         }
 
         nav {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             align-items: center;
         }
 
         nav a {
             color: white;
             font-size: 1.8rem;
-            font-weight: 600;
+            font-weight: 500;
             padding: 1rem 2rem;
             border-radius: 50px;
-            background: linear-gradient(45deg, transparent, rgba(183, 75, 75, 0.1));
+            background: linear-gradient(45deg, transparent, rgba(0, 170, 255, 0.1));
             border: 1px solid transparent;
             transition: all 0.4s ease;
             position: relative;
@@ -117,7 +120,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(183, 75, 75, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 170, 255, 0.3), transparent);
             transition: left 0.4s ease;
             z-index: -1;
         }
@@ -128,23 +131,23 @@
 
         nav a:hover {
             color: #fff;
-            background: linear-gradient(45deg, #b74b4b, #ff6f6f);
-            border: 1px solid #ff6f6f;
-            box-shadow: 0 0 20px rgba(183, 75, 75, 0.5);
+            background: linear-gradient(45deg, #00aaff, #00ffcc);
+            border: 1px solid #00ffcc;
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
             transform: translateY(-3px);
         }
 
         nav a.active {
             color: #fff;
-            background: linear-gradient(45deg, #b74b4b, #ff6f6f);
-            border: 1px solid #ff6f6f;
-            box-shadow: 0 0 15px rgba(183, 75, 75, 0.4);
+            background: linear-gradient(45deg, #00aaff, #00ffcc);
+            border: 1px solid #00ffcc;
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
         }
 
         /* Tooltip Styling */
         nav a .tooltip {
             visibility: hidden;
-            background-color: #b74b4b;
+            background-color: #00aaff;
             color: white;
             text-align: center;
             border-radius: 6px;
@@ -168,14 +171,14 @@
         .hamburger {
             display: none;
             font-size: 2.5rem;
-            color: #b74b4b;
+            color: #00aaff;
             cursor: pointer;
             transition: color 0.3s ease;
             z-index: 1001;
         }
 
         .hamburger:hover {
-            color: #ff6f6f;
+            color: #00ffcc;
         }
 
         .hamburger.active .fa-bars {
@@ -223,7 +226,7 @@
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 2rem;
                 border-radius: 0 0 10px 10px;
-                box-shadow: 0 0 20px rgba(183, 75, 75, 0.3);
+                box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
                 width: 100%;
                 max-width: 250px;
                 transform: translateX(100%);
@@ -263,15 +266,15 @@
 
         section {
             min-height: 100vh;
-            padding: 5rem 9% 5rem;
+            padding: 10rem 9% 5rem;
+            background: linear-gradient(to bottom, #0a0f1e, #1a233a); /* Gradient for depth */
         }
 
         .home {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             gap: 8rem;
-            background-color: black;
             padding-top: 100px;
         }
 
@@ -282,7 +285,7 @@
         }
 
         span {
-            color: #b74b4b;
+            color: #00aaff;
         }
 
         .home-content h3 {
@@ -293,27 +296,29 @@
 
         .home-content p {
             font-size: 1.6rem;
+            max-width: 50rem;
+            margin-bottom: 3rem;
+            color: #ccd; /* Light gray for text */
         }
 
         .home-img {
             position: relative;
-            border-radius: 50%;
             display: inline-block;
         }
 
         .home-img img {
             position: relative;
             z-index: 1;
-            width: 25vw;
-            border-radius: 50%;
-            box-shadow: 0 0 25px solid #b74b4b;
+            width: 35vw;
+            border-radius: 10px; /* Slight rounding to match screenshot */
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.3); /* Blue glow */
             cursor: pointer;
             transition: 0.2s linear;
         }
 
         .home-img img:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px #b74b4b;
+            box-shadow: 0 0 30px #00aaff;
         }
 
         .orbit-dot {
@@ -328,25 +333,25 @@
         }
 
         .dot1 {
-            background-color: #ff0000;
+            background-color: #00aaff;
             animation-duration: 8s;
         }
 
         .dot2 {
-            background-color: #00ff00;
+            background-color: #00ffcc;
             animation-duration: 12s;
             animation-delay: -3s;
             animation-direction: reverse;
         }
 
         .dot3 {
-            background-color: #0000ff;
+            background-color: #00aaff;
             animation-duration: 10s;
             animation-delay: -5s;
         }
 
         .dot4 {
-            background-color: #ffff00;
+            background-color: #00ffcc;
             animation-duration: 15s;
             animation-delay: -2s;
         }
@@ -367,40 +372,50 @@
             width: 4rem;
             height: 4rem;
             background-color: transparent;
-            border: 0.2rem solid #b74b4b;
+            border: 0.2rem solid #00aaff;
             font-size: 2rem;
             border-radius: 50%;
             margin: 3rem 1.5rem 3rem 0;
             transition: 0.3s ease;
-            color: #b74b4b;
+            color: #00aaff;
         }
 
         .social-icons a:hover {
             color: black;
             transform: scale(1.3) translateY(-5px);
-            background-color: #b74b4b;
-            box-shadow: 0 0 25px #b74b4b;
+            background-color: #00aaff;
+            box-shadow: 0 0 25px #00aaff;
         }
 
         .btn {
             display: inline-block;
-            padding: 1rem 2.8rem;
-            background-color: black;
-            border-radius: 4rem;
+            padding: 1.5rem 3rem;
             font-size: 1.6rem;
-            color: #b74b4b;
-            letter-spacing: 0.3rem;
             font-weight: 600;
-            border: 2px solid #b74b4b;
+            border-radius: 5px;
             transition: 0.3s ease;
             cursor: pointer;
         }
 
-        .btn:hover {
-            transform: scale(1.03);
-            background-color: #b74b4b;
-            color: black;
-            box-shadow: 0 0 25px #b74b4b;
+        .btn-primary {
+            background-color: #00aaff;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0088cc;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #00aaff;
+            border: 2px solid #00aaff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #00aaff;
+            color: white;
         }
 
         .typing-text {
@@ -415,23 +430,23 @@
 
         .typing-text span::before {
             content: "software Developer";
-            color: #b74b4b;
+            color: #00aaff;
             animation: words 20s infinite;
         }
 
         .typing-text span::after {
             content: "";
-            background-color: black;
+            background-color: #0a0f1e;
             position: absolute;
             width: calc(100% + 8px);
             height: 100%;
-            border-left: 3px solid black;
+            border-left: 3px solid #0a0f1e;
             right: -8;
             animation: cursor 0.6s infinite;
         }
 
         @keyframes cursor {
-            to { border-left: 3px solid #b74b4b; }
+            to { border-left: 3px solid #00aaff; }
         }
 
         @keyframes words {
@@ -450,6 +465,7 @@
             .home {
                 flex-direction: column;
                 margin: 5rem 4rem;
+                text-align: center;
             }
             .home .home-content h3 { font-size: 2.5rem; }
             .home-content h1 { font-size: 5rem; }
@@ -494,7 +510,7 @@
             height: 220px;
             background: #1e1e1e;
             border-radius: 1.5rem;
-            box-shadow: 0 0 15px rgba(183, 75, 75, 0.3);
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
             color: white;
             display: flex;
             flex-direction: column;
@@ -597,7 +613,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23b74b4b" fill-opacity="0.2" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300aaff" fill-opacity="0.2" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
             background-size: cover;
             z-index: 0;
         }
@@ -611,7 +627,7 @@
             font-size: 4rem;
             margin-bottom: 2rem;
             color: white;
-            text-shadow: 0 0 10px rgba(183, 75, 75, 0.8);
+            text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
         }
 
         .bootcamp p {
@@ -628,20 +644,20 @@
             margin: 2rem auto;
             max-width: 600px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(183, 75, 75, 0.3);
+            border: 1px solid rgba(0, 170, 255, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .bootcamp-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(183, 75, 75, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 170, 255, 0.4);
         }
 
         .bootcamp-card h3 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: #b74b4b;
+            color: #00aaff;
         }
 
         .bootcamp-card p {
@@ -652,7 +668,7 @@
         .bootcamp-btn {
             display: inline-block;
             padding: 1.5rem 4rem;
-            background: linear-gradient(45deg, #b74b4b, #ff6f6f);
+            background: linear-gradient(45deg, #00aaff, #00ffcc);
             color: white;
             border-radius: 50px;
             font-size: 1.8rem;
@@ -660,13 +676,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(183, 75, 75, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
         }
 
         .bootcamp-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(183, 75, 75, 0.6);
-            background: linear-gradient(45deg, #ff6f6f, #b74b4b);
+            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.6);
+            background: linear-gradient(45deg, #00ffcc, #00aaff);
         }
 
         /* Responsive Design */
@@ -773,7 +789,7 @@
             background-color: #111;
             padding: 4rem 3rem;
             border-radius: 1.5rem;
-            box-shadow: 0 0 20px rgba(183, 75, 75, 0.3);
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
             max-width: 600px;
             width: 90%;
             margin: 5rem auto;
@@ -782,7 +798,7 @@
 
         .inquiry-form h2 {
             font-size: 2.8rem;
-            color: #b74b4b;
+            color: #00aaff;
             margin-bottom: 0.5rem;
         }
 
@@ -810,20 +826,27 @@
             border-radius: 0.8rem;
             background-color: #1a1a1a;
             color: white;
-            border: 1px solid #b74b4b;
+            border: 1px solid #00aaff;
             font-size: 1.4rem;
         }
 
         .inquiry-form input:focus,
         .inquiry-form textarea:focus {
             outline: none;
-            border-color: #ff6f6f;
+            border-color: #00ffcc;
         }
 
         .inquiry-form .btn {
             width: fit-content;
             align-self: center;
             margin-top: 1rem;
+            background-color: #00aaff;
+            color: white;
+            border: none;
+        }
+
+        .inquiry-form .btn:hover {
+            background-color: #0088cc;
         }
 
         /* Online Dot */
@@ -873,7 +896,7 @@
         .footer-time {
             font-size: 1.2rem;
             margin-top: 0.5rem;
-            color: #b74b4b;
+            color: #00aaff;
         }
 
         .services-glass-background .section-title {
@@ -888,7 +911,7 @@
             background: rgba(0, 0, 0, 0.8);
             padding: 0.5rem 1.5rem;
             border-radius: 30px;
-            border: 1px solid #b74b4b;
+            border: 1px solid #00aaff;
         }
 
         @media (max-width: 768px) {
@@ -898,6 +921,26 @@
                 display: inline-flex;
             }
         }
+
+        /* About Section */
+        .about {
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #00aaff;
+        }
+
+        .about p {
+            font-size: 1.8rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            color: #ccd;
+        }
+
     </style>
 </head>
 
@@ -913,30 +956,28 @@
         </div>
         <nav>
             <a href="#home" aria-label="Go to Home section"><i class="fas fa-home"></i> Home <span class="tooltip">Welcome to my portfolio</span></a>
+            <a href="#about" aria-label="Go to About section"><i class="fas fa-user"></i> About <span class="tooltip">Learn more about me</span></a>
             <a href="#services" aria-label="Go to Services section"><i class="fas fa-cogs"></i> Services <span class="tooltip">Explore my offerings</span></a>
-            <a href="#bootcamp" aria-label="Go to Bootcamp section"><i class="fas fa-laptop-code"></i> Bootcamp <span class="tooltip">Learn about my Python Bootcamp</span></a>
-            <a href="#inquiry-form" aria-label="Go to Contact section"><i class="fas fa-envelope"></i> Contact <span class="tooltip">Get in touch with me</span></a>
+            <a href="#portfolio" aria-label="Go to Portfolio section"><i class="fas fa-briefcase"></i> Portfolio <span class="tooltip">View my work</span></a>
+            <a href="#contact" aria-label="Go to Contact section"><i class="fas fa-envelope"></i> Contact <span class="tooltip">Get in touch with me</span></a>
         </nav>
         <div class="overlay"></div>
     </header>
 
     <!-- Home Section -->
     <section class="home" id="home">
-        <div class="home-img">
-            <img src="abbey.jpg" alt="Profile Picture" />
-            <div class="orbit-dot dot1"></div>
-            <div class="orbit-dot dot2"></div>
-            <div class="orbit-dot dot3"></div>
-            <div class="orbit-dot dot4"></div>
-        </div>
         <div class="home-content">
-            <h1>Hi, It's <span>Musumba</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
+            <h1>Hi, I'm <span>Musumba</span></h1>
+            <h3 class="typing-text">Frontend <span></span></h3>
             <p>
                 I am a dedicated student at Mbarara University of Science and Technology,
                 pursuing a Bachelor of Information Technology. I have a strong passion for technology
                 and am particularly skilled in programming and software development.
             </p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Hire Me</a>
+                <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+            </div>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/musumba" target="_blank" aria-label="LinkedIn">
                     <i class="fa-brands fa-linkedin"></i>
@@ -951,8 +992,28 @@
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
             </div>
-            <a href="#inquiry-form" class="btn"><i class="fa-solid fa-plus"></i> Hire me</a>
         </div>
+        <div class="home-img">
+            <img src="abbey.jpg" alt="Profile Picture" />
+            <div class="orbit-dot dot1"></div>
+            <div class="orbit-dot dot2"></div>
+            <div class="orbit-dot dot3"></div>
+            <div class="orbit-dot dot4"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a dedicated student at Mbarara University of Science and Technology,
+            pursuing a Bachelor of Information Technology. I have a strong passion for technology
+            and am particularly skilled in programming and software development.
+        </p>
+        <p>
+            My interests include web development, app development, and UI/UX design. I enjoy creating
+            innovative solutions and learning new technologies.
+        </p>
     </section>
 
     <section class="services" id="services">
@@ -978,10 +1039,10 @@
         </div>
     </section>
 
-    <!-- Bootcamp Section -->
-    <section class="bootcamp" id="bootcamp">
+    <!-- Portfolio / Bootcamp Section -->
+    <section class="bootcamp" id="portfolio">
         <div class="bootcamp-content">
-            <h2>--<span>Python Bootcamp</span> Journey</h2>
+            <h2>--<span>Portfolio</span> --</h2>
             <p>
                 I created a Python Bootcamp designed to make learning Python easier and more accessible.
                 The bootcamp provides step by step guidance on Python fundamentals,
@@ -1005,8 +1066,8 @@
         </div>
     </section>
 
-    <!-- Inquiry Form Section -->
-    <section class="inquiry-form" id="inquiry-form">
+    <!-- Contact / Inquiry Form Section -->
+    <section class="inquiry-form" id="contact">
         <h2><span class="online-dot"></span> AVAILABLE FOR WORK</h2>
         <h3>Design Inquiry</h3>
         <p>Got an idea and need design help? Reach out now</p>
@@ -1022,7 +1083,7 @@
             <input type="email" name="email" placeholder="Email" required />
             <textarea name="message" placeholder="Message" rows="5" required></textarea>
 
-            <button type="submit" class="btn">Submit Inquiry</button>
+            <button type="submit" class="btn btn-primary">Submit Inquiry</button>
         </form>
     </section>
 
@@ -1138,7 +1199,7 @@
         });
 
         const musumbaText = document.querySelector('.logo span');
-        const colors = ['#b74b4b', '#00ffcc', '#ff6f6f', '#ffcc00'];
+        const colors = ['#00aaff', '#00ffcc', '#00aaff', '#00ffcc'];
         let index = 0;
 
         setInterval(() => {
@@ -1168,24 +1229,24 @@
                 alert("Oops! There was an error submitting the form.");
             }
         });
-            // Disable right-click
-    document.addEventListener("contextmenu", function(e){
-        e.preventDefault();
-        alert("Right-click is disabled on this site!");
-    });
-
-    // Disable common key shortcuts
-    document.addEventListener("keydown", function(e){
-        // F12, Ctrl+Shift+I/J/C, Ctrl+U
-        if (
-            e.keyCode == 123 || 
-            (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) ||
-            (e.ctrlKey && e.keyCode == 85)
-        ) {
+        // Disable right-click
+        document.addEventListener("contextmenu", function(e){
             e.preventDefault();
-            alert("This action is disabled!");
-        }
-    });
+            alert("Right-click is disabled on this site!");
+        });
+
+        // Disable common key shortcuts
+        document.addEventListener("keydown", function(e){
+            // F12, Ctrl+Shift+I/J/C, Ctrl+U
+            if (
+                e.keyCode == 123 || 
+                (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) ||
+                (e.ctrlKey && e.keyCode == 85)
+            ) {
+                e.preventDefault();
+                alert("This action is disabled!");
+            }
+        });
     </script>
 </body>
 
