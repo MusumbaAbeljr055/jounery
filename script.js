@@ -1,3 +1,162 @@
+// ===== RESPONSIVE FUNCTIONALITY =====
+
+// Handle mobile menu toggle
+function handleMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        hamburger.innerHTML = nav.classList.contains('active')
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = 'auto';
+        });
+    });
+}
+
+// Handle responsive images
+function handleResponsiveImages() {
+    const images = document.querySelectorAll('img');
+
+    images.forEach(img => {
+        // Ensure images don't overflow containers
+        img.style.maxWidth = '100%';
+        img.style.height = 'auto';
+
+        // Add lazy loading
+        img.setAttribute('loading', 'lazy');
+    });
+}
+
+// Handle form responsiveness
+function handleFormResponsiveness() {
+    const contactForm = document.getElementById('contactForm');
+
+    // Add responsive validation
+    contactForm.addEventListener('input', function (e) {
+        const input = e.target;
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            // Adjust validation for mobile
+            if (input.name === 'name' && input.value.trim().length < 2) {
+                input.style.borderColor = '#ff4757';
+            } else {
+                input.style.borderColor = '#00ffcc';
+            }
+        }
+    });
+}
+
+// Handle modal responsiveness
+function handleModalResponsiveness() {
+    const modals = [portfolioModal, blogModal];
+
+    modals.forEach(modal => {
+        if (modal) {
+            // Adjust modal content on resize
+            window.addEventListener('resize', () => {
+                if (modal.style.display === 'block') {
+                    // Re-center modal
+                    modal.querySelector('.modal-content').style.margin = '2rem auto';
+                }
+            });
+        }
+    });
+}
+
+// Handle touch events for mobile
+function handleTouchEvents() {
+    // Add swipe detection for mobile menu
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const nav = document.getElementById('nav');
+        const isMobile = window.innerWidth <= 768;
+
+        if (!isMobile) return;
+
+        if (touchStartX - touchEndX > 50) {
+            // Swipe left - close menu if open
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                document.getElementById('hamburger').innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    }
+}
+
+// Handle viewport changes
+function handleViewportChanges() {
+    let resizeTimer;
+
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // Update CSS variables for responsive sizes
+            const isMobile = window.innerWidth <= 768;
+            const root = document.documentElement;
+
+            if (isMobile) {
+                root.style.setProperty('--border-radius', '0.8rem');
+            } else {
+                root.style.setProperty('--border-radius', '1rem');
+            }
+
+            // Close mobile menu if switching to desktop
+            if (window.innerWidth > 768) {
+                const nav = document.getElementById('nav');
+                const hamburger = document.getElementById('hamburger');
+
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }, 250);
+    });
+}
+
+// Initialize all responsive features
+function initResponsiveFeatures() {
+    handleMobileMenu();
+    handleResponsiveImages();
+    handleFormResponsiveness();
+    handleModalResponsiveness();
+    handleTouchEvents();
+    handleViewportChanges();
+
+    console.log('✅ Responsive features initialized');
+}
+
+// Add this to your existing window load event
+window.addEventListener('load', () => {
+    // ... your existing load code ...
+    initResponsiveFeatures();
+});
 // Project Data (2 projects only)
 const projects = {
     'python-bootcamp': {
