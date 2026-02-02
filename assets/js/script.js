@@ -7,8 +7,18 @@ const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+// Check if mobile device
+const isMobile = window.innerWidth <= 579;
+
+// On mobile, expand sidebar by default
+if (isMobile) {
+    sidebar.classList.add("active");
+}
+
+// sidebar toggle functionality
+sidebarBtn.addEventListener("click", function () { 
+    elementToggleFunc(sidebar); 
+});
 
 // custom select variables
 const select = document.querySelector("[data-select]");
@@ -318,5 +328,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const yearElement = document.querySelector('.current-year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
+    }
+});
+
+// Handle window resize for mobile detection
+window.addEventListener('resize', function() {
+    const isMobileNow = window.innerWidth <= 579;
+    
+    // If resizing to mobile and sidebar is not active, activate it
+    if (isMobileNow && !sidebar.classList.contains('active')) {
+        sidebar.classList.add('active');
     }
 });

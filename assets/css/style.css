@@ -1230,6 +1230,132 @@ textarea.form-input::-webkit-resizer { display: none; }
 \*-----------------------------------*/
 
 /**
+ * MOBILE FIRST - Under 579px (Smartphones)
+ */
+
+@media (max-width: 579px) {
+  /* Expand sidebar by default on mobile */
+  .sidebar {
+    max-height: none !important;
+    height: auto !important;
+    padding: 20px !important;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-info_more {
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-top: 15px;
+  }
+  
+  .info_more-btn {
+    display: none !important;
+  }
+  
+  .sidebar-info {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .avatar-box {
+    width: 150px !important;
+    height: 150px !important;
+    margin: 0 auto 20px !important;
+  }
+  
+  .info-content .name {
+    font-size: 24px !important;
+    margin-bottom: 10px;
+  }
+  
+  .info-content .title {
+    font-size: 14px;
+    padding: 6px 16px;
+    margin: 0 auto;
+  }
+  
+  .contacts-list {
+    gap: 20px;
+  }
+  
+  .contact-item {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .contact-info {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .contact-title {
+    font-size: 12px;
+  }
+  
+  .contact-info :is(.contact-link, time, address) {
+    font-size: 14px;
+  }
+  
+  .social-list {
+    justify-content: center;
+    gap: 20px;
+    padding-left: 0;
+  }
+  
+  .separator {
+    margin: 20px 0;
+  }
+  
+  /* Adjust navbar for mobile */
+  .navbar {
+    border-radius: 15px 15px 0 0;
+  }
+  
+  .navbar-list {
+    padding: 0 5px;
+  }
+  
+  .navbar-link {
+    padding: 18px 5px;
+    font-size: 12px;
+  }
+  
+  /* Adjust main content spacing */
+  main {
+    margin-bottom: 85px;
+  }
+  
+  /* Adjust article spacing */
+  article {
+    padding: 20px;
+  }
+  
+  /* Adjust service items for mobile */
+  .service-item {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* Adjust skills section */
+  .skill .title-wrapper {
+    flex-wrap: wrap;
+  }
+  
+  /* Adjust map for mobile */
+  .mapbox {
+    height: 200px;
+  }
+  
+  /* Adjust form for mobile */
+  .form-input {
+    padding: 15px;
+  }
+}
+
+/**
  * responsive larger than 450px screen
  */
 
