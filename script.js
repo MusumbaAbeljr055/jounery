@@ -1,3 +1,89 @@
+// ===== THEME SWITCHER FUNCTIONALITY =====
+
+// Get theme toggle button
+const themeToggle = document.getElementById('theme-toggle');
+
+// Check for saved theme preference or default to light
+const currentTheme = localStorage.getItem('theme') || 'light';
+
+// Apply the saved theme on page load
+if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    updateThemeIndicator('Dark');
+} else {
+    document.body.classList.remove('dark-mode');
+    updateThemeIndicator('Light');
+}
+
+// Theme toggle functionality
+themeToggle.addEventListener('click', () => {
+    // Toggle dark mode class
+    document.body.classList.toggle('dark-mode');
+
+    // Update theme in localStorage
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        updateThemeIndicator('Dark');
+        console.log('🌙 Switched to Dark Mode');
+    } else {
+        localStorage.setItem('theme', 'light');
+        updateThemeIndicator('Light');
+        console.log('🌞 Switched to Light Mode');
+    }
+
+    // Add animation effect
+    themeToggle.style.transform = 'scale(1.1) rotate(15deg)';
+    setTimeout(() => {
+        themeToggle.style.transform = 'scale(1) rotate(0deg)';
+    }, 200);
+});
+
+// Update theme indicator in footer
+function updateThemeIndicator(theme) {
+    const themeIndicator = document.getElementById('current-theme');
+    if (themeIndicator) {
+        themeIndicator.textContent = theme;
+    }
+}
+
+// Detect system preference (optional)
+function detectSystemTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // User prefers dark theme
+        if (!localStorage.getItem('theme')) {
+            // Only auto-switch if user hasn't manually set a preference
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+            updateThemeIndicator('Dark');
+        }
+    }
+}
+
+// Listen for system theme changes
+if (window.matchMedia) {
+    const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    colorSchemeQuery.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            // Only auto-switch if user hasn't manually set a preference
+            if (e.matches) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+                updateThemeIndicator('Dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+                updateThemeIndicator('Light');
+            }
+        }
+    });
+}
+
+// Initialize theme on page load
+window.addEventListener('load', () => {
+    detectSystemTheme();
+    console.log('✅ Theme switcher initialized');
+});
+
 // ===== RESPONSIVE FUNCTIONALITY =====
 
 // Handle mobile menu toggle
@@ -51,9 +137,9 @@ function handleFormResponsiveness() {
         if (isMobile) {
             // Adjust validation for mobile
             if (input.name === 'name' && input.value.trim().length < 2) {
-                input.style.borderColor = '#ff4757';
+                input.style.borderColor = '#ef4444';
             } else {
-                input.style.borderColor = '#00ffcc';
+                input.style.borderColor = '#10b981';
             }
         }
     });
@@ -152,11 +238,8 @@ function initResponsiveFeatures() {
     console.log('✅ Responsive features initialized');
 }
 
-// Add this to your existing window load event
-window.addEventListener('load', () => {
-    // ... your existing load code ...
-    initResponsiveFeatures();
-});
+// ===== ALL OTHER FUNCTIONALITY =====
+
 // Project Data (2 projects only)
 const projects = {
     'python-bootcamp': {
@@ -196,7 +279,7 @@ const blogArticles = {
             <p>First, you'll need to install Python on your computer. Visit python.org and download the latest version. I recommend using VS Code as your code editor - it's lightweight and has excellent Python support.</p>
             
             <p>Here's your first Python program:</p>
-            <pre style="background: #1a1a2e; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0;">
+            <pre style="background: var(--card-bg); padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border-color);">
 print("Hello, MUST!")
 print("Welcome to Python Programming")
             </pre>
@@ -223,7 +306,7 @@ print("Welcome to Python Programming")
             <p>Take advantage of these resources available to students</p>
             <ul>
                  <a href="https://musumba.hashnode.dev/" target="_blank" class="btn" 
-                   style="background: white; color: #9d4edd; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
+                   style="background: var(--main-color); color: white; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
                     <i class="fab fa-hashnode"></i> Visit Hashnode Blog
                 </a>
             </ul>
@@ -274,7 +357,7 @@ print("Welcome to Python Programming")
             
             <h3>Step 2: Creating Your First Flutter App</h3>
             <p>Open your terminal and run:</p>
-            <pre style="background: #1a1a2e; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0;">
+            <pre style="background: var(--card-bg); padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border-color);">
 flutter create first app
 cd my_first_app
 flutter run
@@ -282,7 +365,7 @@ flutter run
             
             <h3>Step 3: Understanding Flutter Architecture</h3>
             <p>Flutter apps are built using widgets. Everything is a widget - from structural elements to styling. Here's a basic app structure:</p>
-            <pre style="background: #1a1a2e; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0;">
+            <pre style="background: var(--card-bg); padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border-color);">
 import 'package:flutter/material.dart';
 
 void main() {
@@ -329,19 +412,19 @@ class MyApp extends StatelessWidget {
             <p>As a student, you have access to</p>
             <ul>
                  <a href="https://musumba.hashnode.dev/" target="_blank" class="btn" 
-                   style="background: white; color: #9d4edd; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
+                   style="background: var(--main-color); color: white; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
                     <i class="fab fa-hashnode"></i> Visit Hashnode Blog
                 </a>
             </ul>
             
             <!-- ADDED BLOG LINK SECTION -->
-            <div style="background: linear-gradient(45deg, #9d4edd, var(--main-color)); padding: 2rem; border-radius: 1rem; margin: 3rem 0; text-align: center; border: 2px solid rgba(255,255,255,0.1);">
+            <div style="background: linear-gradient(45deg, var(--accent-color), var(--main-color)); padding: 2rem; border-radius: 1rem; margin: 3rem 0; text-align: center; border: 2px solid rgba(255,255,255,0.1);">
                 <h3 style="color: white; margin-bottom: 1.5rem; font-size: 2.2rem;"><i class="fab fa-hashnode"></i> More Mobile Development Content</h3>
                 <p style="color: rgba(255,255,255,0.9); font-size: 1.6rem; margin-bottom: 1.5rem; line-height: 1.6;">
                     Looking for more Flutter tutorials, advanced app development guides, and mobile tech insights? Check out my Hashnode blog!
                 </p>
                 <a href="https://musumba.hashnode.dev/" target="_blank" class="btn" 
-                   style="background: white; color: #9d4edd; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
+                   style="background: white; color: var(--accent-color); font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
                     <i class="fab fa-hashnode"></i> Visit Hashnode Blog
                 </a>
             </div>
@@ -574,6 +657,7 @@ window.addEventListener('load', () => {
     portfolioModal.style.display = 'none';
     blogModal.style.display = 'none';
     setTimeout(typeEffect, 1000);
+    initResponsiveFeatures();
 });
 
 // Contact form submission with Formspree
@@ -640,18 +724,18 @@ contactForm.addEventListener('input', function (e) {
         // Email validation
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(input.value)) {
-            input.style.borderColor = '#ff4757';
+            input.style.borderColor = '#ef4444';
         } else {
-            input.style.borderColor = '#00ffcc';
+            input.style.borderColor = '#10b981';
         }
     }
 
     if (input.name === 'name') {
         // Name validation (at least 2 characters)
         if (input.value.trim().length < 2) {
-            input.style.borderColor = '#ff4757';
+            input.style.borderColor = '#ef4444';
         } else {
-            input.style.borderColor = '#00ffcc';
+            input.style.borderColor = '#10b981';
         }
     }
 });
@@ -703,18 +787,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Service cards expansion (if you have this feature)
-const stackContainer = document.querySelector('.services-stack-container');
-if (stackContainer) {
-    stackContainer.addEventListener('click', () => {
-        stackContainer.classList.toggle('expanded');
-    });
-}
-
 // Color animation for logo
 const musumbaText = document.querySelector('.logo span');
 if (musumbaText) {
-    const colors = ['#00aaff', '#00ffcc', '#00aaff', '#00ffcc'];
+    const colors = ['#2563eb', '#10b981', '#8b5cf6', '#f59e0b'];
     let index = 0;
 
     setInterval(() => {
@@ -723,13 +799,14 @@ if (musumbaText) {
     }, 1000);
 }
 
-// Confetti effect (optional - you can remove if not needed)
-window.addEventListener('load', () => {
+// Protection overlay functionality
+function closeProtection() {
+    document.getElementById('protection-overlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
 
-});
-
-// Date & Time in footer
-const updateDateTime = () => {
+// Add datetime function
+function updateDateTime() {
     const now = new Date();
     const datetimeElement = document.getElementById('datetime');
     const yearElement = document.getElementById('year');
@@ -744,89 +821,8 @@ const updateDateTime = () => {
     if (yearElement) {
         yearElement.textContent = now.getFullYear();
     }
-};
-
-// ===== THEME SWITCHER FUNCTIONALITY =====
-
-// Get theme toggle button
-const themeToggle = document.getElementById('theme-toggle');
-
-// Check for saved theme preference or default to dark
-const currentTheme = localStorage.getItem('theme') || 'dark';
-
-// Apply the saved theme on page load
-if (currentTheme === 'light') {
-    document.body.classList.add('light-mode');
-    updateThemeIndicator('Light');
 }
 
-// Theme toggle functionality
-themeToggle.addEventListener('click', () => {
-    // Toggle light mode class
-    document.body.classList.toggle('light-mode');
-
-    // Update theme in localStorage
-    if (document.body.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-        updateThemeIndicator('Light');
-        console.log('🌞 Switched to Light Mode');
-    } else {
-        localStorage.setItem('theme', 'dark');
-        updateThemeIndicator('Dark');
-        console.log('🌙 Switched to Dark Mode');
-    }
-
-    // Add animation effect
-    themeToggle.style.transform = 'scale(1.1)';
-    setTimeout(() => {
-        themeToggle.style.transform = 'scale(1)';
-    }, 200);
-});
-
-// Update theme indicator in footer
-function updateThemeIndicator(theme) {
-    const themeIndicator = document.getElementById('current-theme');
-    if (themeIndicator) {
-        themeIndicator.textContent = theme;
-    }
-}
-
-// Detect system preference (optional)
-function detectSystemTheme() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        // User prefers light theme
-        if (!localStorage.getItem('theme')) {
-            // Only auto-switch if user hasn't manually set a preference
-            document.body.classList.add('light-mode');
-            localStorage.setItem('theme', 'light');
-            updateThemeIndicator('Light');
-        }
-    }
-}
-
-// Listen for system theme changes
-if (window.matchMedia) {
-    const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: light)');
-    colorSchemeQuery.addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            // Only auto-switch if user hasn't manually set a preference
-            if (e.matches) {
-                document.body.classList.add('light-mode');
-                localStorage.setItem('theme', 'light');
-                updateThemeIndicator('Light');
-            } else {
-                document.body.classList.remove('light-mode');
-                localStorage.setItem('theme', 'dark');
-                updateThemeIndicator('Dark');
-            }
-        }
-    });
-}
-
-// Initialize theme on page load
-window.addEventListener('load', () => {
-    detectSystemTheme();
-    console.log('✅ Theme switcher initialized');
-});
+// Initialize datetime
 updateDateTime();
 setInterval(updateDateTime, 1000);
