@@ -1879,6 +1879,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .timeline-text { max-width: 700px; }
 
+<<<<<<< HEAD
 }
 /*-----------------------------------*\
   #PROJECT BADGES & STANDARDIZED STYLES
@@ -2032,4 +2033,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     .project-list {
         grid-template-columns: repeat(3, 1fr);
     }
+=======
+>>>>>>> 4056b38cb446dca84f1d6bddf46726c8a5942719
 }

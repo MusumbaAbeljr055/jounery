@@ -1,1299 +1,635 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musumba Abbey | Portfolio</title>
-    <link rel="icon" type="image/png" href="musumba.png" />
+    <title>Musumba Abbey</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="musumba.png" type="image/x-icon">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Anti-Inspect Protection -->
     <style>
-        /* ===== GOOGLE FONTS ===== */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
-
-        /* ===== VARIABLES ===== */
-        :root {
-            --main-color: #00aaff;
-            --secondary-color: #00ffcc;
-            --bg-color: #0a0f1e;
-            --section-bg: #111;
-            --text-color: white;
-            --border-radius: 2rem;
-        }
-
-        /* ===== BASE STYLES ===== */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-decoration: none;
-            border: none;
-            outline: none;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        html {
-            font-size: 62.5%;
-        }
-
-        body {
-            width: 100%;
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        section {
-            min-height: 100vh;
-            padding: 10rem 9% 5rem;
-            background: linear-gradient(to bottom, #0a0f1e, #1a233a);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1.5rem 3rem;
-            font-size: 1.6rem;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--main-color);
-            color: white;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #0088cc;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--main-color);
-            border: 2px solid var(--main-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--main-color);
-            color: white;
-        }
-
-        /* ===== HEADER & NAVIGATION ===== */
-        header {
-            margin-top: 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 2rem 9%;
-            background-color: rgba(10, 15, 30, 0.9);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-        }
-
-        @keyframes colorChange {
-            0% { color: var(--main-color); }
-            25% { color: var(--secondary-color); }
-            50% { color: var(--main-color); }
-            75% { color: var(--secondary-color); }
-            100% { color: var(--main-color); }
-        }
-
-        .logo span {
-            animation: colorChange 4s infinite;
-            font-weight: 700;
-            transition: color 0.3s ease;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 3rem;
-            color: white;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.5s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo::after {
-            content: '.';
-            color: var(--main-color);
-        }
-
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 10px;
-            border: 2px solid var(--main-color);
-        }
-
-        nav {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 500;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            background: linear-gradient(45deg, transparent, rgba(0, 170, 255, 0.1));
-            border: 1px solid transparent;
-            transition: all 0.4s ease;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 170, 255, 0.3), transparent);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        nav a:hover::before {
-            left: 100%;
-        }
-
-        nav a:hover {
-            color: #fff;
-            background: linear-gradient(45deg, var(--main-color), var(--secondary-color));
-            border: 1px solid var(--secondary-color);
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
-            transform: translateY(-3px);
-        }
-
-        nav a.active {
-            color: #fff;
-            background: linear-gradient(45deg, var(--main-color), var(--secondary-color));
-            border: 1px solid var(--secondary-color);
-            box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
-        }
-
-        /* Tooltip Styling */
-        nav a .tooltip {
-            visibility: hidden;
-            background-color: var(--main-color);
-            color: white;
-            text-align: center;
-            border-radius: 6px;
-            padding: 0.5rem 1rem;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.4rem;
-            opacity: 0;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        nav a:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            font-size: 2.5rem;
-            color: var(--main-color);
-            cursor: pointer;
-            transition: color 0.3s ease;
-            z-index: 1001;
-        }
-
-        .hamburger:hover {
-            color: var(--secondary-color);
-        }
-
-        .hamburger.active .fa-bars {
-            display: none;
-        }
-
-        .hamburger.active .fa-times {
-            display: inline;
-        }
-
-        .hamburger .fa-times {
-            display: none;
-        }
-
-        /* Mobile Menu Overlay */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            nav {
-                display: none;
-                flex-direction: column;
-                position: fixed;
-                top: 70px;
-                right: 0;
-                background-color: rgba(0, 0, 0, 0.95);
-                padding: 2rem;
-                border-radius: 0 0 10px 10px;
-                box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
-                width: 100%;
-                max-width: 250px;
-                transform: translateX(100%);
-                transition: transform 0.3s ease-in-out;
-            }
-
-            nav.active {
-                display: flex;
-                transform: translateX(0);
-            }
-
-            nav a {
-                font-size: 1.8rem;
-                padding: 1.2rem;
-                margin: 0.5rem 0;
-                justify-content: center;
-                touch-action: manipulation;
-            }
-
-            nav a .tooltip {
-                bottom: auto;
-                left: 110%;
-                transform: translateY(-50%);
-            }
-        }
-
-        @media (max-width: 450px) {
-            nav {
-                max-width: 200px;
-            }
-
-            nav a {
-                font-size: 1.6rem;
-                padding: 1rem;
-            }
-        }
-
-        /* ===== HOME SECTION ===== */
-        .home {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8rem;
-            padding-top: 100px;
-        }
-
-        .home .home-content h1 {
-            font-size: 6rem;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        span {
-            color: var(--main-color);
-        }
-
-        .home-content h3 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .home-content p {
-            font-size: 1.6rem;
-            max-width: 50rem;
-            margin-bottom: 3rem;
-            color: #ccd;
-        }
-
-        .home-img {
-            position: relative;
-            display: inline-block;
-            overflow: hidden;
-        }
-
-        .home-img img {
-            position: relative;
-            z-index: 1;
-            width: 35vw;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.2s linear;
-        }
-
-        .home-img img:hover {
-            transform: scale(1.05);
-        }
-
-        .home-img::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
-            background: url('abbey.jpg') center/cover no-repeat;
-            filter: blur(20px) saturate(1.5);
-            z-index: -1;
-            animation: colorWave 6s infinite alternate;
-            box-shadow: 0 0 30px rgba(0, 170, 255, 0.6), 0 0 60px rgba(0, 255, 204, 0.4);
-        }
-
-        @keyframes colorWave {
-            0% { background-color: rgba(0, 170, 255, 0.3); }
-            25% { background-color: rgba(0, 255, 204, 0.3); }
-            50% { background-color: rgba(0, 170, 255, 0.5); }
-            75% { background-color: rgba(0, 255, 204, 0.5); }
-            100% { background-color: rgba(0, 170, 255, 0.3); }
-        }
-
-        .social-icons a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 4rem;
-            height: 4rem;
-            background-color: transparent;
-            border: 0.2rem solid var(--main-color);
-            font-size: 2rem;
-            border-radius: 50%;
-            margin: 3rem 1.5rem 3rem 0;
-            transition: 0.3s ease;
-            color: var(--main-color);
-        }
-
-        .social-icons a:hover {
-            color: black;
-            transform: scale(1.3) translateY(-5px);
-            background-color: var(--main-color);
-            box-shadow: 0 0 25px var(--main-color);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .typing-text {
-            font-size: 34px;
-            font-weight: 600;
-            min-width: 280px;
-        }
-
-        .typing-text span {
-            position: relative;
-        }
-
-        .typing-text span::before {
-            content: "software Developer";
-            color: var(--main-color);
-            animation: words 20s infinite;
-        }
-
-        .typing-text span::after {
-            content: "";
-            background-color: var(--bg-color);
-            position: absolute;
-            width: calc(100% + 8px);
-            height: 100%;
-            border-left: 3px solid var(--bg-color);
-            right: -8;
-            animation: cursor 0.6s infinite;
-        }
-
-        @keyframes cursor {
-            to { border-left: 3px solid var(--main-color); }
-        }
-
-        @keyframes words {
-            0%, 20% { content: "Web Developer"; }
-            21%, 40% { content: "Developer"; }
-            41%, 60% { content: "Web Designer"; }
-            61%, 80% { content: "App Developer"; }
-            81%, 100% { content: "Script Writer"; }
-        }
-
-        @media (max-width: 1200px) {
-            html { font-size: 55%; }
-        }
-
-        @media (max-width: 1000px) {
-            .home { gap: 4rem; }
-        }
-
-        @media (max-width: 995px) {
-            .home {
-                flex-direction: column;
-                margin: 5rem 4rem;
-                text-align: center;
-            }
-            .home .home-content h3 { font-size: 2.5rem; }
-            .home-content h1 { font-size: 5rem; }
-            .home-img img { width: 70vw; margin-top: 4rem; }
-        }
-
-        @media (max-width: 991px) {
-            section { padding: 5rem 3% 5rem; }
-            .services { padding: 8rem 3% 6rem; }
-        }
-
-        @media (max-width: 768px) {
-            .home {
-                flex-direction: column;
-                text-align: center;
-                gap: 4rem;
-            }
-
-            .home-img img { width: 70vw; }
-            .home-content h1 { font-size: 5rem; }
-            .home-content h3 { font-size: 2.5rem; }
-        }
-
-        @media (max-width: 617px) {
-            .home-content h1 { font-size: 4rem; }
-            .home-content h3 { font-size: 2rem; }
-            .typing-text { font-size: 2.5rem; min-width: 220px; }
-        }
-
-        @media (max-width: 450px) {
-            html { font-size: 50%; }
-            .home-content h1 { font-size: 3.5rem; }
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about {
-            text-align: center;
-        }
-
-        .about h2 {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            color: var(--main-color);
-        }
-
-        .about p {
-            font-size: 1.8rem;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-            color: #ccd;
-        }
-
-        /* ===== SERVICES SECTION ===== */
-        .services {
-            background-color: #111;
-            padding: 8rem 9% 6rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .services-glass-background {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 4rem 3rem;
-            width: fit-content;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            position: relative;
-        }
-
-        .services-glass-background .section-title {
-            position: absolute;
-            top: -25px;
-            left: 30px;
-            font-size: 2.4rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            border: 1px solid var(--main-color);
-        }
-
-        .services-stack-container {
-            position: relative;
-            height: 250px;
-            width: 560px;
-            margin: 2rem auto 0;
-            cursor: pointer;
-            transition: all 0.4s ease-in-out;
-        }
-
-        .service-card {
-            position: absolute;
-            top: 0;
-            width: 180px;
-            height: 220px;
-            background: #1e1e1e;
-            border-radius: 1.5rem;
-            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            font-size: 3rem;
-            transition: transform 0.6s ease, left 0.6s ease;
-            text-align: center;
-            padding-bottom: 1.5rem;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.7;
-            z-index: -1;
-        }
-
-        .service-card span {
-            font-size: 1.4rem;
-            color: white;
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-            z-index: 2;
-        }
-
-        .service-card i {
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-            z-index: 2;
-        }
-
-        .service1::before {
-            background-image: url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
-        }
-
-        .service2::before {
-            background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
-        }
-
-        .service3::before {
-            background-image: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
-        }
-
-        .service1 {
-            transform: rotate(-15deg);
-            z-index: 3;
-            left: calc(50% - 90px);
-        }
-
-        .service2 {
-            transform: rotate(-5deg);
-            z-index: 2;
-            left: calc(50% - 60px);
-        }
-
-        .service3 {
-            transform: rotate(10deg);
-            z-index: 1;
-            left: calc(50% - 30px);
-        }
-
-        .services-stack-container.expanded .service1 {
-            transform: rotate(0deg);
-            left: 0;
-        }
-
-        .services-stack-container.expanded .service2 {
-            transform: rotate(0deg);
-            left: 190px;
-        }
-
-        .services-stack-container.expanded .service3 {
-            transform: rotate(0deg);
-            left: 380px;
-        }
-
-        @media (max-width: 895px) {
-            .services-stack-container {
-                width: 100%;
-                height: auto;
-                position: static;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-                margin-top: 4rem;
-            }
-
-            .service-card {
-                position: static;
-                transform: rotate(0deg) !important;
-                width: 80%;
-                height: 200px;
-                margin-bottom: 2rem;
-            }
-
-            .services-stack-container.expanded .service1,
-            .services-stack-container.expanded .service2,
-            .services-stack-container.expanded .service3 {
-                left: 0;
-                transform: rotate(0deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .services-glass-background .section-title {
-                position: static;
-                margin-bottom: 2rem;
-                display: inline-flex;
-            }
-            .service-card { width: 90%; }
-        }
-
-        @media (max-width: 450px) {
-            .service-card { width: 100%; }
-        }
-
-        /* ===== BOOTCAMP SECTION ===== */
-        .bootcamp {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            padding: 8rem 9%;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bootcamp::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300aaff" fill-opacity="0.2" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
-            background-size: cover;
-            z-index: 0;
-        }
-
-        .bootcamp-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .bootcamp h2 {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            color: white;
-            text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
-        }
-
-        .bootcamp p {
-            font-size: 1.8rem;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-
-        .bootcamp-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem auto;
-            max-width: 600px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 170, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .bootcamp-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 170, 255, 0.4);
-        }
-
-        .bootcamp-card h3 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--main-color);
-        }
-
-        .bootcamp-card p {
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-        }
-
-        .bootcamp-btn {
-            display: inline-block;
-            padding: 1.5rem 4rem;
-            background: linear-gradient(45deg, var(--main-color), var(--secondary-color));
-            color: white;
-            border-radius: 50px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
-        }
-
-        .bootcamp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.6);
-            background: linear-gradient(45deg, var(--secondary-color), var(--main-color));
-        }
-
-        @media (max-width: 768px) {
-            .bootcamp h2 { font-size: 3rem; }
-            .bootcamp-card { padding: 2rem; }
-        }
-
-        @media (max-width: 617px) {
-            .bootcamp h2 { font-size: 2.8rem; }
-        }
-
-        /* ===== INQUIRY FORM ===== */
-        .inquiry-form {
-            background-color: #111;
-            padding: 4rem 3rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
-            max-width: 600px;
-            width: 90%;
-            margin: 5rem auto;
-            text-align: center;
-        }
-
-        .inquiry-form h2 {
-            font-size: 2.8rem;
-            color: var(--main-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .inquiry-form h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .inquiry-form p {
-            font-size: 1.5rem;
-            color: #ccc;
-            margin-bottom: 2rem;
-        }
-
-        .inquiry-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .inquiry-form input,
-        .inquiry-form textarea {
-            padding: 1rem;
-            border-radius: 0.8rem;
-            background-color: #1a1a1a;
-            color: white;
-            border: 1px solid var(--main-color);
-            font-size: 1.4rem;
-        }
-
-        .inquiry-form input:focus,
-        .inquiry-form textarea:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-        }
-
-        .inquiry-form .btn {
-            width: fit-content;
-            align-self: center;
-            margin-top: 1rem;
-            background-color: var(--main-color);
-            color: white;
-            border: none;
-        }
-
-        .inquiry-form .btn:hover {
-            background-color: #0088cc;
-        }
-
-        /* Online Dot */
-        .online-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #00ff00;
-            border-radius: 50%;
-            margin-right: 10px;
-            animation: pulse 1.5s infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
-            70% { transform: scale(1.2); box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
-        }
-
-        /* ===== WHATSAPP FLOAT BUTTON ===== */
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+
+        p, span, h1, h2, h3, h4, h5, h6, li, a, .allow-select {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-touch-callout: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Protection Overlay -->
+    <div id="protection-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999999; color: white; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem;">
+        <div
+            style="max-width: 800px; padding: 3rem; background: rgba(255,0,0,0.1); border-radius: 2rem; border: 2px solid #ff4757;">
+            <h1 style="color: #ff4757; margin-bottom: 2rem; font-size: 3rem;">
+                <i class="fas fa-shield-alt"></i> Access Restricted
+            </h1>
+            <p style="font-size: 2rem; margin-bottom: 2rem; color: #00ffcc;">
+                Developer tools are disabled on this site!
+            </p>
+            <button onclick="closeProtection()" class="form-btn"
+                style="background: #ff4757; border: none; font-size: 1.6rem; padding: 1rem 2rem;">
+                <i class="fas fa-times"></i> Close & Continue Browsing
+            </button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/256705149399" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <main>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" data-sidebar>
+
+            <div class="sidebar-info">
+
+                <figure class="avatar-box">
+                    <img src="assets/images/my-avatar.png" alt="Musumba Abbey" width="80">
+                </figure>
+
+                <div class="info-content">
+                    <h1 class="name" title="Musumba Abbey">Abbey Musumba</h1>
+                    <p class="title">MUST Student & Developer</p>
+                </div>
+
+                <button class="info_more-btn" data-sidebar-btn>
+                    <span>Show Contacts</span>
+                    <ion-icon name="chevron-down"></ion-icon>
+                </button>
+
+            </div>
+
+            <div class="sidebar-info_more">
+
+                <div class="separator"></div>
+
+                <ul class="contacts-list">
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+                        <div class="contact-info">
+                            <p class="contact-title">Email</p>
+                            <a href="mailto:ssenkubugeabbey055@gmail.com" class="contact-link">ssenkubugeabbey055@gmail.com</a>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <p class="contact-title">Phone/WhatsApp</p>
+                            <a href="tel:+256705149399" class="contact-link">+256 705 149 399</a>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="contact-info">
+                            <p class="contact-title">Institution</p>
+                            <p>Mbarara University of Science and Technology</p>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+                        <div class="contact-info">
+                            <p class="contact-title">Location</p>
+                            <address>Mbarara, Uganda</address>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="separator"></div>
+
+                <ul class="social-list">
+                    <li class="social-item">
+                        <a href="mailto:ssenkubugeabbey055@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </li>
+                    <li class="social-item">
+                        <a href="https://github.com/musumbasa" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li class="social-item">
+                        <a href="https://www.linkedin.com/in/musumba" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li class="social-item">
+                        <a href="https://twitter.com/musumbasa" target="_blank" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="social-item">
+                        <a href="https://musumba.hashnode.dev/" target="_blank" class="social-link">
+                            <i class="fab fa-hashnode"></i>
+                        </a>
+                    </li>
+                    <li class="social-item">
+                        <a href="https://www.instagram.com/musumbasa/" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+
+            <!-- NAVBAR -->
+            <nav class="navbar">
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <button class="navbar-link active" data-nav-link>About</button>
+                    </li>
+                    <li class="navbar-item">
+                        <button class="navbar-link" data-nav-link>Resume</button>
+                    </li>
+                    <li class="navbar-item">
+                        <button class="navbar-link" data-nav-link>Portfolio</button>
+                    </li>
+                    <li class="navbar-item">
+                        <button class="navbar-link" data-nav-link>Blog</button>
+                    </li>
+                    <li class="navbar-item">
+                        <button class="navbar-link" data-nav-link>Contact</button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- ABOUT PAGE -->
+            <article class="about active" data-page="about">
+                <header>
+                    <h2 class="h2 article-title">About me</h2>
+                </header>
+
+                <section class="about-text">
+                    <p>
+                        I'm Ssenkubuge Abbey Musumba, a passionate Information Technology student at Mbarara University 
+                        of Science and Technology (MUST) with a strong passion for creating innovative software solutions.
+                    </p>
+                    <p>
+                        Based in Mbarara, Uganda, I combine academic knowledge with practical skills to build real-world
+                        applications. I believe in writing clean, efficient code and constantly learning new technologies.
+                        I specialize in Java, Python, App Development, and Web Development while building innovative solutions 
+                        and sharing knowledge through my blog.
+                    </p>
+                </section>
+
+                <!-- SERVICE -->
+                <section class="service">
+                    <h3 class="h3 service-title">What i'm doing</h3>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <i class="fas fa-code" style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
+                            </div>
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">Web development</h4>
+                                <p class="service-item-text">
+                                    Professional development of websites and web applications.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <i class="fas fa-mobile-alt" style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
+                            </div>
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">Mobile apps</h4>
+                                <p class="service-item-text">
+                                    Cross-platform mobile application development using Flutter.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <i class="fab fa-python" style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
+                            </div>
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">Python Programming</h4>
+                                <p class="service-item-text">
+                                    Backend development and automation using Python.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <i class="fas fa-graduation-cap" style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
+                            </div>
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">Tech Education</h4>
+                                <p class="service-item-text">
+                                    Creating educational content and tutorials on my blog.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- SKILLS -->
+                <section class="skill">
+                    <h3 class="h3 skills-title">My skills</h3>
+                    <ul class="skills-list content-card">
+                        <li class="skills-item">
+                            <div class="title-wrapper">
+                                <h5 class="h5">Java Development</h5>
+                                <data value="85">85%</data>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </li>
+
+                        <li class="skills-item">
+                            <div class="title-wrapper">
+                                <h5 class="h5">Python Programming</h5>
+                                <data value="80">80%</data>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress-fill" style="width: 80%;"></div>
+                            </div>
+                        </li>
+
+                        <li class="skills-item">
+                            <div class="title-wrapper">
+                                <h5 class="h5">Web Development</h5>
+                                <data value="75">75%</data>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress-fill" style="width: 75%;"></div>
+                            </div>
+                        </li>
+
+                        <li class="skills-item">
+                            <div class="title-wrapper">
+                                <h5 class="h5">Flutter & App Dev</h5>
+                                <data value="70">70%</data>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress-fill" style="width: 70%;"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+            </article>
+
+            <!-- RESUME PAGE -->
+            <article class="resume" data-page="resume">
+                <header>
+                    <h2 class="h2 article-title">Resume</h2>
+                </header>
+
+                <section class="timeline">
+                    <div class="title-wrapper">
+                        <div class="icon-box">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </div>
+                        <h3 class="h3">Education</h3>
+                    </div>
+
+                    <ol class="timeline-list">
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">Mbarara University of Science and Technology</h4>
+                            <span>Present</span>
+                            <p class="timeline-text">
+                                Bachelor of Information Technology Currently pursuing my degree with focus on 
+                                Software Engineering, AI, and Web Technologies.
+                            </p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="timeline">
+                    <div class="title-wrapper">
+                        <div class="icon-box">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </div>
+                        <h3 class="h3">Technical Skills</h3>
+                    </div>
+
+                    <ol class="timeline-list">
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">Programming Languages</h4>
+                            <p class="timeline-text">
+                                Java, Python, JavaScript, Dart,XML, HTML/CSS
+                            </p>
+                        </li>
+
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">Frameworks & Libraries</h4>
+                            <p class="timeline-text">
+                                React, Flutter, Django, Bootstrap
+                            </p>
+                        </li>
+
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">Tools & Technologies</h4>
+                            <p class="timeline-text">
+                                Git, MySQL, Firebase, UI/UX Design, REST APIs
+                            </p>
+                        </li>
+                    </ol>
+                </section>
+
+            </article>
+
+            <!-- PORTFOLIO PAGE -->
+            <article class="portfolio" data-page="portfolio">
+                <header>
+                    <h2 class="h2 article-title">Portfolio</h2>
+                </header>
+
+                <section class="projects">
+                    <ul class="filter-list">
+                        <li class="filter-item">
+                            <button class="active" data-filter-btn>All</button>
+                        </li>
+                        <li class="filter-item">
+                            <button data-filter-btn>Web Development</button>
+                        </li>
+                        <li class="filter-item">
+                            <button data-filter-btn>Python Projects</button>
+                        </li>
+                    </ul>
+
+                    <div class="filter-select-box">
+                        <button class="filter-select" data-select>
+                            <div class="select-value" data-selecct-value>Select category</div>
+                            <div class="select-icon">
+                                <ion-icon name="chevron-down"></ion-icon>
+                            </div>
+                        </button>
+                        <ul class="select-list">
+                            <li class="select-item">
+                                <button data-select-item>All</button>
+                            </li>
+                            <li class="select-item">
+                                <button data-select-item>Web Development</button>
+                            </li>
+                            <li class="select-item">
+                                <button data-select-item>Python Projects</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="project-list">
+                        <li class="project-item active" data-filter-item data-category="web development">
+                            <a href="#" data-project="devfollow" class="project-link">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+                                    <img src="assets/images/devfollow.png" alt="DevFollow - MUST Developer Community" loading="lazy">
+                                </figure>
+                                <h3 class="project-title">DevFollow</h3>
+                                <p class="project-category">Web development</p>
+                            </a>
+                        </li>
+
+                        <!-- Add more projects here if needed -->
+                    </ul>
+                </section>
+
+            </article>
+
+            <!-- BLOG PAGE -->
+            <article class="blog" data-page="blog">
+                <header>
+                    <h2 class="h2 article-title">Blog</h2>
+                </header>
+
+                <section class="blog-posts">
+                    <div style="text-align: center; margin-bottom: 3rem;">
+                        <a href="https://musumba.hashnode.dev/" target="_blank" class="form-btn"
+                            style="font-size: 1.6rem; padding: 1rem 2.5rem; display: inline-flex; align-items: center; gap: 1rem;">
+                            <i class="fab fa-hashnode"></i> Visit My Hashnode Blog
+                        </a>
+                    </div>
+
+                    <ul class="blog-posts-list">
+                        <li class="blog-post-item">
+                            <a href="#" data-article="python-beginners" class="blog-link">
+                                <figure class="blog-banner-box">
+                                    <img src="assets/images/opp3.jpg" alt="Python for Beginners" loading="lazy">
+                                </figure>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">Programming</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2025-03-15">Mar 15, 2025</time>
+                                    </div>
+                                    <h3 class="h3 blog-item-title">Python for Beginners: A MUST Student's Guide</h3>
+                                    <p class="blog-text">
+                                        A comprehensive guide to getting started with Python programming, tailored for university students.
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="blog-post-item">
+                            <a href="#" data-article="flutter-app" class="blog-link">
+                                <figure class="blog-banner-box">
+                                    <img src="assets/images/flutter-app-development.webp" alt="Flutter App Development" loading="lazy">
+                                </figure>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">Mobile Development</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2024-01-12">Jan 12, 2024</time>
+                                    </div>
+                                    <h3 class="h3 blog-item-title">Building Your First Flutter App</h3>
+                                    <p class="blog-text">
+                                        A practical tutorial on creating cross-platform mobile applications using Flutter and Dart.
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+            </article>
+
+            <!-- CONTACT PAGE -->
+            <article class="contact" data-page="contact">
+                <header>
+                    <h2 class="h2 article-title">Contact</h2>
+                </header>
+
+                <section class="mapbox" data-mapbox>
+                    <figure>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6651688819116!2d30.65689977483915!3d-0.6132912352221492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d91db5e8b4c7b3%3A0x7f8c0a9b3b3b3b3b!2sMbarara%20University%20of%20Science%20and%20Technology%20(MUST)!5e0!3m2!1sen!2sug!4v1647608789441!5m2!1sen!2sug"
+                            width="400" height="300" loading="lazy"></iframe>
+                    </figure>
+                </section>
+
+                <section class="contact-form">
+                    <h3 class="h3 form-title">Contact Form</h3>
+                    <form id="contactForm" action="https://formspree.io/f/mgvzgkow" method="POST" class="form" data-form>
+                        <input type="hidden" name="_subject" value="New Message from Abbey Musumba Portfolio">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <div class="input-wrapper">
+                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+                            <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+                        </div>
+                        
+                        <input type="text" name="subject" class="form-input" placeholder="Subject" required data-form-input>
+                        
+                        <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+                        <button class="form-btn" type="submit" data-form-btn>
+                            <ion-icon name="paper-plane"></ion-icon>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </section>
+
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolioModal" class="modal-container">
+        <div class="overlay" data-overlay></div>
+        <div class="testimonials-modal">
+            <button class="modal-close-btn" data-modal-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+            <div class="modal-content" id="portfolioModalContent">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" class="modal-container">
+        <div class="overlay" data-overlay></div>
+        <div class="testimonials-modal">
+            <button class="modal-close-btn" data-modal-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+            <div class="modal-content" id="blogModalContent">
+                <!-- Blog modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+
+    <!-- Ion Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- WhatsApp Float Button CSS -->
+    <style>
         .whatsapp-float {
             position: fixed;
             width: 60px;
             height: 60px;
-            bottom: 25px;
-            right: 25px;
+            bottom: 40px;
+            right: 40px;
             background-color: #25d366;
             color: white;
             border-radius: 50%;
             text-align: center;
-            font-size: 32px;
-            box-shadow: 0 0 20px #25d366aa;
-            z-index: 1000;
+            font-size: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            z-index: 999;
             display: flex;
-            justify-content: center;
             align-items: center;
-            cursor: pointer;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
 
         .whatsapp-float:hover {
-            background-color: #1ebe57;
-            box-shadow: 0 0 30px #25d366;
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
         }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background-color: #111;
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 4rem;
-            border-top: 1px solid #333;
-        }
-
-        .footer-logo {
-            width: 50px;
-            height: 50px;
+        
+        /* Circular Avatar */
+        .circular-avatar {
             border-radius: 50%;
-            vertical-align: middle;
-            margin-right: 10px;
+            border: 3px solid var(--orange-yellow-crayola);
             object-fit: cover;
         }
-
-        .footer-text {
-            font-size: 1.4rem;
-            display: inline-flex;
+        
+        /* Make the avatar box container circular too */
+        .avatar-box {
+            border-radius: 50%;
+            overflow: hidden;
+            width: 80px;
+            height: 80px;
+            display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--bg-gradient-onyx);
+            margin: 0 auto 15px;
+             border: 3px solid var(--orange-yellow-crayola);
+            box-shadow: var(--shadow-2);
         }
-
-        .footer-time {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-            color: var(--main-color);
-        }
-    </style>
-</head>
-<body>
-    <!-- Header Section -->
-    <header>
-        <div class="logo">
-            <img src="abbey.jpg" alt="Musumba Logo" class="logo-img" />
-            <span>Musumba</span>
-        </div>
-        <div class="hamburger">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-times"></i>
-        </div>
-        <nav>
-            <a href="#home" aria-label="Go to Home section">Home <span class="tooltip">Welcome to my portfolio</span></a>
-            <a href="#about" aria-label="Go to About section">About <span class="tooltip">Learn more about me</span></a>
-            <a href="#services" aria-label="Go to Services section">Services <span class="tooltip">Explore my offerings</span></a>
-            <a href="#portfolio" aria-label="Go to Portfolio section">Portfolio <span class="tooltip">View my work</span></a>
-            <a href="#contact" aria-label="Go to Contact section">Contact <span class="tooltip">Get in touch with me</span></a>
-        </nav>
-        <div class="overlay"></div>
-    </header>
-
-    <!-- Home Section -->
-    <section class="home" id="home">
-        <div class="home-content">
-            <h1>Hi, I'm <span>Musumba</span></h1>
-            <h3 class="typing-text">Frontend <span></span></h3>
-            <p>
-                I am a dedicated student at Mbarara University of Science and Technology,
-                pursuing a Bachelor of Information Technology. I have a strong passion for technology
-                and am particularly skilled in programming and software development.
-            </p>
-            <div class="btn-group">
-                <a href="#contact" class="btn btn-primary">Hire Me</a>
-                <a href="#contact" class="btn btn-secondary">Let's Talk</a>
-            </div>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/musumba" target="_blank" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/musumbasa" target="_blank" aria-label="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="mailto:ssenkubugeabbey055@gmail.com" aria-label="Email">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-                <a href="https://wa.me/256782889754" target="_blank" aria-label="WhatsApp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="https://musumba.hashnode.dev/" target="_blank" aria-label="Hashnode">
-                    <i class="fa-brands fa-hashnode"></i>
-                </a>
-                <a href="https://twitter.com/musumbasa" target="_blank" aria-label="Twitter">
-                    <i class="fa-brands fa-twitter"></i>
-                </a>
-                <a href="https://www.instagram.com/musumbasa/" target="_blank" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/musumbasa" target="_blank" aria-label="Facebook">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-            </div>
-        </div>
-        <div class="home-img">
-            <img src="abbey.jpg" alt="Profile Picture" />
-            <div class="color-effect"></div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <h2>About Me</h2>
-        <p>
-            I am a dedicated student at Mbarara University of Science and Technology,
-            pursuing a Bachelor of Information Technology. I have a strong passion for technology
-            and am particularly skilled in programming and software development.
-        </p>
-        <p>
-            My interests include web development, app development, and UI/UX design. I enjoy creating
-            innovative solutions and learning new technologies.
-        </p>
-    </section>
-
-    <section class="services" id="services">
-        <div class="services-glass-background">
-            <h2 class="section-title">
-                <i class="fa-solid fa-circle-check" style="color:#00ffcc"></i>
-                My <span>Services</span>
-            </h2>
-            <div class="services-stack-container">
-                <div class="service-card service1">
-                    <i class="fas fa-code"></i>
-                    <span>Web Development</span>
-                </div>
-                <div class="service-card service2">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>App Development</span>
-                </div>
-                <div class="service-card service3">
-                    <i class="fas fa-pencil-ruler"></i>
-                    <span>UI/UX Design</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio / Bootcamp Section -->
-    <section class="bootcamp" id="portfolio">
-        <div class="bootcamp-content">
-            <h2>--<span>Portfolio</span> --</h2>
-            <p>
-                I created a Python Bootcamp designed to make learning Python easier and more accessible.
-                The bootcamp provides step by step guidance on Python fundamentals,
-                including variables, loops, functions, and object oriented programming.
-                Students also work on practical projects, enabling them to build real-world Python applications with
-                confidence.
-            </p>
-
-            <div class="bootcamp-card">
-                <h3>Python Bootcamp</h3>
-                <p>
-                    I designed this Python Bootcamp to make learning Python easier and more accessible.
-                    It covers everything from the basics to advanced topics, including data structures,
-                    object oriented programming, and web development with Django and Flask.
-                    Students also get hands-on experience by working on practical projects that build real-world
-                    applications.
-                </p>
-
-                <a href="login.html" class="bootcamp-btn" target="_blank">View Bootcamp Details</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact / Inquiry Form Section -->
-    <section class="inquiry-form" id="contact">
-        <h2><span class="online-dot"></span> AVAILABLE FOR WORK</h2>
-        <h3>Design Inquiry</h3>
-        <p>Got an idea and need design help? Reach out now</p>
-
-        <form id="contactForm" action="https://formspree.io/f/mgvzgkow" method="POST">
-            <!-- Hidden fields -->
-            <input type="hidden" name="_subject" value="New Inquiry from Musumba.Space">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://musumba.space/thank-you.html">
-
-            <!-- Input fields -->
-            <input type="text" name="name" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <textarea name="message" placeholder="Message" rows="5" required></textarea>
-
-            <button type="submit" class="btn btn-primary">Submit Inquiry</button>
-        </form>
-    </section>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/256782889754" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-text">
-            <img src="abbey.jpg" class="footer-logo" alt="Musumba Logo" />
-            &copy; <span id="year"></span> Musumba Abbey. All rights reserved.
-        </div>
-        <div class="footer-time" id="datetime"></div>
-    </footer>
-
-    <!-- Confetti Library -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <!-- Scripts -->
-    <script>
-        // Prevent Ctrl+U (view source)
-        document.addEventListener('keydown', function(event) {
-            if (event.ctrlKey && (event.key === 'u' || event.key === 'U')) {
-                event.preventDefault();
-            }
-        });
-
-        // Hamburger Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('nav');
-        const overlay = document.querySelector('.overlay');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            nav.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        // Close menu when clicking overlay
-        overlay.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        // Smooth scroll for nav links
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                // Remove active class from all links
-                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
-                // Add active class to clicked link
-                this.classList.add('active');
-                // Close mobile menu on click
-                if (window.innerWidth <= 768) {
-                    hamburger.classList.remove('active');
-                    nav.classList.remove('active');
-                    overlay.classList.remove('active');
-                }
-            });
-        });
-
-        // Scroll-based active link highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            let currentSection = '';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === currentSection) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Confetti on page load
-        window.addEventListener('load', () => {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-        });
-
-        // Confetti on scroll
-        let confettiFired = false;
-        window.addEventListener('scroll', () => {
-            if (!confettiFired) {
-                confettiFired = true;
-                confetti({ particleCount: 100, spread: 100, origin: { y: 0.6 } });
-            }
-        });
-
-        // Date & Time
-        const updateDateTime = () => {
-            const now = new Date();
-            document.getElementById('datetime').textContent = now.toLocaleString('en-US', { timeZone: 'Africa/Nairobi', hour12: true });
-            document.getElementById('year').textContent = now.getFullYear();
-        };
-        updateDateTime();
-        setInterval(updateDateTime, 1000);
-
-        // Service cards expansion
-        const stackContainer = document.querySelector('.services-stack-container');
-        stackContainer.addEventListener('click', () => {
-            stackContainer.classList.toggle('expanded');
-        });
-
-        // Color animation for logo
-        const musumbaText = document.querySelector('.logo span');
-        const colors = ['#00aaff', '#00ffcc', '#00aaff', '#00ffcc'];
-        let index = 0;
-
-        setInterval(() => {
-            musumbaText.style.color = colors[index];
-            index = (index + 1) % colors.length;
-        }, 1000);
-
-        // Intercept form submission
-        const form = document.getElementById('contactForm');
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                // Redirect to thank-you page
-                if (response.ok) {
-                    window.location.href = "https://musumba.space/thank-you.html";
-                } else {
-                    alert("Oops! Something went wrong. Please try again.");
-                }
-            } catch (error) {
-                alert("Oops! There was an error submitting the form.");
-            }
-        });
-
-        // Disable right-click
-        document.addEventListener("contextmenu", function(e){
-            e.preventDefault();
-            alert("Right-click is disabled on this site!");
-        });
-
-        // Disable common key shortcuts
-        document.addEventListener("keydown", function(e){
-            // F12, Ctrl+Shift+I/J/C, Ctrl+U
-            if (
-                e.keyCode == 123 || 
-                (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) ||
-                (e.ctrlKey && e.keyCode == 85)
-            ) {
-                e.preventDefault();
-                alert("This action is disabled!");
-            }
-        });
-
-        // Image optimization - lazy loading
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img');
-            
-            images.forEach(img => {
-                // Add loading="lazy" for native lazy loading
-                img.setAttribute('loading', 'lazy');
-                
-                // Add a subtle blur effect while loading
-                img.style.transition = 'filter 0.3s ease';
-                if (!img.complete) {
-                    img.style.filter = 'blur(5px)';
-                }
-                
-                img.addEventListener('load', function() {
-                    img.style.filter = 'blur(0)';
-                });
-            });
-        });
-    </script>
-    <style>
-        .color-effect {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
-            background: url('abbey.jpg') center/cover no-repeat;
-            filter: blur(20px) saturate(1.5);
-            z-index: -1;
-            animation: colorWave 6s infinite alternate;
-            box-shadow: 0 0 30px rgba(0, 170, 255, 0.6), 0 0 60px rgba(0, 255, 204, 0.4);
-        }
-
-        @keyframes colorWave {
-            0% { background-color: rgba(0, 170, 255, 0.3); }
-            25% { background-color: rgba(0, 255, 204, 0.3); }
-            50% { background-color: rgba(0, 170, 255, 0.5); }
-            75% { background-color: rgba(0, 255, 204, 0.5); }
-            100% { background-color: rgba(0, 170, 255, 0.3); }
+        
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
         }
     </style>
-</body> 
+
+</body>
+
 </html>
