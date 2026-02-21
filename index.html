@@ -383,64 +383,93 @@
 
             </article>
 
-            <!-- PORTFOLIO PAGE -->
-            <article class="portfolio" data-page="portfolio">
-                <header>
-                    <h2 class="h2 article-title">Portfolio</h2>
-                </header>
+           <!-- PORTFOLIO PAGE -->
+<article class="portfolio" data-page="portfolio">
+    <header>
+        <h2 class="h2 article-title">Portfolio</h2>
+    </header>
 
-                <section class="projects">
-                    <ul class="filter-list">
-                        <li class="filter-item">
-                            <button class="active" data-filter-btn>All</button>
-                        </li>
-                        <li class="filter-item">
-                            <button data-filter-btn>Web Development</button>
-                        </li>
-                        <li class="filter-item">
-                            <button data-filter-btn>Python Projects</button>
-                        </li>
-                    </ul>
+    <section class="projects">
+        <ul class="filter-list">
+            <li class="filter-item">
+                <button class="active" data-filter-btn>All</button>
+            </li>
+            <li class="filter-item">
+                <button data-filter-btn>Web Development</button>
+            </li>
+            <li class="filter-item">
+                <button data-filter-btn>Mobile Apps</button>
+            </li>
+            <li class="filter-item">
+                <button data-filter-btn>Python Projects</button>
+            </li>
+        </ul>
 
-                    <div class="filter-select-box">
-                        <button class="filter-select" data-select>
-                            <div class="select-value" data-selecct-value>Select category</div>
-                            <div class="select-icon">
-                                <ion-icon name="chevron-down"></ion-icon>
-                            </div>
-                        </button>
-                        <ul class="select-list">
-                            <li class="select-item">
-                                <button data-select-item>All</button>
-                            </li>
-                            <li class="select-item">
-                                <button data-select-item>Web Development</button>
-                            </li>
-                            <li class="select-item">
-                                <button data-select-item>Python Projects</button>
-                            </li>
-                        </ul>
+        <div class="filter-select-box">
+            <button class="filter-select" data-select>
+                <div class="select-value" data-selecct-value>Select category</div>
+                <div class="select-icon">
+                    <ion-icon name="chevron-down"></ion-icon>
+                </div>
+            </button>
+            <ul class="select-list">
+                <li class="select-item">
+                    <button data-select-item>All</button>
+                </li>
+                <li class="select-item">
+                    <button data-select-item>Web Development</button>
+                </li>
+                <li class="select-item">
+                    <button data-select-item>Mobile Apps</button>
+                </li>
+                <li class="select-item">
+                    <button data-select-item>Python Projects</button>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="project-list">
+            <!-- CivicWatch Mobile App -->
+            <li class="project-item active" data-filter-item data-category="mobile apps">
+                <a href="#" data-project="civicwatch" class="project-link">
+                    <figure class="project-img">
+                        <div class="project-item-icon-box">
+                            <ion-icon name="eye-outline"></ion-icon>
+                        </div>
+                        <img src="assets/images/civicwatch-app.png" alt="CivicWatch - Community Issue Reporting App" loading="lazy" style="object-fit: cover; width: 100%; height: 200px;">
+                    </figure>
+                    <h3 class="project-title">CivicWatch</h3>
+                    <p class="project-category">Mobile App (Android)</p>
+                    <div class="project-badges">
+                        <span class="badge" style="background: #4CAF50;">Java</span>
+                        <span class="badge" style="background: #FF9800;">Firebase</span>
+                        <span class="badge" style="background: #2196F3;">Maps API</span>
+                        <span class="badge" style="background: #9C27B0;">Material Design</span>
                     </div>
+                </a>
+            </li>
 
-                    <ul class="project-list">
-                        <li class="project-item active" data-filter-item data-category="web development">
-                            <a href="#" data-project="devfollow" class="project-link">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="assets/images/devfollow.png" alt="DevFollow - MUST Developer Community" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">DevFollow</h3>
-                                <p class="project-category">Web development</p>
-                            </a>
-                        </li>
-
-                        <!-- Add more projects here if needed -->
-                    </ul>
-                </section>
-
-            </article>
+            <!-- DevFollow Web App -->
+            <li class="project-item active" data-filter-item data-category="web development">
+                <a href="#" data-project="devfollow" class="project-link">
+                    <figure class="project-img">
+                        <div class="project-item-icon-box">
+                            <ion-icon name="eye-outline"></ion-icon>
+                        </div>
+                        <img src="assets/images/devfollow.png" alt="DevFollow - MUST Developer Community" loading="lazy" style="object-fit: cover; width: 100%; height: 200px;">
+                    </figure>
+                    <h3 class="project-title">DevFollow</h3>
+                    <p class="project-category">Web development</p>
+                    <div class="project-badges">
+                        <span class="badge" style="background: #E34F26;">HTML/CSS</span>
+                        <span class="badge" style="background: #F7DF1E; color: black;">JavaScript</span>
+                        <span class="badge" style="background: #FF9800;">Firebase</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </section>
+</article>
 
             <!-- BLOG PAGE -->
             <article class="blog" data-page="blog">
