@@ -8,12 +8,12 @@
     <title>Musumba Abbey</title>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6931179754207098"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="musumba.png" type="image/x-icon">
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS (your existing file that already has popup styles) -->
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Google Fonts -->
@@ -33,7 +33,17 @@
             user-select: none !important;
         }
 
-        p, span, h1, h2, h3, h4, h5, h6, li, a, .allow-select {
+        p,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        li,
+        a,
+        .allow-select {
             -webkit-user-select: text !important;
             -moz-user-select: text !important;
             -ms-user-select: text !important;
@@ -49,6 +59,31 @@
 </head>
 
 <body>
+
+    <!-- Zalsee Estates Popup Ad -->
+    <div id="zalseePopup" class="popup-ad">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">&times;</button>
+            <div class="popup-inner">
+                <!-- Logo centered with your CSS -->
+                <div class="popup-logo">
+                    <img src="assets/images/zalseef.jpg" alt="Zalsee Estates Logo">
+                </div>
+                <h2>Zalseef Estates</h2>
+                <p class="popup-tagline">Your Trusted Partner in Real Estate in Mbarara</p>
+                <div class="popup-features">
+                    <span><i class="fas fa-home"></i> Prime Lands</span>
+                    <span><i class="fas fa-chart-line"></i> Investment</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Prime Locations</span>
+                </div>
+                <p class="popup-offer">Special Offer for Musumba.space Visitors!</p>
+                <a href="#" id="zalseePopupLink" class="popup-button" target="_blank">
+                    <i class="fas fa-arrow-right"></i> Explore Properties
+                </a>
+                <p class="popup-footer">Limited time offer • Terms apply</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Protection Overlay -->
     <div id="protection-overlay"
@@ -107,7 +142,8 @@
                         </div>
                         <div class="contact-info">
                             <p class="contact-title">Email</p>
-                            <a href="mailto:ssenkubugeabbey055@gmail.com" class="contact-link">ssenkubugeabbey055@gmail.com</a>
+                            <a href="mailto:ssenkubugeabbey055@gmail.com"
+                                class="contact-link">ssenkubugeabbey055@gmail.com</a>
                         </div>
                     </li>
 
@@ -213,13 +249,16 @@
 
                 <section class="about-text">
                     <p>
-                        I'm Ssenkubuge Abbey Musumba, a passionate Information Technology student at Mbarara University 
-                        of Science and Technology (MUST) with a strong passion for creating innovative software solutions.
+                        I'm Ssenkubuge Abbey Musumba, a passionate Information Technology student at Mbarara University
+                        of Science and Technology (MUST) with a strong passion for creating innovative software
+                        solutions.
                     </p>
                     <p>
                         Based in Mbarara, Uganda, I combine academic knowledge with practical skills to build real-world
-                        applications. I believe in writing clean, efficient code and constantly learning new technologies.
-                        I specialize in Java, Python, App Development, and Web Development while building innovative solutions 
+                        applications. I believe in writing clean, efficient code and constantly learning new
+                        technologies.
+                        I specialize in Java, Python, App Development, and Web Development while building innovative
+                        solutions
                         and sharing knowledge through my blog.
                     </p>
                 </section>
@@ -230,7 +269,8 @@
                     <ul class="service-list">
                         <li class="service-item">
                             <div class="service-icon-box">
-                                <i class="fas fa-code" style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
+                                <i class="fas fa-code"
+                                    style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
                             </div>
                             <div class="service-content-box">
                                 <h4 class="h4 service-item-title">Web development</h4>
@@ -242,7 +282,8 @@
 
                         <li class="service-item">
                             <div class="service-icon-box">
-                                <i class="fas fa-mobile-alt" style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
+                                <i class="fas fa-mobile-alt"
+                                    style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
                             </div>
                             <div class="service-content-box">
                                 <h4 class="h4 service-item-title">Mobile apps</h4>
@@ -254,7 +295,8 @@
 
                         <li class="service-item">
                             <div class="service-icon-box">
-                                <i class="fab fa-python" style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
+                                <i class="fab fa-python"
+                                    style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
                             </div>
                             <div class="service-content-box">
                                 <h4 class="h4 service-item-title">Python Programming</h4>
@@ -266,7 +308,8 @@
 
                         <li class="service-item">
                             <div class="service-icon-box">
-                                <i class="fas fa-graduation-cap" style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
+                                <i class="fas fa-graduation-cap"
+                                    style="font-size: 24px; color: var(--orange-yellow-crayola);"></i>
                             </div>
                             <div class="service-content-box">
                                 <h4 class="h4 service-item-title">Tech Education</h4>
@@ -345,7 +388,7 @@
                             <h4 class="h4 timeline-item-title">Mbarara University of Science and Technology</h4>
                             <span>Present</span>
                             <p class="timeline-text">
-                                Bachelor of Information Technology Currently pursuing my degree with focus on 
+                                Bachelor of Information Technology Currently pursuing my degree with focus on
                                 Software Engineering, AI, and Web Technologies.
                             </p>
                         </li>
@@ -386,93 +429,96 @@
 
             </article>
 
-           <!-- PORTFOLIO PAGE -->
-<article class="portfolio" data-page="portfolio">
-    <header>
-        <h2 class="h2 article-title">Portfolio</h2>
-    </header>
+            <!-- PORTFOLIO PAGE -->
+            <article class="portfolio" data-page="portfolio">
+                <header>
+                    <h2 class="h2 article-title">Portfolio</h2>
+                </header>
 
-    <section class="projects">
-        <ul class="filter-list">
-            <li class="filter-item">
-                <button class="active" data-filter-btn>All</button>
-            </li>
-            <li class="filter-item">
-                <button data-filter-btn>Web Development</button>
-            </li>
-            <li class="filter-item">
-                <button data-filter-btn>Mobile Apps</button>
-            </li>
-            <li class="filter-item">
-                <button data-filter-btn>Python Projects</button>
-            </li>
-        </ul>
+                <section class="projects">
+                    <ul class="filter-list">
+                        <li class="filter-item">
+                            <button class="active" data-filter-btn>All</button>
+                        </li>
+                        <li class="filter-item">
+                            <button data-filter-btn>Web Development</button>
+                        </li>
+                        <li class="filter-item">
+                            <button data-filter-btn>Mobile Apps</button>
+                        </li>
+                        <li class="filter-item">
+                            <button data-filter-btn>Python Projects</button>
+                        </li>
+                    </ul>
 
-        <div class="filter-select-box">
-            <button class="filter-select" data-select>
-                <div class="select-value" data-selecct-value>Select category</div>
-                <div class="select-icon">
-                    <ion-icon name="chevron-down"></ion-icon>
-                </div>
-            </button>
-            <ul class="select-list">
-                <li class="select-item">
-                    <button data-select-item>All</button>
-                </li>
-                <li class="select-item">
-                    <button data-select-item>Web Development</button>
-                </li>
-                <li class="select-item">
-                    <button data-select-item>Mobile Apps</button>
-                </li>
-                <li class="select-item">
-                    <button data-select-item>Python Projects</button>
-                </li>
-            </ul>
-        </div>
-
-        <ul class="project-list">
-            <!-- CivicWatch Mobile App -->
-            <li class="project-item active" data-filter-item data-category="mobile apps">
-                <a href="#" data-project="civicwatch" class="project-link">
-                    <figure class="project-img">
-                        <div class="project-item-icon-box">
-                            <ion-icon name="eye-outline"></ion-icon>
-                        </div>
-                        <img src="assets/images/civicwatch-app.png" alt="CivicWatch - Community Issue Reporting App" loading="lazy" style="object-fit: cover; width: 100%; height: 200px;">
-                    </figure>
-                    <h3 class="project-title">CivicWatch</h3>
-                    <p class="project-category">Mobile App (Android)</p>
-                    <div class="project-badges">
-                        <span class="badge" style="background: #4CAF50;">Java</span>
-                        <span class="badge" style="background: #FF9800;">Firebase</span>
-                        <span class="badge" style="background: #2196F3;">Maps API</span>
-                        <span class="badge" style="background: #9C27B0;">Material Design</span>
+                    <div class="filter-select-box">
+                        <button class="filter-select" data-select>
+                            <div class="select-value" data-selecct-value>Select category</div>
+                            <div class="select-icon">
+                                <ion-icon name="chevron-down"></ion-icon>
+                            </div>
+                        </button>
+                        <ul class="select-list">
+                            <li class="select-item">
+                                <button data-select-item>All</button>
+                            </li>
+                            <li class="select-item">
+                                <button data-select-item>Web Development</button>
+                            </li>
+                            <li class="select-item">
+                                <button data-select-item>Mobile Apps</button>
+                            </li>
+                            <li class="select-item">
+                                <button data-select-item>Python Projects</button>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-            </li>
 
-            <!-- DevFollow Web App -->
-            <li class="project-item active" data-filter-item data-category="web development">
-                <a href="#" data-project="devfollow" class="project-link">
-                    <figure class="project-img">
-                        <div class="project-item-icon-box">
-                            <ion-icon name="eye-outline"></ion-icon>
-                        </div>
-                        <img src="assets/images/devfollow.png" alt="DevFollow - MUST Developer Community" loading="lazy" style="object-fit: cover; width: 100%; height: 200px;">
-                    </figure>
-                    <h3 class="project-title">DevFollow</h3>
-                    <p class="project-category">Web development</p>
-                    <div class="project-badges">
-                        <span class="badge" style="background: #E34F26;">HTML/CSS</span>
-                        <span class="badge" style="background: #F7DF1E; color: black;">JavaScript</span>
-                        <span class="badge" style="background: #FF9800;">Firebase</span>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </section>
-</article>
+                    <ul class="project-list">
+                        <!-- CivicWatch Mobile App -->
+                        <li class="project-item active" data-filter-item data-category="mobile apps">
+                            <a href="#" data-project="civicwatch" class="project-link">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+                                    <img src="assets/images/civicwatch-app.png"
+                                        alt="CivicWatch - Community Issue Reporting App" loading="lazy"
+                                        style="object-fit: cover; width: 100%; height: 200px;">
+                                </figure>
+                                <h3 class="project-title">CivicWatch</h3>
+                                <p class="project-category">Mobile App (Android)</p>
+                                <div class="project-badges">
+                                    <span class="badge" style="background: #4CAF50;">Java</span>
+                                    <span class="badge" style="background: #FF9800;">Firebase</span>
+                                    <span class="badge" style="background: #2196F3;">Maps API</span>
+                                    <span class="badge" style="background: #9C27B0;">Material Design</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- DevFollow Web App -->
+                        <li class="project-item active" data-filter-item data-category="web development">
+                            <a href="#" data-project="devfollow" class="project-link">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+                                    <img src="assets/images/devfollow.png" alt="DevFollow - MUST Developer Community"
+                                        loading="lazy" style="object-fit: cover; width: 100%; height: 200px;">
+                                </figure>
+                                <h3 class="project-title">DevFollow</h3>
+                                <p class="project-category">Web development</p>
+                                <div class="project-badges">
+                                    <span class="badge" style="background: #E34F26;">HTML/CSS</span>
+                                    <span class="badge" style="background: #F7DF1E; color: black;">JavaScript</span>
+                                    <span class="badge" style="background: #FF9800;">Firebase</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </article>
 
             <!-- BLOG PAGE -->
             <article class="blog" data-page="blog">
@@ -502,7 +548,8 @@
                                     </div>
                                     <h3 class="h3 blog-item-title">Python for Beginners: A MUST Student's Guide</h3>
                                     <p class="blog-text">
-                                        A comprehensive guide to getting started with Python programming, tailored for university students.
+                                        A comprehensive guide to getting started with Python programming, tailored for
+                                        university students.
                                     </p>
                                 </div>
                             </a>
@@ -511,7 +558,8 @@
                         <li class="blog-post-item">
                             <a href="#" data-article="flutter-app" class="blog-link">
                                 <figure class="blog-banner-box">
-                                    <img src="assets/images/flutter-app-development.webp" alt="Flutter App Development" loading="lazy">
+                                    <img src="assets/images/flutter-app-development.webp" alt="Flutter App Development"
+                                        loading="lazy">
                                 </figure>
                                 <div class="blog-content">
                                     <div class="blog-meta">
@@ -521,7 +569,8 @@
                                     </div>
                                     <h3 class="h3 blog-item-title">Building Your First Flutter App</h3>
                                     <p class="blog-text">
-                                        A practical tutorial on creating cross-platform mobile applications using Flutter and Dart.
+                                        A practical tutorial on creating cross-platform mobile applications using
+                                        Flutter and Dart.
                                     </p>
                                 </div>
                             </a>
@@ -547,18 +596,23 @@
 
                 <section class="contact-form">
                     <h3 class="h3 form-title">Contact Form</h3>
-                    <form id="contactForm" action="https://formspree.io/f/mgvzgkow" method="POST" class="form" data-form>
+                    <form id="contactForm" action="https://formspree.io/f/mgvzgkow" method="POST" class="form"
+                        data-form>
                         <input type="hidden" name="_subject" value="New Message from Abbey Musumba Portfolio">
                         <input type="hidden" name="_captcha" value="false">
-                        
+
                         <div class="input-wrapper">
-                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-                            <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required
+                                data-form-input>
+                            <input type="email" name="email" class="form-input" placeholder="Email address" required
+                                data-form-input>
                         </div>
-                        
-                        <input type="text" name="subject" class="form-input" placeholder="Subject" required data-form-input>
-                        
-                        <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+                        <input type="text" name="subject" class="form-input" placeholder="Subject" required
+                            data-form-input>
+
+                        <textarea name="message" class="form-input" placeholder="Your Message" required
+                            data-form-input></textarea>
 
                         <button class="form-btn" type="submit" data-form-btn>
                             <ion-icon name="paper-plane"></ion-icon>
@@ -631,14 +685,14 @@
             transform: scale(1.1);
             box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
         }
-        
+
         /* Circular Avatar */
         .circular-avatar {
             border-radius: 50%;
             border: 3px solid var(--orange-yellow-crayola);
             object-fit: cover;
         }
-        
+
         /* Make the avatar box container circular too */
         .avatar-box {
             border-radius: 50%;
@@ -650,10 +704,10 @@
             justify-content: center;
             background: var(--bg-gradient-onyx);
             margin: 0 auto 15px;
-             border: 3px solid var(--orange-yellow-crayola);
+            border: 3px solid var(--orange-yellow-crayola);
             box-shadow: var(--shadow-2);
         }
-        
+
         .avatar-box img {
             width: 100%;
             height: 100%;
@@ -661,6 +715,58 @@
             object-position: center top;
         }
     </style>
+
+    <!-- Popup Ad JavaScript -->
+    <script>
+        // Popup ad functionality
+        let popupTimer;
+        let popupShown = false;
+        const POPUP_DELAY = 5000; // 5 seconds
+
+        // Function to show popup
+        function showPopup() {
+            const popup = document.getElementById('zalseePopup');
+            if (popup && !popupShown) {
+                popup.style.display = 'flex';
+                popupShown = true;
+            }
+        }
+
+        // Function to close popup
+        function closePopup() {
+            const popup = document.getElementById('zalseePopup');
+            if (popup) {
+                popup.style.display = 'none';
+            }
+        }
+
+        // Initialize popup when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            // Show popup after delay
+            popupTimer = setTimeout(showPopup, POPUP_DELAY);
+
+            // Handle popup link click
+            const popupLink = document.getElementById('zalseePopupLink');
+            if (popupLink) {
+                popupLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    // Replace with actual Zalsee Estates URL
+                    window.open('https://zalseeestates.com', '_blank');
+                    closePopup();
+                });
+            }
+
+            // Close popup when clicking outside
+            const popup = document.getElementById('zalseePopup');
+            if (popup) {
+                popup.addEventListener('click', function (e) {
+                    if (e.target === popup) {
+                        closePopup();
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 

@@ -91,24 +91,26 @@ function handleMobileMenu() {
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
 
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        hamburger.innerHTML = nav.classList.contains('active')
-            ? '<i class="fas fa-times"></i>'
-            : '<i class="fas fa-bars"></i>';
+    if (hamburger && nav) {
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            hamburger.innerHTML = nav.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
 
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
-    });
-
-    // Close menu when clicking on a link
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            document.body.style.overflow = 'auto';
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
         });
-    });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
 }
 
 // Handle responsive images
@@ -129,24 +131,28 @@ function handleResponsiveImages() {
 function handleFormResponsiveness() {
     const contactForm = document.getElementById('contactForm');
 
-    // Add responsive validation
-    contactForm.addEventListener('input', function (e) {
-        const input = e.target;
-        const isMobile = window.innerWidth <= 768;
+    if (contactForm) {
+        // Add responsive validation
+        contactForm.addEventListener('input', function (e) {
+            const input = e.target;
+            const isMobile = window.innerWidth <= 768;
 
-        if (isMobile) {
-            // Adjust validation for mobile
-            if (input.name === 'name' && input.value.trim().length < 2) {
-                input.style.borderColor = '#ef4444';
-            } else {
-                input.style.borderColor = '#10b981';
+            if (isMobile) {
+                // Adjust validation for mobile
+                if (input.name === 'name' && input.value.trim().length < 2) {
+                    input.style.borderColor = '#ef4444';
+                } else {
+                    input.style.borderColor = '#10b981';
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 // Handle modal responsiveness
 function handleModalResponsiveness() {
+    const portfolioModal = document.getElementById('portfolioModal');
+    const blogModal = document.getElementById('blogModal');
     const modals = [portfolioModal, blogModal];
 
     modals.forEach(modal => {
@@ -155,7 +161,10 @@ function handleModalResponsiveness() {
             window.addEventListener('resize', () => {
                 if (modal.style.display === 'block') {
                     // Re-center modal
-                    modal.querySelector('.modal-content').style.margin = '2rem auto';
+                    const modalContent = modal.querySelector('.modal-content');
+                    if (modalContent) {
+                        modalContent.style.margin = '2rem auto';
+                    }
                 }
             });
         }
@@ -181,13 +190,16 @@ function handleTouchEvents() {
         const nav = document.getElementById('nav');
         const isMobile = window.innerWidth <= 768;
 
-        if (!isMobile) return;
+        if (!isMobile || !nav) return;
 
         if (touchStartX - touchEndX > 50) {
             // Swipe left - close menu if open
             if (nav.classList.contains('active')) {
                 nav.classList.remove('active');
-                document.getElementById('hamburger').innerHTML = '<i class="fas fa-bars"></i>';
+                const hamburger = document.getElementById('hamburger');
+                if (hamburger) {
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                }
                 document.body.style.overflow = 'auto';
             }
         }
@@ -216,7 +228,7 @@ function handleViewportChanges() {
                 const nav = document.getElementById('nav');
                 const hamburger = document.getElementById('hamburger');
 
-                if (nav.classList.contains('active')) {
+                if (nav && hamburger && nav.classList.contains('active')) {
                     nav.classList.remove('active');
                     hamburger.innerHTML = '<i class="fas fa-bars"></i>';
                     document.body.style.overflow = 'auto';
@@ -260,8 +272,7 @@ const projects = {
         role: 'Full stack developer designed the architecture, implemented core features, and deployed the application. Also created the curriculum and coding exercises(MCQs).',
         demo: '#',
         github: 'https://github.com/musumbasa/python-bootcamp'
-    },
-
+    }
 };
 
 // Blog Articles (2 articles only)
@@ -299,16 +310,14 @@ print("Welcome to Python Programming")
                 <li><strong>Calculator</strong> Create a simple calculator that performs basic operations</li>
                 <li><strong>Number guessing game</strong> Generate random numbers and let users guess</li>
                 <li><strong>Todo List</strong> Build a console-based task management system</li>
-                
             </ol>
             
-            <h3>Resources for  Students</h3>
+            <h3>Resources for Students</h3>
             <p>Take advantage of these resources available to students</p>
             <ul>
-                 <a href="https://musumba.hashnode.dev/" target="_blank" class="btn" 
-                   style="background: var(--main-color); color: white; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
+                <li><a href="https://musumba.hashnode.dev/" target="_blank" class="btn" style="background: var(--main-color); color: white; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px; display: inline-block; text-decoration: none;">
                     <i class="fab fa-hashnode"></i> Visit Hashnode Blog
-                </a>
+                </a></li>
             </ul>
             
             <h3>Building Your Portfolio</h3>
@@ -321,7 +330,7 @@ print("Welcome to Python Programming")
                     Want more Python tutorials, advanced guides, and tech insights? Visit my Hashnode blog for comprehensive articles and tutorials!
                 </p>
                 <a href="https://musumba.hashnode.dev/" target="_blank" class="btn" 
-                   style="background: white; color: var(--main-color); font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
+                   style="background: white; color: var(--main-color); font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px; display: inline-block; text-decoration: none;">
                     <i class="fab fa-hashnode"></i> Visit Hashnode Blog
                 </a>
             </div>
@@ -400,7 +409,7 @@ class MyApp extends StatelessWidget {
             </ul>
             
             <h3>Step 5: Adding Functionality</h3>
-            <p>Learn how to</p>
+            <p>Learn how to:</p>
             <ol>
                 <li>Handle user input with TextField</li>
                 <li>Manage state with setState</li>
@@ -409,12 +418,11 @@ class MyApp extends StatelessWidget {
             </ol>
             
             <h3>Resources for Students</h3>
-            <p>As a student, you have access to</p>
+            <p>As a student, you have access to:</p>
             <ul>
-                 <a href="https://musumba.hashnode.dev/" target="_blank" class="btn" 
-                   style="background: var(--main-color); color: white; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
+                <li><a href="https://musumba.hashnode.dev/" target="_blank" class="btn" style="background: var(--main-color); color: white; font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px; display: inline-block; text-decoration: none;">
                     <i class="fab fa-hashnode"></i> Visit Hashnode Blog
-                </a>
+                </a></li>
             </ul>
             
             <!-- ADDED BLOG LINK SECTION -->
@@ -424,7 +432,7 @@ class MyApp extends StatelessWidget {
                     Looking for more Flutter tutorials, advanced app development guides, and mobile tech insights? Check out my Hashnode blog!
                 </p>
                 <a href="https://musumba.hashnode.dev/" target="_blank" class="btn" 
-                   style="background: white; color: var(--accent-color); font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px;">
+                   style="background: white; color: var(--accent-color); font-weight: bold; font-size: 1.6rem; padding: 1rem 2rem; border-radius: 50px; display: inline-block; text-decoration: none;">
                     <i class="fab fa-hashnode"></i> Visit Hashnode Blog
                 </a>
             </div>
@@ -448,20 +456,22 @@ class MyApp extends StatelessWidget {
 const hamburger = document.getElementById('hamburger');
 const nav = document.getElementById('nav');
 
-hamburger.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    hamburger.innerHTML = nav.classList.contains('active')
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        nav.classList.remove('active');
-        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        hamburger.innerHTML = nav.classList.contains('active')
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
     });
-});
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -481,7 +491,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Update current year in footer
-document.getElementById('currentYear').textContent = new Date().getFullYear();
+const yearElement = document.getElementById('currentYear');
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
 
 // Update active nav link on scroll
 window.addEventListener('scroll', () => {
@@ -494,14 +507,14 @@ window.addEventListener('scroll', () => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
 
-        if (scrollY >= (sectionTop - 100)) {
+        if (window.scrollY >= (sectionTop - 100)) {
             current = section.getAttribute('id');
         }
     });
 
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
+        if (link.getAttribute('href')?.substring(1) === current) {
             link.classList.add('active');
         }
     });
@@ -518,28 +531,33 @@ const texts = [
     "Tech Enthusiast"
 ];
 
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+if (typingText) {
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-function typeEffect() {
-    const currentText = texts[textIndex];
+    function typeEffect() {
+        const currentText = texts[textIndex];
 
-    if (!isDeleting && charIndex <= currentText.length) {
-        typingText.textContent = currentText.substring(0, charIndex);
-        charIndex++;
-        setTimeout(typeEffect, 100);
-    } else if (isDeleting && charIndex >= 0) {
-        typingText.textContent = currentText.substring(0, charIndex);
-        charIndex--;
-        setTimeout(typeEffect, 50);
-    } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) {
-            textIndex = (textIndex + 1) % texts.length;
+        if (!isDeleting && charIndex <= currentText.length) {
+            typingText.textContent = currentText.substring(0, charIndex);
+            charIndex++;
+            setTimeout(typeEffect, 100);
+        } else if (isDeleting && charIndex >= 0) {
+            typingText.textContent = currentText.substring(0, charIndex);
+            charIndex--;
+            setTimeout(typeEffect, 50);
+        } else {
+            isDeleting = !isDeleting;
+            if (!isDeleting) {
+                textIndex = (textIndex + 1) % texts.length;
+            }
+            setTimeout(typeEffect, 1000);
         }
-        setTimeout(typeEffect, 1000);
     }
+    
+    // Start typing effect
+    setTimeout(typeEffect, 1000);
 }
 
 // Portfolio Modal Functionality
@@ -583,11 +601,17 @@ document.querySelectorAll('.read-more-project').forEach(button => {
 
             document.getElementById('modalProjectTechnologies').textContent = project.technologies;
             document.getElementById('modalProjectRole').textContent = project.role;
-            document.getElementById('modalProjectDemo').href = project.demo;
-            document.getElementById('modalProjectGithub').href = project.github;
+            
+            const demoLink = document.getElementById('modalProjectDemo');
+            if (demoLink) demoLink.href = project.demo;
+            
+            const githubLink = document.getElementById('modalProjectGithub');
+            if (githubLink) githubLink.href = project.github;
 
-            portfolioModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            if (portfolioModal) {
+                portfolioModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         }
     });
 });
@@ -606,20 +630,29 @@ document.querySelectorAll('.read-more-blog').forEach(button => {
             document.getElementById('modalBlogCategory').innerHTML = `<i class="far fa-folder"></i> ${article.category}`;
             document.getElementById('modalBlogContent').innerHTML = article.content;
 
-            blogModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            if (blogModal) {
+                blogModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         }
     });
 });
 
 // Close modals
 function closeModal(modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }
 
-closePortfolioModal.addEventListener('click', () => closeModal(portfolioModal));
-closeBlogModal.addEventListener('click', () => closeModal(blogModal));
+if (closePortfolioModal) {
+    closePortfolioModal.addEventListener('click', () => closeModal(portfolioModal));
+}
+
+if (closeBlogModal) {
+    closeBlogModal.addEventListener('click', () => closeModal(blogModal));
+}
 
 // Close modals when clicking outside
 window.addEventListener('click', (e) => {
@@ -637,7 +670,7 @@ document.addEventListener('keydown', (e) => {
 
 // Share blog function
 function shareBlog() {
-    const title = document.getElementById('modalBlogTitle').textContent;
+    const title = document.getElementById('modalBlogTitle')?.textContent;
     const url = window.location.href;
 
     if (navigator.share) {
@@ -654,91 +687,89 @@ function shareBlog() {
 
 // Initialize all modals as closed
 window.addEventListener('load', () => {
-    portfolioModal.style.display = 'none';
-    blogModal.style.display = 'none';
-    setTimeout(typeEffect, 1000);
+    if (portfolioModal) portfolioModal.style.display = 'none';
+    if (blogModal) blogModal.style.display = 'none';
     initResponsiveFeatures();
 });
 
 // Contact form submission with Formspree
 const contactForm = document.getElementById('contactForm');
 
-// Form submission handling
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+if (contactForm) {
+    // Form submission handling
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
+        // Get form data
+        const formData = new FormData(contactForm);
+        const name = formData.get('name');
 
-    // Show loading state
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    submitBtn.disabled = true;
+        // Show loading state
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
 
-    try {
-        // Send to Formspree
-        const response = await fetch('https://formspree.io/f/mgvzgkow', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
+        try {
+            // Send to Formspree
+            const response = await fetch('https://formspree.io/f/mgvzgkow', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
 
-        if (response.ok) {
-            // Success message
-            alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
+            if (response.ok) {
+                // Success message
+                alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
 
-            // Reset form
-            contactForm.reset();
-
-            // Optional: Redirect to thank you page (uncomment if you have one)
-            // window.location.href = "https://musumba.space/thank-you.html";
-        } else {
-            // Error handling
-            const errorData = await response.json();
-            if (errorData.errors && errorData.errors.length > 0) {
-                alert(`Error: ${errorData.errors.map(err => err.message).join(', ')}`);
+                // Reset form
+                contactForm.reset();
             } else {
-                alert("Oops! Something went wrong. Please try again.");
+                // Error handling
+                const errorData = await response.json();
+                if (errorData.errors && errorData.errors.length > 0) {
+                    alert(`Error: ${errorData.errors.map(err => err.message).join(', ')}`);
+                } else {
+                    alert("Oops! Something went wrong. Please try again.");
+                }
+            }
+        } catch (error) {
+            // Network error
+            console.error('Form submission error:', error);
+            alert("Oops! There was an error submitting the form. Please check your connection and try again.");
+        } finally {
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+
+    // Add input validation
+    contactForm.addEventListener('input', function (e) {
+        const input = e.target;
+
+        if (input.name === 'email') {
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(input.value)) {
+                input.style.borderColor = '#ef4444';
+            } else {
+                input.style.borderColor = '#10b981';
             }
         }
-    } catch (error) {
-        // Network error
-        console.error('Form submission error:', error);
-        alert("Oops! There was an error submitting the form. Please check your connection and try again.");
-    } finally {
-        // Reset button state
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }
-});
 
-// Add input validation
-contactForm.addEventListener('input', function (e) {
-    const input = e.target;
-
-    if (input.name === 'email') {
-        // Email validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(input.value)) {
-            input.style.borderColor = '#ef4444';
-        } else {
-            input.style.borderColor = '#10b981';
+        if (input.name === 'name') {
+            // Name validation (at least 2 characters)
+            if (input.value.trim().length < 2) {
+                input.style.borderColor = '#ef4444';
+            } else {
+                input.style.borderColor = '#10b981';
+            }
         }
-    }
-
-    if (input.name === 'name') {
-        // Name validation (at least 2 characters)
-        if (input.value.trim().length < 2) {
-            input.style.borderColor = '#ef4444';
-        } else {
-            input.style.borderColor = '#10b981';
-        }
-    }
-});
+    });
+}
 
 // Prevent Ctrl+U (view source)
 document.addEventListener('keydown', function (event) {
@@ -801,8 +832,11 @@ if (musumbaText) {
 
 // Protection overlay functionality
 function closeProtection() {
-    document.getElementById('protection-overlay').style.display = 'none';
-    document.body.style.overflow = 'auto';
+    const overlay = document.getElementById('protection-overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }
 
 // Add datetime function
@@ -822,6 +856,117 @@ function updateDateTime() {
         yearElement.textContent = now.getFullYear();
     }
 }
+
+/*-----------------------------------*\
+  #ZALSEE POPUP AD FUNCTIONALITY
+\*-----------------------------------*/
+
+// Popup ad variables
+let popupTimer;
+let popupShown = false;
+const POPUP_DELAY = 5000; // 5 seconds (adjust as needed)
+const POPUP_COOKIE_NAME = 'zalsee_popup_shown';
+const POPUP_EXPIRY_DAYS = 1; // Show once per day
+
+// Function to show popup
+function showPopup() {
+    const popup = document.getElementById('zalseePopup');
+    if (popup && !popupShown) {
+        popup.style.display = 'flex';
+        popupShown = true;
+        
+        // Set cookie to remember popup was shown
+        setCookie(POPUP_COOKIE_NAME, 'true', POPUP_EXPIRY_DAYS);
+    }
+}
+
+// Function to close popup
+function closePopup() {
+    const popup = document.getElementById('zalseePopup');
+    if (popup) {
+        popup.style.display = 'none';
+    }
+}
+
+// Function to set cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Function to get cookie
+function getCookie(name) {
+    const cookieName = name + "=";
+    const cookies = document.cookie.split(';');
+    for(let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(cookieName) == 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+        }
+    }
+    return "";
+}
+
+// Initialize popup ad
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if popup was already shown today
+    const popupShownCookie = getCookie(POPUP_COOKIE_NAME);
+    
+    if (!popupShownCookie) {
+        // Show popup after delay
+        popupTimer = setTimeout(showPopup, POPUP_DELAY);
+    }
+    
+    // Handle popup link click
+    const popupLink = document.getElementById('zalseePopupLink');
+    if (popupLink) {
+        popupLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Track click
+            console.log('Zalsee Estates popup ad clicked');
+            
+            // Open Zalsee Estates website
+            window.open('https://abbey055.github.io/zalseefestatesmbarara/#/', '_blank');
+            
+            // Close popup
+            closePopup();
+        });
+    }
+    
+    // Close popup when clicking outside
+    const popup = document.getElementById('zalseePopup');
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+    }
+    
+    // Clear timer if user navigates away
+    window.addEventListener('beforeunload', function() {
+        if (popupTimer) {
+            clearTimeout(popupTimer);
+        }
+    });
+});
+
+// Reset popup when page changes (for single page application)
+window.addEventListener('pageChanged', function() {
+    const popupShownCookie = getCookie(POPUP_COOKIE_NAME);
+    if (!popupShownCookie && !popupShown) {
+        if (popupTimer) {
+            clearTimeout(popupTimer);
+        }
+        popupTimer = setTimeout(showPopup, POPUP_DELAY);
+    }
+});
 
 // Initialize datetime
 updateDateTime();

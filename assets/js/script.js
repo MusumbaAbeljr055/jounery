@@ -86,6 +86,13 @@ for (let i = 0; i < navigationLinks.length; i++) {
                 pages[j].classList.add("active");
                 navigationLinks[j].classList.add("active");
                 window.scrollTo(0, 0);
+                
+                // Dispatch custom event for ad tracking
+                setTimeout(() => {
+                    window.dispatchEvent(new CustomEvent('pageChanged', {
+                        detail: { page: pages[j].dataset.page }
+                    }));
+                }, 100);
             } else {
                 pages[j].classList.remove("active");
                 navigationLinks[j].classList.remove("active");
@@ -425,5 +432,116 @@ document.addEventListener('DOMContentLoaded', function() {
     const yearElement = document.querySelector('.current-year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
+    }
+});
+
+/*-----------------------------------*\
+  #ZALSEE POPUP AD FUNCTIONALITY
+\*-----------------------------------*/
+
+// Popup ad variables
+let popupTimer;
+let popupShown = false;
+const POPUP_DELAY = 5000; // 5 seconds (adjust as needed)
+const POPUP_COOKIE_NAME = 'zalsee_popup_shown';
+const POPUP_EXPIRY_DAYS = 1; // Show once per day
+
+// Function to show popup
+function showPopup() {
+    const popup = document.getElementById('zalseePopup');
+    if (popup && !popupShown) {
+        popup.style.display = 'flex';
+        popupShown = true;
+        
+        // Set cookie to remember popup was shown
+        setCookie(POPUP_COOKIE_NAME, 'true', POPUP_EXPIRY_DAYS);
+    }
+}
+
+// Function to close popup
+function closePopup() {
+    const popup = document.getElementById('zalseePopup');
+    if (popup) {
+        popup.style.display = 'none';
+    }
+}
+
+// Function to set cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Function to get cookie
+function getCookie(name) {
+    const cookieName = name + "=";
+    const cookies = document.cookie.split(';');
+    for(let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(cookieName) == 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+        }
+    }
+    return "";
+}
+
+// Initialize popup ad
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if popup was already shown today
+    const popupShownCookie = getCookie(POPUP_COOKIE_NAME);
+    
+    if (!popupShownCookie) {
+        // Show popup after delay
+        popupTimer = setTimeout(showPopup, POPUP_DELAY);
+    }
+    
+    // Handle popup link click
+    const popupLink = document.getElementById('zalseePopupLink');
+    if (popupLink) {
+        popupLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Track click
+            console.log('Zalsee Estates popup ad clicked');
+            
+            // Open Zalsee Estates website
+            window.open('https://abbey055.github.io/zalseefestatesmbarara/#/', '_blank');
+            
+            // Close popup
+            closePopup();
+        });
+    }
+    
+    // Close popup when clicking outside
+    const popup = document.getElementById('zalseePopup');
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+    }
+    
+    // Clear timer if user navigates away
+    window.addEventListener('beforeunload', function() {
+        if (popupTimer) {
+            clearTimeout(popupTimer);
+        }
+    });
+});
+
+// Reset popup when page changes
+window.addEventListener('pageChanged', function() {
+    const popupShownCookie = getCookie(POPUP_COOKIE_NAME);
+    if (!popupShownCookie && !popupShown) {
+        if (popupTimer) {
+            clearTimeout(popupTimer);
+        }
+        popupTimer = setTimeout(showPopup, POPUP_DELAY);
     }
 });
