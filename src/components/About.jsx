@@ -1,6 +1,21 @@
 // src/components/About.jsx
 import { useState } from 'react';
 import abbeyImage from '../assets/images/abbey.jpg';
+import './About.css';
+
+const journeyParagraphs = [
+  <>My journey at Mbarara University of Science and Technology (MUST) began on <strong>September 22, 2023</strong>, when I enrolled as a Bachelor of Information Technology (BIT) student in the Faculty of Computing and Informatics. Walking through the university gates for the first time, I carried with me great excitement, ambition, and hope for the future. Like many first-year students, I was stepping into a new environment filled with unfamiliar faces, new responsibilities, and endless opportunities to learn and grow. Little did I know that the next three years would become one of the most defining chapters of my life.</>,
+  <>My transition into university life was both exciting and challenging. Coming from a different learning environment, I had to adapt to a faster academic pace, independent learning, and practical problem-solving. Every lecture, laboratory session, assignment, and project became an opportunity to expand my knowledge and sharpen my skills. With time, the university became more than just a place to attend classes—it became my second home, where I discovered my potential and built the confidence to pursue my dreams.</>,
+  <>Being a student in the Faculty of Computing and Informatics exposed me to the ever-evolving world of technology. Throughout my studies, I developed a strong passion for software engineering, artificial intelligence, cybersecurity, web development, and mobile application development. I realized that technology is not only about writing code but also about designing solutions that improve people's lives. This understanding motivated me to go beyond classroom learning by building practical systems and continuously exploring new technologies.</>,
+  <>One of the greatest blessings throughout my journey has been the guidance of dedicated lecturers and mentors who invested their time and knowledge in my growth. I am particularly grateful to <strong>Mr. Mwavu Rogers</strong>, who served as my supervisor and mentor. His guidance, encouragement, and constructive feedback challenged me to think critically, improve my technical abilities, and approach every project with professionalism.</>,
+  <>Throughout my years at MUST, I worked on several practical software projects that strengthened my technical and analytical skills. These included <strong>JobDecode</strong>, <strong>ZimbaLife</strong>, an Internship Management System for SsenksTechUg, a Firebase-based Device Tracker, a Flutter Campus Locator, and <strong>DevFollow MUST</strong>. Each project challenged me to learn new technologies, overcome obstacles, and apply classroom knowledge to real-world problems.</>,
+  <>Beyond academics, university life taught me lessons that cannot be found in textbooks. I built meaningful friendships with classmates who became study partners, teammates, and lifelong friends. Together, we celebrated successes, overcame challenges, collaborated on projects, and supported one another during difficult moments.</>,
+  <>One of the passions that grew stronger during my time at MUST was my desire to mentor and inspire fellow students. I developed a vision of helping students—especially those in the Faculty of Computing and Informatics—gain confidence in programming through practical, project-based learning. I believe that many students struggle not because they lack ability, but because they lack guidance and opportunities to practice.</>,
+  <>Like every meaningful journey, my university experience was not without challenges. There were moments when academic workloads became demanding, projects seemed overwhelming, and balancing different responsibilities tested my resilience. Through determination, discipline, continuous learning, and unwavering faith in God, I learned to persevere and keep moving forward.</>,
+  <>As I reflect on my three years at MUST, I realize that the university has given me much more than academic knowledge. It has equipped me with practical technical skills, strengthened my leadership abilities, improved my communication and teamwork, and shaped my character. More importantly, it has prepared me to confidently enter the professional world as a software engineer committed to solving real-world problems through technology.</>,
+  <>As I complete this important chapter of my life, I carry with me unforgettable memories, valuable experiences, lasting friendships, and lessons that will continue to guide me throughout my career. I remain deeply grateful to my lecturers, mentors, classmates, friends, and family whose encouragement and support made this journey possible. Above all, I thank God for His faithfulness, guidance, and strength throughout every stage of my university life.</>,
+  <>Looking ahead, I aspire to become a highly skilled software engineer with expertise in artificial intelligence and cybersecurity. I am committed to lifelong learning, innovation, and using technology to create meaningful solutions that positively impact communities. My journey at Mbarara University of Science and Technology has laid a strong foundation for that dream, and I will always be proud to call MUST a place that transformed my life.</>
+];
 
 export default function About() {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -61,6 +76,7 @@ export default function About() {
   };
 
   return (
+    <>
     <section className="w-full bg-[#1D3B2B] py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 relative" id="about">
 
       {/* Confirmation Modal */}
@@ -184,5 +200,34 @@ export default function About() {
 
       </div>
     </section>
+
+    <section className="must-journey" aria-labelledby="must-journey-title">
+      <div className="notebook-page">
+        <div className="notebook-holes" aria-hidden="true">
+          {Array.from({ length: 8 }, (_, index) => <span key={index} />)}
+        </div>
+        <div className="notebook-content">
+          <div className="notebook-heading">
+            <span className="quote-mark" aria-hidden="true">“</span>
+            <h2 id="must-journey-title">My Three(3) Years Journey at Mbarara University of Science and Technology (MUST)</h2>
+          </div>
+          <div className="journey-copy">
+            {journeyParagraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+          </div>
+          <div className="journey-ending">
+            <p>“Knowledge, Innovation, and Excellence.”</p>
+            <p>“For God and My Country.”</p>
+            <div className="journey-signature">
+              <div>
+                <strong>Abbey Ssenkubuge</strong>
+                <span>Bachelor of Information Technology</span>
+              </div>
+              <div className="signature-photo"><img src={abbeyImage} alt="Abbey Ssenkubuge" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </>
   );
 }

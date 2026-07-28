@@ -16,20 +16,6 @@ export default function Header() {
     { name: 'Testimonials', path: '/testimonials' },
   ];
 
-  const handleScrollToSection = (e, sectionId) => {
-    e.preventDefault();
-    setIsMenuOpen(false);
-
-    if (location.pathname === '/') {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      window.location.href = `/#${sectionId}`;
-    }
-  };
-
   const handleContactClick = (e) => {
     e.preventDefault();
     if (location.pathname === '/') {
@@ -70,18 +56,6 @@ export default function Header() {
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => {
-            if (link.path === '/about') {
-              return (
-                <a
-                  key={link.path}
-                  href="#about"
-                  onClick={(e) => handleScrollToSection(e, 'about')}
-                  className="text-[#D9DFD7] hover:text-[#EFA83C] transition cursor-pointer text-sm font-medium whitespace-nowrap"
-                >
-                  {link.name}
-                </a>
-              );
-            }
             return (
               <Link
                 key={link.path}
@@ -108,19 +82,6 @@ export default function Header() {
         <nav className="md:hidden absolute top-full left-0 right-0 bg-[#1F3B2C] p-4 sm:p-5 shadow-lg z-50">
           <ul className="flex flex-col gap-3">
             {navLinks.map((link) => {
-              if (link.path === '/about') {
-                return (
-                  <li key={link.path}>
-                    <a
-                      href="#about"
-                      onClick={(e) => handleScrollToSection(e, 'about')}
-                      className="text-[#D9DFD7] hover:text-[#EFA83C] transition cursor-pointer block py-1.5 text-sm font-medium"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                );
-              }
               return (
                 <li key={link.path}>
                   <Link

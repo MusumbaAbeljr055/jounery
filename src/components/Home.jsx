@@ -1,6 +1,5 @@
 // src/components/Home.jsx
 import Services from './Services';
-import About from './About';
 import Skills from './Skills';
 import Projects from './Projects';
 import EducationWork from './EducationWork';
@@ -13,7 +12,7 @@ export default function Home() {
   const tickerItems = ['App Design', 'Website Design', 'Dashboard', 'Wireframe', 'UI/UX Design', 'Mobile App', 'Prototype'];
 
   return (
-    <div className="bg-white min-h-screen font-sans text-[#1E1E1E]">
+    <div className="home-page bg-white min-h-screen font-sans text-[#1E1E1E]">
 
       <section className="pt-12 sm:pt-16 pb-0 px-4 sm:px-6 md:px-16 overflow-hidden" id="home">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 md:gap-8 items-start">
@@ -158,7 +157,6 @@ export default function Home() {
       </section>
 
       <Services />
-      <About />
       <Skills />
       <Projects />
       <EducationWork />

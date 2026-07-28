@@ -1,5 +1,53 @@
 /* src/components/About.css */
 
+.must-journey {
+  background: #e7e4db;
+  padding: clamp(2rem, 5vw, 5rem) 1rem;
+}
+
+.notebook-page {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #f5f4ef;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 37px, #8fd1df 38px, transparent 39px);
+  box-shadow: 0 18px 45px rgba(31, 59, 44, .18);
+}
+
+.notebook-page::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 clamp(3.7rem, 9vw, 7rem);
+  width: 2px;
+  background: #f06f70;
+  box-shadow: 8px 0 0 rgba(240, 111, 112, .16);
+}
+
+.notebook-content { padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 7vw, 7rem) 2.5rem clamp(5.5rem, 13vw, 10rem); }
+.notebook-holes { position: absolute; left: .65rem; top: 1rem; bottom: 1rem; display: flex; flex-direction: column; justify-content: space-between; z-index: 1; }
+.notebook-holes span { display: block; width: 4.3rem; height: 1.05rem; border-radius: 999px; background: linear-gradient(#26343a, #8d9998 45%, #151d21 60%, #56615f); box-shadow: 0 2px 3px rgba(0,0,0,.35); }
+.notebook-heading { display: flex; align-items: flex-start; gap: .75rem; }
+.quote-mark { color: #57b847; font: 900 6.5rem/.65 Georgia, serif; flex: 0 0 auto; }
+.notebook-heading h2 { margin: .4rem 0 1.25rem; color: #192a36; font: 600 clamp(1.35rem, 2.6vw, 2.25rem)/1.25 Georgia, serif; }
+.journey-copy p, .journey-ending p { color: #087bc1; font: 600 clamp(.96rem, 1.45vw, 1.17rem)/1.85 'Courier New', monospace; letter-spacing: .01em; margin: 0 0 1.2rem; }
+.journey-copy strong { color: #0783c7; }
+.journey-ending { padding-top: .7rem; }
+.journey-ending p { margin-bottom: .7rem; }
+.journey-signature { display: flex; justify-content: flex-end; align-items: center; gap: 1rem; margin-top: 1rem; color: #087bc1; text-align: right; }
+.journey-signature strong { display: block; font: 700 clamp(1rem, 2vw, 1.3rem) 'Courier New', monospace; }
+.journey-signature span { display: block; color: #58b747; font: 500 .9rem 'Courier New', monospace; margin-top: .35rem; }
+.signature-photo { width: 8rem; height: 8rem; border: 6px solid #58b747; border-radius: 50%; overflow: hidden; background: #1d3b2b; }
+.signature-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+@media (max-width: 640px) {
+  .notebook-content { padding-left: 4.5rem; padding-right: 1.2rem; }
+  .notebook-holes span { width: 3rem; }
+  .quote-mark { font-size: 4.5rem; }
+  .notebook-heading { gap: .4rem; }
+  .journey-signature { justify-content: center; flex-direction: column; text-align: center; }
+}
+
 /* Float animation for tags */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }

@@ -141,6 +141,17 @@ export default function Contact() {
             </div>
 
             <div className="contact-social">
+              <a
+                href="#site-whatsapp-chat"
+                onClick={(event) => {
+                  event.preventDefault();
+                  document.querySelector('.whatsapp-button')?.click();
+                }}
+                aria-label="Chat with Abbey on WhatsApp"
+                className="whatsapp-social-link"
+              >
+                <i className="fa-brands fa-whatsapp"></i>
+              </a>
               <a href="https://github.com/musumbasa" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands fa-github"></i>
               </a>
