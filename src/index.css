@@ -125,11 +125,11 @@ section nav {
     padding: 0.5rem 0.75rem !important;
   }
   
-  header.main-header nav {
+  header.main-header > div > nav {
     display: none !important;
   }
   
-header.main-header nav.block {
+  header.main-header > nav.mobile-nav {
     display: flex !important;
     flex-direction: column !important;
     position: absolute !important;
