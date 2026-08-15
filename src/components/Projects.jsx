@@ -101,7 +101,7 @@ export default function Projects() {
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 sm:gap-8 mb-8 sm:mb-12">
           <div className="max-w-md">
             <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm tracking-wider mb-3 sm:mb-4 block">
-              − Projects
+              Projects
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E1E1E] font-serif italic leading-tight mb-3 sm:mb-4">
               My Latest <span className="text-[#EFA83C]">Projects</span>

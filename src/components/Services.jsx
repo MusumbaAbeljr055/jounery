@@ -23,6 +23,44 @@ export default function Services() {
       description: 'I design and implement practical IT systems, dashboards, and infrastructure that keep organizations running smoothly. From database planning to system architecture, I deliver reliable and scalable solutions.',
       color: '#FFB84D',
       bgColor: '#FFF3E0'
+    },
+    {
+      icon: '/images/Control-Statements-in-Python.jpg',
+      title: 'Training & Mentorship',
+      description: 'I teach practical digital skills through clear, hands-on sessions in programming, web development, data, and everyday technology.',
+      color: '#8B6FD8',
+      bgColor: '#F0EBFF'
+    }
+  ];
+
+  const packages = [
+    {
+      name: 'Website Development',
+      price: 'From UGX Negotiable',
+      description: 'A responsive, professional website built around your goals and audience.',
+      features: ['Responsive design', 'Up to 5 pages', 'Contact form setup', 'Basic SEO and deployment'],
+      accent: false
+    },
+    {
+      name: 'Data Analysis Reports',
+      price: 'From Negotiable',
+      description: 'Clear analysis that turns your spreadsheet or dataset into useful insight.',
+      features: ['Data cleaning', 'Charts and visual summaries', 'Key findings report', 'One revision included'],
+      accent: true
+    },
+    {
+      name: 'Virtual Assistant Support',
+      price: 'From UGX 25,000 / hour',
+      description: 'Reliable remote support for research, organization, documentation, and admin tasks.',
+      features: ['Flexible support hours', 'Online research', 'Data entry and documents', 'Clear progress updates'],
+      accent: false
+    },
+    {
+      name: 'Training & Mentorship',
+      price: 'From UGX 50,000 / session',
+      description: 'Practical, beginner-friendly guidance for programming, web development, data, and digital tools.',
+      features: ['One-on-one or group sessions', 'Practical exercises', 'Progress-focused learning', 'Beginner-friendly support'],
+      accent: false
     }
   ];
 
@@ -31,7 +69,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-8 sm:mb-10 md:mb-16">
           <div>
-            <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm">− Services</span>
+            <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm">Services</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E1E1E] mt-0.5 sm:mt-1">
               <span className="text-[#EFA83C] italic font-serif">Services</span> I Provide
             </h2>
@@ -50,10 +88,10 @@ export default function Services() {
           </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div 
-              className="bg-[#F8F9F4] p-6 sm:p-8 rounded-2xl hover:shadow-lg transition group" 
+              className="motion-push bg-[#F8F9F4] p-6 sm:p-8 rounded-2xl hover:shadow-lg transition group" 
               key={index}
             >
               {/* Circular Icon Container - No Border */}
@@ -85,6 +123,31 @@ export default function Services() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 sm:mt-20">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+            <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm">Packages</span>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E1E1E] mt-1">
+              Simple ways to <span className="text-[#EFA83C] italic font-serif">work together</span>
+            </h3>
+            <p className="text-[#9B9B92] text-xs sm:text-sm leading-relaxed mt-3">Starting prices are estimates. Every package can be adjusted to match your project.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className={`motion-push rounded-2xl p-6 sm:p-7 border ${pkg.accent ? 'bg-[#1F3B2C] border-[#1F3B2C] text-white' : 'bg-[#FAF9F4] border-[#E5E3DA] text-[#1E1E1E]'}`}>
+                {pkg.accent && <span className="inline-block bg-[#EFA83C] text-white text-[0.65rem] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Popular</span>}
+                <h4 className={`text-lg font-bold ${pkg.accent ? 'text-white' : 'text-[#1F3B2C]'}`}>{pkg.name}</h4>
+                <p className={`text-xl font-bold mt-3 ${pkg.accent ? 'text-[#EFA83C]' : 'text-[#1F3B2C]'}`}>{pkg.price}</p>
+                <p className={`text-xs leading-relaxed mt-3 min-h-[3.5rem] ${pkg.accent ? 'text-white/70' : 'text-[#6B6B62]'}`}>{pkg.description}</p>
+                <ul className="space-y-2.5 mt-5 mb-6">
+                  {pkg.features.map((feature) => <li key={feature} className={`flex gap-2 text-xs ${pkg.accent ? 'text-white/80' : 'text-[#6B6B62]'}`}><span className="text-[#EFA83C]">✓</span>{feature}</li>)}
+                </ul>
+                <a href="#contact" className={`inline-flex items-center gap-2 font-semibold text-sm hover:gap-3 transition ${pkg.accent ? 'text-[#EFA83C]' : 'text-[#1F3B2C]'}`}>Request a quote <span>→</span></a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -150,6 +150,43 @@ section nav {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes push-up {
+  from { opacity: 0; transform: translateY(22px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.motion-slide-left,
+.motion-slide-right,
+.motion-push {
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+
+.motion-slide-left { animation: slide-in-left .7s cubic-bezier(.22, 1, .36, 1) .08s both; }
+.motion-slide-right { animation: slide-in-right .7s cubic-bezier(.22, 1, .36, 1) .18s both; }
+.motion-push { animation: push-up .6s cubic-bezier(.22, 1, .36, 1) both; }
+
+.motion-push:nth-child(2) { animation-delay: .08s; }
+.motion-push:nth-child(3) { animation-delay: .16s; }
+.motion-push:nth-child(4) { animation-delay: .24s; }
+
+button, a {
+  transition: transform .25s cubic-bezier(.22, 1, .36, 1), color .25s ease, background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+button:hover, a:hover { transform: translateY(-2px); }
+button:active, a:active { transform: translateY(0) scale(.98); }
+
 @keyframes menu-drop {
   from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -240,6 +277,12 @@ button:active, a:active { transform: scale(.98); }
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .motion-slide-left,
+  .motion-slide-right,
+  .motion-push {
+    animation: none !important;
   }
 }
 

@@ -35,6 +35,8 @@ export default function Testimonials() {
     }
   ];
 
+  const trustedOrganizations = ['Zalseef Estates', 'Kabambaija Bright Heart School', 'MESA', 'Community Projects'];
+
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
@@ -67,12 +69,21 @@ export default function Testimonials() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10 sm:mb-14">
           <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm tracking-wider mb-3 sm:mb-4 block">
-            − Clients Testimonials
+            Clients Testimonials
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E1E1E] font-serif italic leading-tight">
             The Impact of My Work:<br />
             <span className="text-[#EFA83C]">Client Testimonials</span>
           </h2>
+        </div>
+
+        <div className="mb-8 sm:mb-12">
+          <p className="text-center text-[#9B9B92] text-[0.65rem] sm:text-xs uppercase tracking-wider font-semibold mb-4">Trusted through projects and collaborations with</p>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {trustedOrganizations.map((organization) => (
+              <span key={organization} className="px-3 sm:px-4 py-2 bg-white border border-[#E5E3DA] rounded-full text-[#1F3B2C] text-[0.65rem] sm:text-xs font-semibold">{organization}</span>
+            ))}
+          </div>
         </div>
 
         <div className="relative">

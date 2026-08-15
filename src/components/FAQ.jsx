@@ -41,7 +41,7 @@ export default function FAQ() {
 
           <div className="text-center mb-8 sm:mb-12">
             <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm tracking-wider mb-3 sm:mb-4 block">
-              − FAQs
+              FAQs
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif italic leading-tight">
               Questions? <span className="text-[#EFA83C]">Look here.</span>

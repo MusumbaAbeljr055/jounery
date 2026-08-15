@@ -6,6 +6,8 @@ import EducationWork from './EducationWork';
 import Contact from './Contact';
 import FAQ from './FAQ';
 import Testimonials from './Testimonials';
+import WorkProcess from './WorkProcess';
+import Availability from './Availability';
 import abbeyImage from '../assets/images/abbey.jpg';
 
 export default function Home() {
@@ -14,48 +16,48 @@ export default function Home() {
   return (
     <div className="home-page bg-white min-h-screen font-sans text-[#1E1E1E]">
 
-      <section className="pt-12 sm:pt-16 pb-0 px-4 sm:px-6 md:px-16 overflow-hidden" id="home">
+      <section className="pt-6 sm:pt-10 md:pt-14 pb-0 px-4 sm:px-6 md:px-16 overflow-hidden" id="home">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 md:gap-8 items-start">
 
-          <div className="order-2 md:order-1 pt-4 sm:pt-8">
-            <div className="inline-block relative mb-4 sm:mb-6">
-              <span className="absolute -top-[3px] -left-[3px] w-2 h-2 border-t-2 border-l-2 border-[#1F3B2C]"></span>
-              <span className="absolute -top-[3px] -right-[3px] w-2 h-2 border-t-2 border-r-2 border-[#1F3B2C]"></span>
-              <span className="absolute -bottom-[3px] -left-[3px] w-2 h-2 border-b-2 border-l-2 border-[#1F3B2C]"></span>
-              <span className="absolute -bottom-[3px] -right-[3px] w-2 h-2 border-b-2 border-r-2 border-[#1F3B2C]"></span>
-              <div className="border border-dashed border-[#1F3B2C] px-3 py-1 text-[10px] sm:text-xs font-medium text-[#1F3B2C]">
-                Hello There!
-              </div>
+          <div className="motion-slide-left order-2 md:order-1 pt-0 sm:pt-4 md:pt-10 lg:pt-14">
+            <div className="inline-flex items-center gap-2 mb-5 sm:mb-7">
+              <span className="w-2 h-2 rounded-full bg-[#58D68D] animate-pulse"></span>
+              <span className="text-[#1F3B2C] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em]">Available for new opportunities</span>
             </div>
 
-            <h1 className="mb-4 sm:mb-6">
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[3.6rem] leading-[1.15]">
-                <span className="font-bold text-[#1E1E1E]">I'm </span>
+            <h1 className="mb-4 sm:mb-6 max-w-[700px]">
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[3.6rem] leading-[1.08]">
+                <span className="font-bold text-[#1E1E1E]">I build </span>
                 <span 
                   className="text-[#EFA83C] italic underline decoration-[#EFA83C] underline-offset-4 decoration-1"
                   style={{ fontFamily: "'Playfair Display', 'Georgia', 'Times New Roman', serif" }}
                 >
-                  Abbey Ssenkubuge
-                </span>,
-              </span>
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[3.6rem] leading-[1.15] mt-1 sm:mt-2">
-                <span className="font-bold text-[#1E1E1E]">Software </span>
-                <span 
-                  className="text-[#EFA83C] italic underline decoration-[#EFA83C] underline-offset-4 decoration-1"
-                  style={{ fontFamily: "'Playfair Display', 'Georgia', 'Times New Roman', serif" }}
-                >
-                  Developer
+                  digital solutions
                 </span>
               </span>
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[3.6rem] leading-[1.15] mt-1 sm:mt-2 font-bold text-[#1E1E1E]">
-                Based in Uganda.
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[3.6rem] leading-[1.08] mt-1 sm:mt-2">
+                <span className="font-bold text-[#1E1E1E]">for people and </span>
+                <span 
+                  className="text-[#EFA83C] italic underline decoration-[#EFA83C] underline-offset-4 decoration-1"
+                  style={{ fontFamily: "'Playfair Display', 'Georgia', 'Times New Roman', serif" }}
+                >
+                  organizations
+                </span>
+              </span>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[3.6rem] leading-[1.08] mt-1 sm:mt-2 font-bold text-[#1E1E1E]">
+                from Uganda.
               </span>
             </h1>
 
-            <p className="text-[#9B9B92] text-xs sm:text-sm leading-relaxed mb-6 sm:mb-10 max-w-[380px]">
-              I'm an experienced Software Developer with 1+ years in the field, collaborating 
-              with various companies and startups.
+            <p className="text-[#6B6B62] text-xs sm:text-sm leading-relaxed mb-5 sm:mb-7 max-w-[470px]">
+              I&apos;m Abbey Ssenkubuge, an IT specialist and software developer helping businesses and teams turn ideas, data, and daily tasks into useful digital experiences.
             </p>
+
+            <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+              {['Web Development', 'Data Analysis', 'Virtual Assistant Support'].map((service) => (
+                <span key={service} className="px-3 py-1.5 rounded-full bg-[#F8F9F4] border border-[#E5E3DA] text-[#1F3B2C] text-[9px] sm:text-[10px] font-semibold">{service}</span>
+              ))}
+            </div>
 
             {/* Fixed Buttons - Proper inline sizing */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4">
@@ -63,7 +65,7 @@ export default function Home() {
                 href="#projects" 
                 className="inline-flex items-center bg-[#1F3B2C] text-white pl-3 sm:pl-4 md:pl-5 pr-0.5 sm:pr-1 py-1 rounded-full font-semibold text-[10px] sm:text-xs md:text-sm hover:bg-[#16291D] transition shrink-0"
               >
-                <span className="mr-1.5 sm:mr-2 whitespace-nowrap">View My Portfolio</span>
+                <span className="mr-1.5 sm:mr-2 whitespace-nowrap">Explore My Work</span>
                 <span className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-[#EFA83C] flex items-center justify-center">
                   <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
@@ -75,12 +77,12 @@ export default function Home() {
                 href="#contact" 
                 className="inline-flex items-center border border-[#1E1E1E] text-[#1E1E1E] px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-full font-medium text-[10px] sm:text-xs md:text-sm hover:bg-[#1F3B2C] hover:text-white hover:border-[#1F3B2C] transition shrink-0"
               >
-                Hire Me
+                Let&apos;s Talk
               </a>
             </div>
           </div>
 
-          <div className="order-1 md:order-2 flex justify-center relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
+          <div className="motion-slide-right order-1 md:order-2 flex justify-center relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
             <div className="relative w-full max-w-[300px] sm:max-w-[350px] md:max-w-[400px] h-full flex items-end justify-center">
 
               <svg className="absolute left-[5%] top-[15%] w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] z-0 opacity-40" viewBox="0 0 100 100" fill="none">
@@ -105,7 +107,7 @@ export default function Home() {
 
               <div className="absolute bottom-[25%] right-[0%] md:right-[-5%] z-20">
                 <span className="px-2 py-1 sm:px-3 sm:py-1.5 rounded-full bg-[#F2A51A] text-white text-[8px] sm:text-xs font-semibold shadow-sm">
-                  UI/UX Designer
+                  Software Developer
                 </span>
               </div>
 
@@ -114,7 +116,7 @@ export default function Home() {
                   <path d="M12 2L10.59 3.41 16.17 9H2v2h14.17l-5.58 5.59L12 18l8-8z"/>
                 </svg>
                 <span className="px-2 py-1 sm:px-3 sm:py-1.5 rounded-full bg-[#1F3B2C] text-white text-[8px] sm:text-xs font-semibold shadow-sm -ml-1">
-                  Product Designer
+                  Data &amp; Digital Support
                 </span>
               </div>
 
@@ -157,10 +159,12 @@ export default function Home() {
       </section>
 
       <Services />
+      <WorkProcess />
       <Skills />
       <Projects />
       <EducationWork />
       <Testimonials />
+      <Availability />
       <Contact />
       <FAQ />
     </div>

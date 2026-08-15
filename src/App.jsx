@@ -14,6 +14,7 @@ import Blogs from './components/Blogs';
 import About from './components/About';
 import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
+import SkillDetail from './components/SkillDetail';
 
 export default function App() {
   return (
@@ -27,6 +28,8 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/education" element={<EducationWork />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/skills/data-analysis" element={<SkillDetail type="data-analysis" />} />
+            <Route path="/skills/virtual-assistant" element={<SkillDetail type="virtual-assistant" />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/blogs" element={<Blogs />} />

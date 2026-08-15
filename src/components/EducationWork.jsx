@@ -50,7 +50,7 @@ export default function EducationWork() {
 
         <div className="text-center mb-10 sm:mb-14">
           <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm tracking-wider mb-3 sm:mb-4 block">
-            - Education & Work
+            Education & Work
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E1E1E] font-serif italic leading-tight">
             My <span className="text-[#EFA83C]">Academic</span> and<br />

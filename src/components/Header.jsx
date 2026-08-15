@@ -11,6 +11,8 @@ export default function Header() {
     { name: 'Services', path: '/services' },
     { name: 'About', path: '/about' },
     { name: 'Education', path: '/education' },
+    { name: 'Data Analysis', path: '/skills/data-analysis' },
+    { name: 'Virtual Assistant', path: '/skills/virtual-assistant' },
     { name: 'Projects', path: '/projects' },
     { name: 'Blogs', path: '/blogs' },
     { name: 'Testimonials', path: '/testimonials' },

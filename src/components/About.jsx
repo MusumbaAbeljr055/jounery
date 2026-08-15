@@ -145,7 +145,7 @@ export default function About() {
 
         {/* Right Side - Content */}
         <div className="text-white text-center md:text-left">
-          <span className="text-[#F2A51A] font-medium text-xs sm:text-sm tracking-wider">− About Me</span>
+              <span className="text-[#F2A51A] font-medium text-xs sm:text-sm tracking-wider">About Me</span>
 
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-4 sm:mb-6">
             Who is <span className="text-[#F2A51A] italic font-serif">Abbey Ssenkubuge</span>?

@@ -65,7 +65,7 @@ export default function Blogs() {
       <div className="max-w-6xl mx-auto">
         
         <div className="text-center mb-8 sm:mb-12">
-          <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm tracking-wider">- News & Blogs</span>
+          <span className="text-[#EFA83C] font-semibold text-[0.7rem] sm:text-sm tracking-wider">News &amp; Blogs</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#1F3B2C] font-serif italic mt-1 sm:mt-2">
             Our Latest <span className="text-[#EFA83C]">News & Blogs</span>
           </h2>
