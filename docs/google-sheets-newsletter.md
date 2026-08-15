@@ -16,12 +16,18 @@ Open **Extensions → Apps Script**, remove the starter code, and paste this:
 const SPREADSHEET_ID = 'PASTE_YOUR_SPREADSHEET_ID_HERE';
 const SHEET_NAME = 'Sheet1';
 
+function doGet() {
+  return ContentService
+    .createTextOutput('Newsletter endpoint is active')
+    .setMimeType(ContentService.MimeType.TEXT);
+}
+
 function doPost(e) {
   try {
     const body = JSON.parse(e.postData.contents || '{}');
     const email = String(body.email || '').trim().toLowerCase();
 
-    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return jsonResponse({ ok: false, error: 'Invalid email' });
     }
 
