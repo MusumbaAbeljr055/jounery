@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const GOOGLE_SHEETS_URL = process.env.REACT_APP_GOOGLE_SHEETS_URL;
+const GOOGLE_SHEETS_URL = process.env.REACT_APP_GOOGLE_SHEETS_URL || 'https://script.google.com/macros/s/AKfycbyeH-MUnwiXQU3w9d1BoIVKFDsNQgCAJACZaFfmkKBx0TwVqtpkXByGF_XG5GX-5xu_qA/exec';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
