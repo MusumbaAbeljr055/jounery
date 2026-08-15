@@ -31,8 +31,17 @@ function doPost(e) {
       .flat()
       .map((value) => String(value).trim().toLowerCase());
 
-    if (!emails.includes(email)) {
+    const isNewSubscriber = !emails.includes(email);
+
+    if (isNewSubscriber) {
       sheet.appendRow([new Date(), email]);
+
+      MailApp.sendEmail({
+        to: email,
+        subject: 'You are subscribed to Abbey\'s updates',
+        body: 'Thanks for subscribing! You will receive project updates, practical technology tips, and new service announcements from Abbey.',
+        htmlBody: '<p>Thanks for subscribing!</p><p>You will receive project updates, practical technology tips, and new service announcements from Abbey.</p><p>You can reply to this email if you would like to discuss a project.</p>'
+      });
     }
 
     return jsonResponse({ ok: true });

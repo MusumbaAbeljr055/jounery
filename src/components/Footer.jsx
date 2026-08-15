@@ -46,7 +46,7 @@ export default function Footer() {
       }
 
       setSubscriberEmail('');
-      setSubscriptionStatus({ type: 'success', message: 'Thanks for subscribing!' });
+      setSubscriptionStatus({ type: 'success', message: 'You’re subscribed! Expect project updates, practical tech tips, and new service announcements in your inbox.' });
     } catch (error) {
       setSubscriptionStatus({
         type: 'error',
