@@ -1,8 +1,63 @@
 // src/components/Footer.jsx
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+const GOOGLE_SHEETS_URL = process.env.REACT_APP_GOOGLE_SHEETS_URL;
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [subscriberEmail, setSubscriberEmail] = useState('');
+  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
+  const [isSubscribing, setIsSubscribing] = useState(false);
+
+  const handleSubscribe = async (event) => {
+    event.preventDefault();
+    const email = subscriberEmail.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      setSubscriptionStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+
+    setIsSubscribing(true);
+    setSubscriptionStatus(null);
+
+    try {
+      if (!GOOGLE_SHEETS_URL) {
+        throw new Error('Newsletter endpoint is not configured');
+      }
+
+      await fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ email })
+      });
+
+      try {
+        const subscribers = JSON.parse(localStorage.getItem('subscribers') || '[]');
+        if (!subscribers.some((subscriber) => subscriber.email === email)) {
+          subscribers.push({ email, date: new Date().toISOString() });
+          localStorage.setItem('subscribers', JSON.stringify(subscribers));
+        }
+      } catch (storageError) {
+        console.warn('Could not save subscriber locally', storageError);
+      }
+
+      setSubscriberEmail('');
+      setSubscriptionStatus({ type: 'success', message: 'Thanks for subscribing!' });
+    } catch (error) {
+      setSubscriptionStatus({
+        type: 'error',
+        message: error.message === 'Newsletter endpoint is not configured'
+          ? 'Newsletter signup is not configured yet.'
+          : 'Something went wrong. Please try again.'
+      });
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   return (
     <footer className="bg-white py-12 sm:py-16 px-4 sm:px-6">
@@ -91,19 +146,29 @@ export default function Footer() {
           {/* Newsletter Column */}
           <div className="text-center sm:text-left">
             <h4 className="text-[#EFA83C] font-semibold text-xs sm:text-sm mb-3 sm:mb-5">Get the latest Information</h4>
-            <div className="flex flex-col sm:flex-row items-center gap-2">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-2">
               <input 
                 type="email" 
+                name="subscriberEmail"
                 placeholder="Email address" 
+                aria-label="Email address for newsletter subscription"
+                value={subscriberEmail}
+                onChange={(event) => setSubscriberEmail(event.target.value)}
+                disabled={isSubscribing}
                 className="w-full sm:flex-1 px-3 sm:px-4 py-2.5 sm:py-3 bg-[#F5F5F0] border border-transparent rounded-xl text-[0.65rem] sm:text-[0.7rem] md:text-[0.82rem] text-[#1F3B2C] placeholder-gray-400 focus:border-[#EFA83C] focus:outline-none focus:ring-1 focus:ring-[#EFA83C] transition"
               />
-              <button className="w-full sm:w-auto px-4 sm:px-5 py-2.5 sm:py-3 bg-[#1F3B2C] text-white rounded-xl flex items-center justify-center gap-2 hover:bg-[#16291D] transition shrink-0 text-[0.65rem] sm:text-[0.7rem] md:text-[0.82rem] font-semibold">
-                Subscribe
+              <button type="submit" disabled={isSubscribing} className="w-full sm:w-auto px-4 sm:px-5 py-2.5 sm:py-3 bg-[#1F3B2C] text-white rounded-xl flex items-center justify-center gap-2 hover:bg-[#16291D] transition shrink-0 text-[0.65rem] sm:text-[0.7rem] md:text-[0.82rem] font-semibold disabled:opacity-60 disabled:cursor-not-allowed">
+                {isSubscribing ? 'Sending...' : 'Subscribe'}
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
                 </svg>
               </button>
-            </div>
+            </form>
+            {subscriptionStatus && (
+              <p aria-live="polite" className={`mt-2 text-[0.65rem] ${subscriptionStatus.type === 'success' ? 'text-[#2E8B57]' : 'text-red-500'}`}>
+                {subscriptionStatus.message}
+              </p>
+            )}
           </div>
         </div>
       </div>
