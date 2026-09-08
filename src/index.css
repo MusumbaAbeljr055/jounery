@@ -5,6 +5,58 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #FAF9F4;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(239, 168, 60, .65);
+  outline-offset: 3px;
+  animation: focus-pop .45s ease-out;
+}
+
+@keyframes focus-pop {
+  0% { outline-offset: 0; box-shadow: 0 0 0 0 rgba(239, 168, 60, 0); }
+  55% { outline-offset: 5px; box-shadow: 0 0 0 5px rgba(239, 168, 60, .16); }
+  100% { outline-offset: 3px; box-shadow: 0 0 0 0 rgba(239, 168, 60, 0); }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -181,11 +233,29 @@ section nav {
 .motion-push:nth-child(4) { animation-delay: .24s; }
 
 button, a {
-  transition: transform .25s cubic-bezier(.22, 1, .36, 1), color .25s ease, background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
+  transition: transform .28s cubic-bezier(.22, 1, .36, 1), color .25s ease, background-color .25s ease, border-color .25s ease, box-shadow .3s ease, opacity .25s ease;
 }
 
 button:hover, a:hover { transform: translateY(-2px); }
 button:active, a:active { transform: translateY(0) scale(.98); }
+
+button:disabled,
+a[aria-disabled="true"] {
+  cursor: not-allowed;
+  transform: none;
+}
+
+input,
+textarea,
+select {
+  transition: border-color .25s ease, box-shadow .3s ease, background-color .25s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 4px rgba(239, 168, 60, .13);
+}
 
 @keyframes menu-drop {
   from { opacity: 0; transform: translateY(-8px); }
@@ -266,8 +336,85 @@ button:active, a:active { transform: scale(.98); }
   transform: translateY(-7px);
 }
 
+.service-card:focus-within,
+.project-card:focus-within,
+.contact-info-item:focus-within,
+.contact-social a:focus-visible,
+.footer-socials a:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(31, 59, 44, .14);
+}
+
+.video-card:focus-visible .video-card__play {
+  transform: translate(-50%, -50%) scale(1.12);
+  box-shadow: 0 0 0 8px rgba(239, 168, 60, .18), 0 12px 24px rgba(0, 0, 0, .3);
+}
+
 .project-card:hover .project-image img {
   transform: scale(1.06);
+}
+
+/* Consistent scroll-reveal motion for every route section. */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: none !important;
+}
+
+.scroll-reveal.is-visible {
+  animation: section-reveal .7s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0s) forwards !important;
+}
+
+/* Stagger repeated content inside every page section for a more intentional entrance. */
+.scroll-reveal.is-visible .grid > *,
+.scroll-reveal.is-visible .flex.flex-wrap > *,
+.scroll-reveal.is-visible .space-y-2 > *,
+.scroll-reveal.is-visible .space-y-3 > *,
+.scroll-reveal.is-visible .space-y-5 > * {
+  animation: child-rise .55s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.scroll-reveal.is-visible .grid > *:nth-child(2),
+.scroll-reveal.is-visible .flex.flex-wrap > *:nth-child(2),
+.scroll-reveal.is-visible .space-y-2 > *:nth-child(2),
+.scroll-reveal.is-visible .space-y-3 > *:nth-child(2),
+.scroll-reveal.is-visible .space-y-5 > *:nth-child(2) { animation-delay: .07s; }
+
+.scroll-reveal.is-visible .grid > *:nth-child(3),
+.scroll-reveal.is-visible .flex.flex-wrap > *:nth-child(3),
+.scroll-reveal.is-visible .space-y-2 > *:nth-child(3),
+.scroll-reveal.is-visible .space-y-3 > *:nth-child(3),
+.scroll-reveal.is-visible .space-y-5 > *:nth-child(3) { animation-delay: .14s; }
+
+.scroll-reveal.is-visible .grid > *:nth-child(4),
+.scroll-reveal.is-visible .flex.flex-wrap > *:nth-child(4),
+.scroll-reveal.is-visible .space-y-2 > *:nth-child(4),
+.scroll-reveal.is-visible .space-y-3 > *:nth-child(4),
+.scroll-reveal.is-visible .space-y-5 > *:nth-child(4) { animation-delay: .21s; }
+
+@keyframes child-rise {
+  from { opacity: 0; transform: translateY(14px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes section-reveal {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Keep long labels and cards comfortable on narrow screens. */
+@media (max-width: 640px) {
+  h1, h2, h3 {
+    overflow-wrap: anywhere;
+  }
+
+  section {
+    scroll-margin-top: 4.5rem;
+  }
+
+  .home-page > section {
+    min-width: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -282,6 +429,21 @@ button:active, a:active { transform: scale(.98); }
   .motion-slide-left,
   .motion-slide-right,
   .motion-push {
+    animation: none !important;
+  }
+
+  .scroll-reveal,
+  .scroll-reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .scroll-reveal.is-visible .grid > *,
+  .scroll-reveal.is-visible .flex.flex-wrap > *,
+  .scroll-reveal.is-visible .space-y-2 > *,
+  .scroll-reveal.is-visible .space-y-3 > *,
+  .scroll-reveal.is-visible .space-y-5 > * {
     animation: none !important;
   }
 }

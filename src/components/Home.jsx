@@ -8,6 +8,7 @@ import FAQ from './FAQ';
 import Testimonials from './Testimonials';
 import WorkProcess from './WorkProcess';
 import Availability from './Availability';
+import Videos from './Videos';
 import abbeyImage from '../assets/images/abbey.jpg';
 
 export default function Home() {
@@ -162,6 +163,7 @@ export default function Home() {
       <WorkProcess />
       <Skills />
       <Projects />
+      <Videos />
       <EducationWork />
       <Testimonials />
       <Availability />
