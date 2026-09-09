@@ -213,25 +213,6 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Navigation Arrows */}
-        <div className="flex items-center justify-center gap-3 mt-6 sm:mt-8">
-          <button 
-            onClick={scrollLeft}
-            className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-[#1F3B2C] text-white flex items-center justify-center hover:bg-[#16291D] transition"
-          >
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
-            </svg>
-          </button>
-          <button 
-            onClick={scrollRight}
-            className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-[#EFA83C] text-white flex items-center justify-center hover:bg-[#d9952f] transition"
-          >
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-            </svg>
-          </button>
-        </div>
 
       </div>
     </section>

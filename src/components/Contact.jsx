@@ -1,6 +1,7 @@
 // src/components/Contact.jsx
 import { useState } from 'react';
 import './Contact.css';
+import Icon from './Icon';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -152,7 +153,7 @@ export default function Contact() {
               >
                 <i className="fa-brands fa-whatsapp"></i>
               </a>
-              <a href="https://github.com/musumbasa" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Abbey055?tab=overview&from=2026-08-01&to=2026-08-31" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands fa-github"></i>
               </a>
               <a href="https://musumba.hashnode.dev/" target="_blank" rel="noopener noreferrer">
@@ -169,6 +170,8 @@ export default function Contact() {
 
           {/* Right Column - Contact Form */}
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            <h1 className="contact-title">Say hello</h1>
+            <div className="contact-divider" aria-hidden="true" />
             <div className="form-group">
               <label htmlFor="name" className="sr-only">Your Name</label>
               <input
@@ -243,23 +246,18 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="form-submit"
+              className="form-submit reference-button"
               disabled={isSubmitting}
-              style={{
-                background: isSubmitting ? '#8E8BDF' : '#6C63FF',
-                color: 'white',
-                cursor: isSubmitting ? 'not-allowed' : 'pointer'
-              }}
             >
               {isSubmitting ? (
                 <>
-                  <i className="fa-solid fa-spinner fa-spin"></i>
+                  <span className="form-spinner" aria-hidden="true" />
                   Sending...
                 </>
               ) : (
                 <>
                   Send Message
-                  <i className="fa-solid fa-paper-plane"></i>
+                  <Icon name="send" size={20} />
                 </>
               )}
             </button>

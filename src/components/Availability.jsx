@@ -9,7 +9,7 @@ export default function Availability() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3">Let&apos;s build something useful.</h2>
           <p className="text-white/70 text-xs sm:text-sm mt-2 max-w-xl leading-relaxed">I&apos;m currently open to freelance projects, internships, collaborations, and remote support opportunities.</p>
         </div>
-        <Link to="/contact" className="inline-flex items-center gap-2 bg-[#EFA83C] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-[#d9952f] transition shrink-0">Start a conversation <span>→</span></Link>
+        <Link to="/contact" className="reference-button inline-flex items-center gap-2 bg-[#EFA83C] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-[#d9952f] transition shrink-0">Start a conversation <span>→</span></Link>
       </div>
     </section>
   );

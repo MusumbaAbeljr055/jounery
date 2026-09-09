@@ -40,7 +40,7 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-3">
             <Link 
               to="/projects" 
-              className="inline-flex items-center bg-[#1F3B2C] text-white pl-5 pr-1 py-1 rounded-full font-semibold text-xs hover:bg-[#16291D] transition"
+              className="reference-button inline-flex items-center bg-[#1F3B2C] text-white pl-5 pr-1 py-1 rounded-full font-semibold text-xs hover:bg-[#16291D] transition"
             >
               <span className="mr-2">View My Portfolio</span>
               <span className="w-7 h-7 rounded-full bg-[#EFA83C] flex items-center justify-center">
@@ -52,7 +52,7 @@ export default function Hero() {
 
             <Link 
               to="/contact" 
-              className="inline-flex items-center border border-[#1E1E1E] text-[#1E1E1E] px-5 py-2 rounded-full font-medium text-xs hover:bg-[#1F3B2C] hover:text-white hover:border-[#1F3B2C] transition"
+              className="reference-button reference-button--secondary inline-flex items-center border border-[#1E1E1E] text-[#1E1E1E] px-5 py-2 rounded-full font-medium text-xs hover:bg-[#1F3B2C] hover:text-white hover:border-[#1F3B2C] transition"
             >
               Hire Me
             </Link>

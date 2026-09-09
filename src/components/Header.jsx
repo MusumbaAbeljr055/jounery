@@ -1,113 +1,49 @@
-// src/components/Header.jsx
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import './Header.css';
+import Icon from './Icon';
+
+const navLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services' },
+  { name: 'About', path: '/about' },
+  { name: 'Education', path: '/education' },
+  { name: 'Skills', path: '/skills' },
+  { name: 'Work', path: '/projects' },
+  { name: 'Writing', path: '/blogs' },
+  { name: 'Contact', path: '/contact' },
+];
 
 export default function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'About', path: '/about' },
-    { name: 'Education', path: '/education' },
-    { name: 'Data Analysis', path: '/skills/data-analysis' },
-    { name: 'Virtual Assistant', path: '/skills/virtual-assistant' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Blogs', path: '/blogs' },
-    { name: 'Testimonials', path: '/testimonials' },
-  ];
-
-  const handleContactClick = (e) => {
-    e.preventDefault();
-    if (location.pathname === '/') {
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = '/#contact';
-    }
+  const [isDark, setIsDark] = useState(() => window.localStorage.getItem('site-theme') === 'dark');
+  useEffect(() => setIsMenuOpen(false), [location.pathname]);
+  useEffect(() => { document.body.dataset.theme = isDark ? 'dark' : 'light'; window.localStorage.setItem('site-theme', isDark ? 'dark' : 'light'); }, [isDark]);
+  const isActive = (path) => path === '/' ? location.pathname === '/' : path.startsWith('/#') ? location.pathname === '/' && location.hash === path.slice(1) : location.pathname.startsWith(path);
+  const handleNavClick = (event, link) => {
+    if (link.path !== '/#tools') return;
+    event.preventDefault();
+    navigate('/#tools');
+  };
+  const handleContactClick = (event) => {
+    event.preventDefault();
+    setIsMenuOpen(false);
+    if (location.pathname === '/') document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    else window.location.href = '/#contact';
   };
 
-  return (
-    <header className="main-header">
-      <div className="max-w-7xl mx-auto flex justify-between items-center w-full px-4 sm:px-6 py-2 sm:py-3">
-        <Link to="/" className="flex items-center gap-1.5 sm:gap-2 text-white font-bold text-base sm:text-lg md:text-xl flex-shrink-0">
-          <span className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full bg-[#EFA83C] text-[#1F3B2C] flex items-center justify-center text-[9px] sm:text-[10px] md:text-sm font-bold">
-            A
-          </span>
-          <span className="text-sm sm:text-base md:text-xl whitespace-nowrap">Abbey<span className="text-[#EFA83C]">.</span></span>
-        </Link>
-
-        <button 
-          className="md:hidden p-1 sm:p-1.5 text-white focus:outline-none" 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? (
-            <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/>
-              <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-          ) : (
-            <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          )}
-        </button>
-
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-          {navLinks.map((link) => {
-            return (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`${location.pathname === link.path ? 'text-[#EFA83C]' : 'text-[#D9DFD7]'} hover:text-[#EFA83C] transition text-sm font-medium whitespace-nowrap`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <a 
-          href="#contact" 
-          className="hidden md:block bg-white text-[#1F3B2C] px-4 lg:px-6 py-1.5 sm:py-2 rounded-full font-semibold text-xs sm:text-sm hover:bg-[#EFA83C] hover:text-white transition whitespace-nowrap"
-          onClick={handleContactClick}
-        >
-          Contact Me
-        </a>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <nav className="mobile-nav md:hidden absolute top-full left-0 right-0 bg-[#1F3B2C] p-4 sm:p-5 shadow-lg z-50">
-          <ul className="flex flex-col gap-3">
-            {navLinks.map((link) => {
-              return (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className={`${location.pathname === link.path ? 'text-[#EFA83C]' : 'text-[#D9DFD7]'} hover:text-[#EFA83C] transition block py-1.5 text-sm font-medium`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <a 
-                href="#contact" 
-                className="text-[#D9DFD7] hover:text-[#EFA83C] transition block py-1.5 text-sm font-medium"
-                onClick={handleContactClick}
-              >
-                Contact Me
-              </a>
-            </li>
-          </ul>
-        </nav>
-      )}
+  return <>
+      <header className={`main-header ${isMenuOpen ? 'main-header--menu-open' : ''}`}>
+      <Link to="/" className="site-mark" aria-label="Home"><span className="site-mark__monogram">A</span></Link>
+      <nav className="desktop-nav" aria-label="Primary navigation">
+        {navLinks.map((link) => <Link key={link.path} to={link.path} className="desktop-nav__link" aria-current={isActive(link.path) ? 'page' : undefined} onClick={(event) => handleNavClick(event, link)}>{link.name}</Link>)}
+      </nav>
+      <div className="header-socials"><a href="https://github.com/Abbey055?tab=overview&from=2026-08-01&to=2026-08-31" target="_blank" rel="noreferrer" aria-label="GitHub"><Icon name="github" size={18} /></a><a href="#contact" onClick={handleContactClick} aria-label="Contact Abbey"><Icon name="arrow-right" size={18} /></a></div>
+      <button className="menu-toggle" type="button" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((open) => !open)}><Icon name={isMenuOpen ? 'close' : 'menu'} size={22} /></button>
     </header>
-  );
+    <button className="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed={isDark} onClick={() => setIsDark((value) => !value)}><svg className="theme-toggle__svg" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true"><path className="theme-toggle__path" d="M19 3v7M19 35v-7M32.856 11l-6.062 3.5M5.144 27l6.062-3.5M5.144 11l6.062 3.5M32.856 27l-6.062-3.5" /><circle className="theme-toggle__circle" cx="19" cy="19" r="12" /><circle className="theme-toggle__mask" cx="25" cy="14" r="9" /></svg></button>
+    <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu--open' : ''}`} aria-hidden={!isMenuOpen}><div className="mobile-menu__inner">{navLinks.map((link, index) => <Link key={link.path} to={link.path} className="mobile-menu__link" aria-current={isActive(link.path) ? 'page' : undefined} style={{ '--menu-delay': `${index * 55}ms` }} onClick={(event) => { handleNavClick(event, link); setIsMenuOpen(false); }}><span>0{index + 1}</span>{link.name}</Link>)}<div className="mobile-menu__socials"><a href="https://github.com/Abbey055" target="_blank" rel="noreferrer" aria-label="GitHub"><Icon name="github" size={20} /></a><a href="https://youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube"><Icon name="youtube" size={20} /></a><a href="https://vercel.com/" target="_blank" rel="noreferrer" aria-label="Vercel"><Icon name="vercel" size={20} /></a><a href="https://supabase.com/" target="_blank" rel="noreferrer" aria-label="Supabase"><Icon name="supabase" size={20} /></a><a href="https://www.mysql.com/" target="_blank" rel="noreferrer" aria-label="MySQL"><Icon name="mysql" size={20} /></a></div></div></div>
+  </>;
 }

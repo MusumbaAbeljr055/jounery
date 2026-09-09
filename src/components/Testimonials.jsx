@@ -129,24 +129,6 @@ export default function Testimonials() {
             ))}
           </div>
 
-          <div className="flex items-center justify-center gap-3 mt-8 sm:mt-10">
-            <button 
-              onClick={prevSlide}
-              className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-[#1F3B2C] text-white flex items-center justify-center hover:bg-[#16291D] transition"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
-              </svg>
-            </button>
-            <button 
-              onClick={nextSlide}
-              className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-[#EFA83C] text-white flex items-center justify-center hover:bg-[#d9952f] transition"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
     </div>

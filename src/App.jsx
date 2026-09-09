@@ -1,4 +1,5 @@
 // src/App.jsx
+import './App.css';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Home from './components/Home';
@@ -21,7 +22,28 @@ function ScrollReveal() {
   const location = useLocation();
 
   useEffect(() => {
-    const sections = document.querySelectorAll('main > section, main > div, main article');
+    if (!location.hash) return undefined;
+    const targetId = decodeURIComponent(location.hash.slice(1));
+    let frame;
+    let attempts = 0;
+    const scrollToTarget = () => {
+      const target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else if (attempts < 120) { attempts += 1; frame = window.requestAnimationFrame(scrollToTarget); }
+    };
+    frame = window.requestAnimationFrame(scrollToTarget);
+    return () => window.cancelAnimationFrame(frame);
+  }, [location.pathname, location.hash]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('main section, main > div, main article');
+    const main = document.querySelector('main');
+
+    if (main) {
+      main.classList.remove('route-transition');
+      void main.offsetWidth;
+      main.classList.add('route-transition');
+    }
 
     if (!('IntersectionObserver' in window)) {
       sections.forEach((section) => section.classList.add('is-visible'));
@@ -44,7 +66,10 @@ function ScrollReveal() {
 
     sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      main?.classList.remove('route-transition');
+    };
   }, [location.pathname]);
 
   return null;
@@ -54,9 +79,9 @@ export default function App() {
   return (
     <Router>
       <ScrollReveal />
-      <div className="min-h-screen flex flex-col bg-[#FAF9F4]">
+      <div className="site-shell">
         <Header />
-        <main className="flex-grow">
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />

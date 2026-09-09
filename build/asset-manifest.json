@@ -1,14 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.0eaa42e6.css",
-    "main.js": "/static/js/main.e7090ca4.js",
+    "main.css": "/static/css/main.8cc67c2e.css",
+    "main.js": "/static/js/main.399e6398.js",
     "static/media/abbey.jpg": "/static/media/abbey.5d32b1304dddddfc4e9c.jpg",
+    "static/media/gotham-book-italic.woff2": "/static/media/gotham-book-italic.7cb4935ca008103d0f36.woff2",
+    "static/media/gotham-medium.woff2": "/static/media/gotham-medium.e1f8578955b8dc71ec33.woff2",
+    "static/media/gotham-book.woff2": "/static/media/gotham-book.87157097dc9ececf1c70.woff2",
+    "static/media/gotham-bold.woff2": "/static/media/gotham-bold.06f6a1402f5f7520c18d.woff2",
+    "static/media/ipa-gothic.woff2": "/static/media/ipa-gothic.f783a5d42b5a3280b59d.woff2",
+    "static/media/icons.svg": "/static/media/icons.52743893d2822f12400cc46570161f17.svg",
     "index.html": "/index.html",
-    "main.0eaa42e6.css.map": "/static/css/main.0eaa42e6.css.map",
-    "main.e7090ca4.js.map": "/static/js/main.e7090ca4.js.map"
+    "main.8cc67c2e.css.map": "/static/css/main.8cc67c2e.css.map",
+    "main.399e6398.js.map": "/static/js/main.399e6398.js.map"
   },
   "entrypoints": [
-    "static/css/main.0eaa42e6.css",
-    "static/js/main.e7090ca4.js"
+    "static/css/main.8cc67c2e.css",
+    "static/js/main.399e6398.js"
   ]
 }

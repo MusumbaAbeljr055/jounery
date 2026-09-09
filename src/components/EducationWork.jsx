@@ -45,7 +45,7 @@ export default function EducationWork() {
   ];
 
   return (
-    <div className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#FAF9F4] min-h-screen" id="education">
+    <div className="education-work py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#FAF9F4] min-h-screen" id="education">
       <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-10 sm:mb-14">
